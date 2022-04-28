@@ -17,7 +17,7 @@ resource "keycloak_oidc_identity_provider" "this" {
   authorization_url = var.authorization_url
   token_url         = var.token_url
   user_info_url     = var.user_info_url
-  jwks_url          = var.user_info_url
+  jwks_url          = var.jwks_url
   logout_url        = var.logout_url
 
   client_id     = var.client_id
