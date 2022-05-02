@@ -34,16 +34,16 @@ resource "keycloak_custom_identity_provider_mapper" "bceidbusiness_bceid_user_gu
   }
 }
 
-resource "keycloak_custom_identity_provider_mapper" "bceidbusiness_bceid_user_name" {
+resource "keycloak_custom_identity_provider_mapper" "bceidbusiness_display_name" {
   realm                    = module.realm.id
-  name                     = "bceid_user_name"
+  name                     = "display_name"
   identity_provider_alias  = module.bceidbusiness_idp.alias
   identity_provider_mapper = "saml-user-attribute-idp-mapper"
 
   extra_config = {
     syncMode         = "INHERIT"
     "attribute.name" = "SMGOV_USERDISPLAYNAME"
-    "user.attribute" = "bceid_user_name"
+    "user.attribute" = "display_name"
   }
 }
 

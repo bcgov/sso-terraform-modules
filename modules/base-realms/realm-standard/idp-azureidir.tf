@@ -10,43 +10,12 @@ module "azureidir_idp" {
   client_secret     = var.azureidir_client_secret
 }
 
-resource "keycloak_custom_identity_provider_mapper" "azureidir_displayname" {
-  realm                    = module.realm.id
-  name                     = "display_name"
-  identity_provider_alias  = module.azureidir_idp.alias
-  identity_provider_mapper = "oidc-user-attribute-idp-mapper"
+module "azureidir_idp_mappers" {
+  source    = "../../idp-attribute-mappers"
+  realm_id  = module.realm.id
+  idp_alias = module.azureidir_idp.alias
 
-  extra_config = {
-    syncMode         = "INHERIT"
-    "claim"          = "display_name"
-    "user.attribute" = "display_name"
-  }
-}
-
-resource "keycloak_custom_identity_provider_mapper" "azureidir_idir_username" {
-  realm                    = module.realm.id
-  name                     = "idir_username"
-  identity_provider_alias  = module.azureidir_idp.alias
-  identity_provider_mapper = "oidc-user-attribute-idp-mapper"
-
-  extra_config = {
-    syncMode         = "INHERIT"
-    "claim"          = "idir_username"
-    "user.attribute" = "idir_username"
-  }
-}
-
-resource "keycloak_custom_identity_provider_mapper" "azureidir_idir_user_guid" {
-  realm                    = module.realm.id
-  name                     = "idir_user_guid"
-  identity_provider_alias  = module.azureidir_idp.alias
-  identity_provider_mapper = "oidc-user-attribute-idp-mapper"
-
-  extra_config = {
-    syncMode         = "INHERIT"
-    "claim"          = "idir_user_guid"
-    "user.attribute" = "idir_user_guid"
-  }
+  attributes = local.azureidir_attributes
 }
 
 resource "keycloak_custom_identity_provider_mapper" "azureidir_username" {

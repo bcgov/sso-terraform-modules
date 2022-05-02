@@ -8,33 +8,33 @@ module "idir_scope_mappers" {
   source     = "../../scope-attribute-mappers"
   realm_id   = module.realm.id
   scope_name = var.idir_realm_name
-  attributes = ["display_name", "idir_user_guid", "idir_username"]
+  attributes = local.idir_attributes
 }
 
 module "azureidir_scope_mappers" {
   source     = "../../scope-attribute-mappers"
   realm_id   = module.realm.id
   scope_name = var.azureidir_realm_name
-  attributes = ["display_name", "idir_user_guid", "idir_username"]
+  attributes = local.azureidir_attributes
 }
 
 module "bceidbasic_scope_mappers" {
   source     = "../../scope-attribute-mappers"
   realm_id   = module.realm.id
   scope_name = var.bceidbasic_realm_name
-  attributes = ["display_name", "bceid_user_guid"]
+  attributes = local.bceidbasic_attributes
 }
 
 module "bceidbusiness_scope_mappers" {
   source     = "../../scope-attribute-mappers"
   realm_id   = module.realm.id
   scope_name = var.bceidbusiness_realm_name
-  attributes = ["display_name", "bceid_user_guid", "bceid_user_name", "bceid_business_guid", "bceid_business_name"]
+  attributes = local.bceidbusiness_attributes
 }
 
 module "bceidboth_scope_mappers" {
   source     = "../../scope-attribute-mappers"
   realm_id   = module.realm.id
   scope_name = var.bceidboth_realm_name
-  attributes = ["display_name", "bceid_user_guid", "bceid_user_name", "bceid_business_guid", "bceid_business_name"]
+  attributes = local.bceidboth_attributes
 }
