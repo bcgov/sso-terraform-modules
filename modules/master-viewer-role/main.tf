@@ -70,3 +70,24 @@ resource "keycloak_role" "viewer" {
     [for v in values(data.keycloak_role.view_authorization) : v.id]
   )
 }
+
+resource "keycloak_openid_client" "viewer_service_account" {
+  realm_id = data.keycloak_realm.master.id
+
+  client_id = "viwer-cli"
+  name      = "viwer-cli"
+
+  enabled                      = true
+  standard_flow_enabled        = false
+  implicit_flow_enabled        = false
+  direct_access_grants_enabled = false
+  service_accounts_enabled     = true
+
+  access_type = "CONFIDENTIAL"
+}
+
+resource "keycloak_openid_client_service_account_realm_role" "viewer_service_account_viewer_role" {
+  realm_id                = data.keycloak_realm.master.id
+  service_account_user_id = keycloak_openid_client.viewer_service_account.service_account_user_id
+  role                    = keycloak_role.viewer.name
+}
