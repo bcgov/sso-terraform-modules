@@ -88,3 +88,15 @@ resource "keycloak_custom_identity_provider_mapper" "azureidir_idir_user_guid" {
     "user.attribute" = "idir_user_guid"
   }
 }
+
+resource "keycloak_custom_identity_provider_mapper" "azureidir_username" {
+  realm                    = module.realm.id
+  name                     = "username"
+  identity_provider_alias  = module.azureidir_idp.alias
+  identity_provider_mapper = "oidc-username-idp-mapper"
+
+  extra_config = {
+    syncMode = "INHERIT"
+    template = "$${CLAIM.sub}"
+  }
+}
