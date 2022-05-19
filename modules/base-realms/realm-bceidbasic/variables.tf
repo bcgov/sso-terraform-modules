@@ -10,7 +10,10 @@ variable "standard_realm_name" {
   default = "standard"
 }
 
-variable "saml_entity_id" {}
+variable "saml_entity_id" {
+  type      = string
+  sensitive = true
+}
 variable "single_sign_on_service_url" {}
 
 variable "signing_certificate" {
