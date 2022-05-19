@@ -5,7 +5,7 @@ module "azureidir_idp" {
   authorization_url = "https://login.microsoftonline.com/${var.azure_tenant_id}/oauth2/v2.0/authorize"
   token_url         = "https://login.microsoftonline.com/${var.azure_tenant_id}/oauth2/v2.0/token"
   user_info_url     = "https://graph.microsoft.com/oidc/userinfo"
-  jwks_url          = "https://login.microsoftonline.com/${var.azure_tenant_id}/oauth2/v2.0/keys"
+  jwks_url          = "https://login.microsoftonline.com/${var.azure_tenant_id}/discovery/v2.0/keys"
   logout_url        = "https://login.microsoftonline.com/${var.azure_tenant_id}/oauth2/v2.0/logout"
   client_id         = var.azure_client_id
   client_secret     = var.azure_client_secret
@@ -86,5 +86,17 @@ resource "keycloak_custom_identity_provider_mapper" "azureidir_idir_user_guid" {
     syncMode         = "INHERIT"
     "claim"          = "bcgovGUID"
     "user.attribute" = "idir_user_guid"
+  }
+}
+
+resource "keycloak_custom_identity_provider_mapper" "azureidir_username" {
+  realm                    = module.realm.id
+  name                     = "username"
+  identity_provider_alias  = module.azureidir_idp.alias
+  identity_provider_mapper = "oidc-username-idp-mapper"
+
+  extra_config = {
+    syncMode = "INHERIT"
+    template = "$${CLAIM.sub}"
   }
 }
