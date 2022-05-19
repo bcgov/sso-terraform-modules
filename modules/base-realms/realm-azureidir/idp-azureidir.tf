@@ -2,11 +2,13 @@ module "azureidir_idp" {
   source            = "../../oidc-idp"
   realm_id          = module.realm.id
   alias             = var.realm_name
-  authorization_url = "${var.azureidir_keycloak_url}/auth"
-  token_url         = "${var.azureidir_keycloak_url}/token"
-  user_info_url     = "${var.azureidir_keycloak_url}/userinfo"
-  client_id         = "<UPDATE_ME>"
-  client_secret     = "<UPDATE_ME>"
+  authorization_url = "https://login.microsoftonline.com/${var.azure_tenant_id}/oauth2/v2.0/authorize"
+  token_url         = "https://login.microsoftonline.com/${var.azure_tenant_id}/oauth2/v2.0/token"
+  user_info_url     = "https://graph.microsoft.com/oidc/userinfo"
+  jwks_url          = "https://login.microsoftonline.com/${var.azure_tenant_id}/oauth2/v2.0/keys"
+  logout_url        = "https://login.microsoftonline.com/${var.azure_tenant_id}/oauth2/v2.0/logout"
+  client_id         = var.azure_client_id
+  client_secret     = var.azure_client_secret
 }
 
 resource "keycloak_custom_identity_provider_mapper" "azureidir_firstname" {
