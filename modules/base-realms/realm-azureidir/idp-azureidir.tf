@@ -89,6 +89,8 @@ resource "keycloak_custom_identity_provider_mapper" "azureidir_idir_user_guid" {
   }
 }
 
+# see https://docs.microsoft.com/en-us/azure/active-directory/develop/id-tokens#using-claims-to-reliably-identify-a-user-subject-and-object-id
+# use "oid" over "sub" as "sub" is a case-sensitive identifier but Keycloak stores username in all lowercase.
 resource "keycloak_custom_identity_provider_mapper" "azureidir_username" {
   realm                    = module.realm.id
   name                     = "username"
@@ -97,6 +99,6 @@ resource "keycloak_custom_identity_provider_mapper" "azureidir_username" {
 
   extra_config = {
     syncMode = "INHERIT"
-    template = "$${CLAIM.sub}"
+    template = "$${CLAIM.oid}"
   }
 }
