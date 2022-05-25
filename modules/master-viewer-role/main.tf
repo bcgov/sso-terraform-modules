@@ -1,18 +1,14 @@
-data "keycloak_realm" "master" {
-  realm = "master"
-}
-
 data "keycloak_openid_client" "clients" {
   for_each = toset(var.realm_names)
 
-  realm_id  = data.keycloak_realm.master.id
+  realm_id  = "master"
   client_id = "${each.key}-realm"
 }
 
 data "keycloak_role" "view_realm" {
   for_each = toset(var.realm_names)
 
-  realm_id  = data.keycloak_realm.master.id
+  realm_id  = "master"
   client_id = data.keycloak_openid_client.clients[each.key].id
   name      = "view-realm"
 }
@@ -20,7 +16,7 @@ data "keycloak_role" "view_realm" {
 data "keycloak_role" "view_users" {
   for_each = toset(var.realm_names)
 
-  realm_id  = data.keycloak_realm.master.id
+  realm_id  = "master"
   client_id = data.keycloak_openid_client.clients[each.key].id
   name      = "view-users"
 }
@@ -28,7 +24,7 @@ data "keycloak_role" "view_users" {
 data "keycloak_role" "view_clients" {
   for_each = toset(var.realm_names)
 
-  realm_id  = data.keycloak_realm.master.id
+  realm_id  = "master"
   client_id = data.keycloak_openid_client.clients[each.key].id
   name      = "view-clients"
 }
@@ -36,7 +32,7 @@ data "keycloak_role" "view_clients" {
 data "keycloak_role" "view_events" {
   for_each = toset(var.realm_names)
 
-  realm_id  = data.keycloak_realm.master.id
+  realm_id  = "master"
   client_id = data.keycloak_openid_client.clients[each.key].id
   name      = "view-events"
 }
@@ -44,7 +40,7 @@ data "keycloak_role" "view_events" {
 data "keycloak_role" "view_identity_providers" {
   for_each = toset(var.realm_names)
 
-  realm_id  = data.keycloak_realm.master.id
+  realm_id  = "master"
   client_id = data.keycloak_openid_client.clients[each.key].id
   name      = "view-identity-providers"
 }
@@ -52,13 +48,13 @@ data "keycloak_role" "view_identity_providers" {
 data "keycloak_role" "view_authorization" {
   for_each = toset(var.realm_names)
 
-  realm_id  = data.keycloak_realm.master.id
+  realm_id  = "master"
   client_id = data.keycloak_openid_client.clients[each.key].id
   name      = "view-authorization"
 }
 
 resource "keycloak_role" "viewer" {
-  realm_id = data.keycloak_realm.master.id
+  realm_id = "master"
   name     = "viewer"
 
   composite_roles = concat(
@@ -72,7 +68,7 @@ resource "keycloak_role" "viewer" {
 }
 
 resource "keycloak_openid_client" "viewer_service_account" {
-  realm_id = data.keycloak_realm.master.id
+  realm_id = "master"
 
   client_id = "viwer-cli"
   name      = "viwer-cli"
@@ -87,7 +83,7 @@ resource "keycloak_openid_client" "viewer_service_account" {
 }
 
 resource "keycloak_openid_client_service_account_realm_role" "viewer_service_account_viewer_role" {
-  realm_id                = data.keycloak_realm.master.id
+  realm_id                = "master"
   service_account_user_id = keycloak_openid_client.viewer_service_account.service_account_user_id
   role                    = keycloak_role.viewer.name
 }
