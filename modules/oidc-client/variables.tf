@@ -6,7 +6,7 @@ variable "client_id" {
   description = "The Client ID for this client, referenced in the URI during authentication and in issued tokens."
 }
 
-variable "client_name" {
+variable "name" {
   description = "The display name of this client in the GUI."
   default     = ""
 }
@@ -19,7 +19,7 @@ variable "enabled" {
 
 variable "description" {
   description = "The description of this client in the GUI."
-  default     = "Created without CSS app"
+  default     = ""
 }
 
 # CONFIDENTIAL - Used for server-side clients that require both client ID and secret when authenticating.
@@ -41,7 +41,7 @@ variable "client_secret" {
 variable "standard_flow_enabled" {
   description = "When true, the OAuth2 Authorization Code Grant will be enabled for this client."
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "implicit_flow_enabled" {
@@ -70,7 +70,7 @@ variable "service_accounts_enabled" {
 variable "valid_redirect_uris" {
   description = "A list of valid URIs a browser is permitted to redirect to after a successful login or logout."
   type        = list(string)
-  default     = ["*"]
+  default     = []
 }
 
 # + can be used to permit all valid redirect URIs, and * can be used to permit all origins.
@@ -80,9 +80,46 @@ variable "web_origins" {
   default     = []
 }
 
+# Due to limitations in the Keycloak API, when the root_url attribute is used, the valid_redirect_uris, web_origins, and admin_url attributes will be required.
+variable "root_url" {
+  description = "When specified, this URL is prepended to any relative URLs found within valid_redirect_uris, web_origins, and admin_url."
+  default     = ""
+}
+
+variable "admin_url" {
+  description = "URL to the admin interface of the client."
+  default     = ""
+}
+
+variable "base_url" {
+  description = "Default URL to use when the auth server needs to redirect or link back to the client."
+  default     = ""
+}
+
+variable "backchannel_logout_url" {
+  description = "The URL that will cause the client to log itself out when a logout request is sent to this realm. If omitted, no logout request will be sent to the client is this case."
+  default     = ""
+}
+
+variable "backchannel_logout_session_required" {
+  description = "When true, a sid (session ID) claim will be included in the logout token when the backchannel logout URL is used."
+  default     = true
+}
+
+variable "backchannel_logout_revoke_offline_sessions" {
+  description = "Specifying whether a 'revoke_offline_access' event is included in the Logout Token when the Backchannel Logout URL is used. Keycloak will revoke offline sessions when receiving a Logout Token with this event."
+  default     = false
+}
+
 variable "pkce_code_challenge_method" {
   description = "The challenge method to use for Proof Key for Code Exchange. Can be either plain or S256 or set to empty value."
   default     = ""
+}
+
+variable "full_scope_allowed" {
+  description = "Whether or not to allow to include all roles mappings in the access token."
+  type        = bool
+  default     = false
 }
 
 variable "access_token_lifespan" {
@@ -110,21 +147,21 @@ variable "client_session_max_lifespan" {
   default     = ""
 }
 
+variable "consent_required" {
+  description = "When true, users have to consent to client access."
+  type        = bool
+  default     = false
+}
+
 variable "login_theme" {
   description = "The client login theme. This will override the default theme for the realm."
   default     = ""
 }
 
-variable "roles" {
-  description = "Client roles to create in the openid client of the realm."
-  type        = list(string)
-  default     = []
-}
-
-variable "idps" {
-  description = "Identity Providers; assign each as a client scope."
-  type        = list(string)
-  default     = []
+variable "exclude_session_state_from_auth_response" {
+  description = "When true, the parameter session_state will not be included in OpenID Connect Authentication Response."
+  type        = bool
+  default     = false
 }
 
 variable "override_authentication_flow" {
