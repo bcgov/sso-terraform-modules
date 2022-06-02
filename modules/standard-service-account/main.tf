@@ -1,4 +1,4 @@
-module "standard_oidc_client" {
+module "standard_service_account" {
   source = "../oidc-client"
 
   realm_id = var.realm_id
@@ -23,21 +23,21 @@ module "standard_oidc_client" {
 
 resource "keycloak_openid_client_default_scopes" "idp_scopes" {
   realm_id  = var.realm_id
-  client_id = module.standard_oidc_client.id
+  client_id = module.standard_service_account.id
 
   default_scopes = []
 }
 
 resource "keycloak_openid_client_optional_scopes" "client_optional_scopes" {
   realm_id  = var.realm_id
-  client_id = module.standard_oidc_client.id
+  client_id = module.standard_service_account.id
 
   optional_scopes = []
 }
 
 resource "keycloak_generic_client_protocol_mapper" "team_mapper" {
   realm_id        = var.realm_id
-  client_id       = module.standard_oidc_client.id
+  client_id       = module.standard_service_account.id
   name            = "team"
   protocol        = "openid-connect"
   protocol_mapper = "oidc-hardcoded-claim-mapper"
