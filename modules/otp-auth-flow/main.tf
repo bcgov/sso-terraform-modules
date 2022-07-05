@@ -6,6 +6,6 @@ resource "keycloak_authentication_flow" "this" {
 resource "keycloak_authentication_execution" "exec1" {
   realm_id          = var.realm_id
   parent_flow_alias = keycloak_authentication_flow.this.alias
-  authenticator     = "auth-conditional-otp-form"
+  authenticator     = "auth-otp-form"
   requirement       = "REQUIRED"
 }
