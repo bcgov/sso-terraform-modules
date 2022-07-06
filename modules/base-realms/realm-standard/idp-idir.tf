@@ -6,6 +6,7 @@ module "idir_idp" {
   token_url         = "${var.keycloak_url}/auth/realms/${var.idir_realm_name}/protocol/openid-connect/token"
   user_info_url     = "${var.keycloak_url}/auth/realms/${var.idir_realm_name}/protocol/openid-connect/userinfo"
   jwks_url          = "${var.keycloak_url}/auth/realms/${var.idir_realm_name}/protocol/openid-connect/certs"
+  logout_url        = "${var.keycloak_url}/auth/realms/${var.idir_realm_name}/protocol/openid-connect/logout"
   client_id         = var.idir_client_id
   client_secret     = var.idir_client_secret
 }
