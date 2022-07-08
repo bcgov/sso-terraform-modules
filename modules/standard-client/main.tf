@@ -17,7 +17,7 @@ module "standard_oidc_client" {
   access_type   = var.access_type
   client_secret = var.client_secret
 
-  valid_redirect_uris = var.valid_redirect_uris
+  valid_redirect_uris = var.standard_flow_enabled ? var.valid_redirect_uris : []
   web_origins         = var.web_origins
 
   pkce_code_challenge_method = var.access_type == "PUBLIC" ? "S256" : var.pkce_code_challenge_method
