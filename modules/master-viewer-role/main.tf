@@ -70,8 +70,8 @@ resource "keycloak_role" "viewer" {
 resource "keycloak_openid_client" "viewer_service_account" {
   realm_id = "master"
 
-  client_id = "viwer-cli"
-  name      = "viwer-cli"
+  client_id = "viewer-cli"
+  name      = "viewer-cli"
 
   enabled                      = true
   standard_flow_enabled        = false
