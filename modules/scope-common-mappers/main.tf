@@ -20,3 +20,18 @@ resource "keycloak_generic_client_protocol_mapper" "identity_provider_mapper" {
     "access.tokenResponse.claim" : "false"
   }
 }
+
+resource "keycloak_generic_client_protocol_mapper" "sub_mapper" {
+  realm_id        = var.realm_id
+  client_scope_id = keycloak_openid_client_scope.this.id
+  name            = "sub_username"
+  protocol        = "openid-connect"
+  protocol_mapper = "oidc-usermodel-property-mapper"
+  config = {
+    "claim.name" : "sub",
+    "user.attribute" : "username",
+    "id.token.claim" : "true",
+    "access.token.claim" : "true",
+    "userinfo.token.claim" : "true"
+  }
+}
