@@ -28,3 +28,15 @@ resource "keycloak_generic_client_protocol_mapper" "nameid_mapper" {
     "user.attribute" : "username"
   }
 }
+
+resource "keycloak_generic_client_protocol_mapper" "client_roles_mapper" {
+  realm_id        = var.realm_id
+  client_scope_id = keycloak_saml_client_scope.this.id
+  name            = "client_roles"
+  protocol        = "saml"
+  protocol_mapper = "saml-role-list-mapper"
+  config = {
+    "attribute.name" : "client_roles",
+    "single" : "true"
+  }
+}
