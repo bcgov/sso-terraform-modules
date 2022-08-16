@@ -27,6 +27,12 @@ variable "login_theme" {
   default     = ""
 }
 
+variable "valid_redirect_uris" {
+  description = "When specified, Keycloak will use this list to validate given Assertion Consumer URLs specified in the authentication request."
+  type        = list(string)
+  default     = []
+}
+
 variable "assertion_lifespan" {
   description = "Lifespan set in the SAML assertion conditions. After that time the assertion will be invalid. The 'SessionNotOnOrAfter' attribute is not modified and continue using the 'SSO Session Max' time defined at realm level."
   default     = ""

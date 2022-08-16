@@ -10,7 +10,8 @@ module "standard_saml_client" {
 
   enabled = var.enabled
 
-  assertion_lifespan = var.assertion_lifespan
+  valid_redirect_uris = var.valid_redirect_uris
+  assertion_lifespan  = var.assertion_lifespan
 
   override_authentication_flow = var.override_authentication_flow
   browser_authentication_flow  = var.browser_authentication_flow
