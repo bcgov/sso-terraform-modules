@@ -2,6 +2,7 @@ module "bceidboth_idp" {
   source            = "../../oidc-idp"
   realm_id          = module.realm.id
   alias             = var.bceidboth_realm_name
+  display_name      = "BCeID Both"
   authorization_url = "${var.keycloak_url}/auth/realms/${var.bceidboth_realm_name}/protocol/openid-connect/auth"
   token_url         = "${var.keycloak_url}/auth/realms/${var.bceidboth_realm_name}/protocol/openid-connect/token"
   user_info_url     = "${var.keycloak_url}/auth/realms/${var.bceidboth_realm_name}/protocol/openid-connect/userinfo"
