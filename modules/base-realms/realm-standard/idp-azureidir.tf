@@ -2,6 +2,7 @@ module "azureidir_idp" {
   source            = "../../oidc-idp"
   realm_id          = module.realm.id
   alias             = var.azureidir_realm_name
+  display_name      = "Azure IDIR"
   authorization_url = "${var.keycloak_url}/auth/realms/${var.azureidir_realm_name}/protocol/openid-connect/auth"
   token_url         = "${var.keycloak_url}/auth/realms/${var.azureidir_realm_name}/protocol/openid-connect/token"
   user_info_url     = "${var.keycloak_url}/auth/realms/${var.azureidir_realm_name}/protocol/openid-connect/userinfo"
