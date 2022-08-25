@@ -19,7 +19,6 @@ module "standard_service_account" {
   client_offline_session_max_lifespan = var.client_offline_session_max_lifespan
   client_session_idle_timeout         = var.client_session_idle_timeout
   client_session_max_lifespan         = var.client_session_max_lifespan
-  web_origins                         = var.web_origins
 }
 
 resource "keycloak_openid_client_default_scopes" "idp_scopes" {
