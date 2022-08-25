@@ -51,16 +51,3 @@ resource "keycloak_generic_client_protocol_mapper" "team_mapper" {
     "userinfo.token.claim" : "true"
   }
 }
-
-resource "keycloak_generic_client_protocol_mapper" "access_token_aud" {
-  realm_id        = var.realm_id
-  client_id       = module.standard_oidc_client.id
-  name            = "access_token_aud"
-  protocol        = "openid-connect"
-  protocol_mapper = "oidc-audience-mapper"
-  config = {
-    "included.client.audience" : var.client_id,
-    "id.token.claim" : "false",
-    "access.token.claim" : "true",
-  }
-}
