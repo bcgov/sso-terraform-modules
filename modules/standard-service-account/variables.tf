@@ -50,3 +50,9 @@ variable "client_session_max_lifespan" {
 variable "team_id" {
   description = "The team id this service client is associated with."
 }
+
+variable "web_origins" {
+  description = "A list of allowed CORS origins."
+  type        = list(string)
+  default     = []
+}

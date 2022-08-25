@@ -19,6 +19,7 @@ module "standard_service_account" {
   client_offline_session_max_lifespan = var.client_offline_session_max_lifespan
   client_session_idle_timeout         = var.client_session_idle_timeout
   client_session_max_lifespan         = var.client_session_max_lifespan
+  web_origins                         = var.web_origins
 }
 
 resource "keycloak_openid_client_default_scopes" "idp_scopes" {
@@ -48,5 +49,18 @@ resource "keycloak_generic_client_protocol_mapper" "team_mapper" {
     "claim.value" : var.team_id,
     "id.token.claim" : "true",
     "userinfo.token.claim" : "true"
+  }
+}
+
+resource "keycloak_generic_client_protocol_mapper" "access_token_aud" {
+  realm_id        = var.realm_id
+  client_id       = module.standard_oidc_client.id
+  name            = "access_token_aud"
+  protocol        = "openid-connect"
+  protocol_mapper = "oidc-audience-mapper"
+  config = {
+    "included.client.audience" : var.client_id,
+    "id.token.claim" : "false",
+    "access.token.claim" : "true",
   }
 }
