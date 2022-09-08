@@ -18,3 +18,8 @@ variable "realm_name" {
 variable "standard_realm_name" {
   default = "standard"
 }
+
+variable "github_org" {
+  description = "The allowed github org name"
+  default     = "bcgov"
+}

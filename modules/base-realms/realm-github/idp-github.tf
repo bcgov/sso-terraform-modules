@@ -21,7 +21,7 @@ resource "keycloak_oidc_identity_provider" "github" {
   token_url         = ""
 
   extra_config = {
-    "githubOrg" = "bcgov"
+    "githubOrg" = var.github_org
   }
 }
 
