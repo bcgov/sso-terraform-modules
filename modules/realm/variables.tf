@@ -17,7 +17,7 @@ variable "login_theme" {
 }
 
 variable "revoke_refresh_token" {
-  default = true
+  default = false
 }
 
 variable "refresh_token_max_reuse" {
