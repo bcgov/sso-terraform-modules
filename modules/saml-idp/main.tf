@@ -32,7 +32,5 @@ resource "keycloak_saml_identity_provider" "this" {
   validate_signature  = var.validate_signature
   signing_certificate = var.signing_certificate
 
-  extra_config = {
-    "authnContextComparisonType" = "exact"
-  }
+  authn_context_comparison_type = "exact"
 }
