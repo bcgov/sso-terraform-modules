@@ -1,6 +1,7 @@
 module "realm" {
-  source     = "../../realm"
-  realm_name = var.realm_name
+  source       = "../../realm"
+  realm_name   = var.realm_name
+  display_name = "GitHub"
 }
 
 data "keycloak_authentication_execution" "browser_identity_provider_redirector" {
