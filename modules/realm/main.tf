@@ -1,9 +1,12 @@
+locals {
+  display_name = var.display_name != "" ? var.display_name : var.realm_name
+}
 # see https://registry.terraform.io/providers/mrparkers/keycloak/latest/docs/resources/realm
 resource "keycloak_realm" "this" {
   realm             = var.realm_name
   enabled           = var.enabled
-  display_name      = var.realm_name
-  display_name_html = "<b>${var.realm_name}</b>"
+  display_name      = local.display_name
+  display_name_html = "<b>${local.display_name}</b>"
 
   login_with_email_allowed = var.login_with_email_allowed
   duplicate_emails_allowed = var.duplicate_emails_allowed
