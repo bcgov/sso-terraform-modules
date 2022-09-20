@@ -1,6 +1,7 @@
 module "realm" {
-  source     = "../../realm"
-  realm_name = var.realm_name
+  source       = "../../realm"
+  realm_name   = var.realm_name
+  display_name = "Basic or Business BCeID"
 }
 
 resource "keycloak_openid_client_scope" "idp_scope" {

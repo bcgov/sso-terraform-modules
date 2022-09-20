@@ -1,5 +1,9 @@
 variable "realm_name" {}
 
+variable "display_name" {
+  default = ""
+}
+
 variable "enabled" {
   default = true
 }
