@@ -142,3 +142,8 @@ variable "direct_grant_authentication_flow" {
   description = "Authentication direct grant flow id."
   default     = ""
 }
+
+variable "additional_role_attribute" {
+  description = "Additional role ttribute to have the client roles"
+  default     = ""
+}
