@@ -44,3 +44,16 @@ resource "keycloak_generic_client_protocol_mapper" "audience_mapper" {
     "included.client.audience" : var.client_id
   }
 }
+
+resource "keycloak_generic_client_protocol_mapper" "additional_client_roles" {
+  count           = var.additional_role_attribute != "" ? 1 : 0
+  realm_id        = var.realm_id
+  client_id       = module.standard_saml_client.id
+  name            = "additional_client_roles"
+  protocol        = "saml"
+  protocol_mapper = "saml-client-role-list-mapper"
+  config = {
+    "attribute.name" : var.additional_role_attribute,
+    "single" : "true"
+  }
+}

@@ -76,6 +76,24 @@ resource "keycloak_generic_client_protocol_mapper" "client_roles_mapper" {
   }
 }
 
+resource "keycloak_generic_client_protocol_mapper" "additional_client_roles_mapper" {
+  count           = var.additional_role_attribute != "" ? 1 : 0
+  realm_id        = var.realm_id
+  client_id       = module.standard_oidc_client.id
+  name            = "additional_client_roles"
+  protocol        = "openid-connect"
+  protocol_mapper = "oidc-usermodel-client-role-mapper"
+  config = {
+    "claim.name" : var.additional_role_attribute,
+    "jsonType.label" : "String",
+    "usermodel.clientRoleMapping.clientId" : var.client_id,
+    "id.token.claim" : "true",
+    "access.token.claim" : "true",
+    "userinfo.token.claim" : "true",
+    "multivalued" : "true"
+  }
+}
+
 resource "keycloak_generic_client_protocol_mapper" "access_token_aud" {
   realm_id        = var.realm_id
   client_id       = module.standard_oidc_client.id
