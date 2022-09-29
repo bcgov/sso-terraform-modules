@@ -38,6 +38,19 @@ resource "keycloak_custom_identity_provider_mapper" "github_display_name" {
   }
 }
 
+resource "keycloak_custom_identity_provider_mapper" "github_id" {
+  realm                    = module.realm.id
+  name                     = "github_id"
+  identity_provider_alias  = keycloak_oidc_identity_provider.github.alias
+  identity_provider_mapper = "github-custom-user-attribute-mapper"
+
+  extra_config = {
+    syncMode        = "FORCE"
+    "jsonField"     = "id"
+    "userAttribute" = "github_id"
+  }
+}
+
 resource "keycloak_custom_identity_provider_mapper" "github_username" {
   realm                    = module.realm.id
   name                     = "github_username"
