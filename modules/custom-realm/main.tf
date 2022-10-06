@@ -60,57 +60,13 @@ resource "keycloak_realm" "this" {
   }
 }
 
-# Realm Admin Group
-resource "keycloak_group" "admin" {
+module "realm_admin" {
+  source   = "../realm-admin-role"
   realm_id = keycloak_realm.this.id
-  name     = "Realm Administrator"
 }
 
-data "keycloak_openid_client" "management_client" {
-  realm_id  = keycloak_realm.this.id
-  client_id = "realm-management"
-}
 
-data "keycloak_role" "admin_role" {
-  realm_id  = keycloak_realm.this.id
-  client_id = data.keycloak_openid_client.management_client.id
-  name      = "realm-admin"
-}
-
-resource "keycloak_group_roles" "admin_role_mappings" {
+module "realm_viewer" {
+  source   = "../realm-viewer-role"
   realm_id = keycloak_realm.this.id
-  group_id = keycloak_group.admin.id
-
-  role_ids = [
-    data.keycloak_role.admin_role.id,
-  ]
-}
-
-# Realm Viewer Group
-locals {
-  viewer_roles = ["view-realm", "view-users", "view-clients", "view-identity-providers", "view-authorization", "view-events"]
-}
-
-resource "keycloak_group" "viewer" {
-  realm_id = keycloak_realm.this.id
-  name     = "Realm Viewer"
-}
-
-data "keycloak_role" "viewer_roles" {
-  for_each = toset(local.viewer_roles)
-
-  realm_id  = keycloak_realm.this.id
-  client_id = data.keycloak_openid_client.management_client.id
-  name      = each.key
-}
-
-resource "keycloak_group_roles" "viewer_roles" {
-  for_each = toset(local.viewer_roles)
-
-  realm_id = keycloak_realm.this.id
-  group_id = keycloak_group.viewer.id
-
-  role_ids = [
-    data.keycloak_role.viewer_roles[each.key].id
-  ]
 }
