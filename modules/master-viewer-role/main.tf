@@ -55,7 +55,7 @@ data "keycloak_role" "view_authorization" {
 
 resource "keycloak_role" "viewer" {
   realm_id = "master"
-  name     = "viewer"
+  name     = var.role_name
 
   composite_roles = concat(
     [for v in values(data.keycloak_role.view_realm) : v.id],
@@ -70,8 +70,8 @@ resource "keycloak_role" "viewer" {
 resource "keycloak_openid_client" "viewer_service_account" {
   realm_id = "master"
 
-  client_id = "viewer-cli"
-  name      = "viewer-cli"
+  client_id = "${var.role_name}-cli"
+  name      = "${var.role_name}-cli"
 
   enabled                      = true
   standard_flow_enabled        = false
