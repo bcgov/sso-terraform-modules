@@ -60,3 +60,8 @@ variable "idps" {
   type        = list(string)
   default     = []
 }
+
+variable "additional_role_attribute" {
+  description = "Additional role ttribute to have the client roles"
+  default     = ""
+}
