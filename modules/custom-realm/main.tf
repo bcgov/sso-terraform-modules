@@ -70,3 +70,31 @@ module "realm_viewer" {
   source   = "../realm-viewer-role"
   realm_id = keycloak_realm.this.id
 }
+
+module "realm_admin_master" {
+  source     = "../realm-management-role"
+  realm_id   = "master"
+  client_id  = "${var.realm_name}-realm"
+  role_name  = "${var.realm_name}-realm-admin"
+  group_name = "${var.realm_name} Realm Administrator"
+  target_roles = [
+    "create-client",
+    "impersonation",
+    "manage-authorization",
+    "manage-clients",
+    "manage-events",
+    "manage-identity-providers",
+    "manage-realm",
+    "manage-users",
+    "query-clients",
+    "query-groups",
+    "query-realms",
+    "query-users",
+    "view-authorization",
+    "view-clients",
+    "view-events",
+    "view-identity-providers",
+    "view-realm",
+    "view-users"
+  ]
+}
