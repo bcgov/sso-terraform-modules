@@ -3,6 +3,12 @@ variable "realm_id" {
   type        = string
 }
 
+variable "client_id" {
+  description = "The client to find the target roles"
+  type        = string
+  default     = "realm-management"
+}
+
 variable "role_name" {
   description = "The role name"
   type        = string

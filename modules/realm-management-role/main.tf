@@ -1,6 +1,6 @@
 data "keycloak_openid_client" "realm_management" {
   realm_id  = var.realm_id
-  client_id = "realm-management"
+  client_id = var.client_id
 }
 
 data "keycloak_role" "target_roles" {
