@@ -97,4 +97,6 @@ module "realm_admin_master" {
     "view-realm",
     "view-users"
   ]
+
+  depends_on = [keycloak_realm.this]
 }
