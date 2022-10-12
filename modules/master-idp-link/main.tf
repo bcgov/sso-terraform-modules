@@ -19,6 +19,7 @@ module "master_idp" {
   source                       = "../oidc-idp"
   realm_id                     = data.keycloak_realm.master.id
   alias                        = var.idp_realm_name
+  display_name                 = var.idp_display_name
   authorization_url            = "${var.keycloak_url}/auth/realms/${var.idp_realm_name}/protocol/openid-connect/auth"
   token_url                    = "${var.keycloak_url}/auth/realms/${var.idp_realm_name}/protocol/openid-connect/token"
   user_info_url                = "${var.keycloak_url}/auth/realms/${var.idp_realm_name}/protocol/openid-connect/userinfo"
