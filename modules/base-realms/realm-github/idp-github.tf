@@ -63,3 +63,29 @@ resource "keycloak_custom_identity_provider_mapper" "github_username" {
     "userAttribute" = "github_username"
   }
 }
+
+resource "keycloak_custom_identity_provider_mapper" "org_verified" {
+  realm                    = module.realm.id
+  name                     = "org_verified"
+  identity_provider_alias  = keycloak_oidc_identity_provider.github.alias
+  identity_provider_mapper = "github-custom-user-attribute-mapper"
+
+  extra_config = {
+    syncMode        = "FORCE"
+    "jsonField"     = "org_verified"
+    "userAttribute" = "org_verified"
+  }
+}
+
+resource "keycloak_custom_identity_provider_mapper" "orgs" {
+  realm                    = module.realm.id
+  name                     = "orgs"
+  identity_provider_alias  = keycloak_oidc_identity_provider.github.alias
+  identity_provider_mapper = "github-custom-user-attribute-mapper"
+
+  extra_config = {
+    syncMode        = "FORCE"
+    "jsonField"     = "orgs"
+    "userAttribute" = "orgs"
+  }
+}
