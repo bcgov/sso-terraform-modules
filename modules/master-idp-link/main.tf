@@ -27,3 +27,23 @@ module "master_idp" {
   client_id                    = module.idp_client.client_id
   client_secret                = module.idp_client.client_secret
 }
+
+module "master_idp_mappers" {
+  source    = "../idp-attribute-mappers"
+  realm_id  = data.keycloak_realm.master.id
+  idp_alias = var.idp_realm_name
+
+  attributes = var.idp_public_attrs
+}
+
+resource "keycloak_custom_identity_provider_mapper" "master_idp_username" {
+  realm                    = data.keycloak_realm.master.id
+  name                     = "username"
+  identity_provider_alias  = var.idp_realm_name
+  identity_provider_mapper = "oidc-username-idp-mapper"
+
+  extra_config = {
+    syncMode = "INHERIT"
+    template = "$${CLAIM.preferred_username}@$${ALIAS}"
+  }
+}
