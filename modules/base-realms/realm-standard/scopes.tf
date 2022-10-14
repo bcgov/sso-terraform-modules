@@ -45,3 +45,10 @@ module "github_scope_mappers" {
   scope_name = var.github_realm_name
   attributes = local.github_attributes
 }
+
+module "githuball_scope_mappers" {
+  source     = "../../scope-attribute-mappers"
+  realm_id   = module.realm.id
+  scope_name = "${var.github_realm_name}all"
+  attributes = local.github_attributes
+}

@@ -45,3 +45,10 @@ module "github_scope_mappers_saml" {
   scope_name = var.github_realm_name
   attributes = local.github_attributes
 }
+
+module "githuball_scope_mappers_saml" {
+  source     = "../../scope-attribute-mappers-saml"
+  realm_id   = module.realm.id
+  scope_name = "${var.github_realm_name}all"
+  attributes = local.githuball_attributes
+}
