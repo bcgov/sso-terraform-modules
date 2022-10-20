@@ -5,6 +5,6 @@ module "standard_client" {
   public_attrs = ["display_name", "github_id", "github_username", "org_verified", "orgs"]
   valid_redirect_uris = [
     "${var.keycloak_url}/auth/realms/${var.standard_realm_name}/broker/${var.realm_name}/endpoint",
-    "${var.keycloak_url}/auth/realms/${var.standard_realm_name}/broker/${var.realm_name}all/endpoint"
+    "${var.keycloak_url}/auth/realms/${var.standard_realm_name}/broker/${var.realm_name}bcgov/endpoint"
   ]
 }

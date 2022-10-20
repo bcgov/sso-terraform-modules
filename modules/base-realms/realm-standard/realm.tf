@@ -5,7 +5,7 @@ locals {
   bceidbusiness_attributes = ["display_name", "bceid_user_guid", "bceid_business_guid", "bceid_business_name", "bceid_username"]
   bceidboth_attributes     = ["display_name", "bceid_user_guid", "bceid_business_guid", "bceid_business_name", "bceid_username"]
   github_attributes        = ["display_name", "github_id", "github_username", "org_verified", "orgs"]
-  githuball_attributes     = ["display_name", "github_id", "github_username", "org_verified", "orgs"]
+  githubbcgov_attributes   = ["display_name", "github_id", "github_username", "org_verified", "orgs"]
 }
 
 module "realm" {
