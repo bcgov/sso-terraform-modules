@@ -46,9 +46,9 @@ module "github_scope_mappers" {
   attributes = local.github_attributes
 }
 
-module "githuball_scope_mappers" {
+module "githubbcgov_scope_mappers" {
   source     = "../../scope-attribute-mappers"
   realm_id   = module.realm.id
-  scope_name = "${var.github_realm_name}all"
+  scope_name = "${var.github_realm_name}bcgov"
   attributes = local.github_attributes
 }
