@@ -39,11 +39,11 @@ module "bceidboth_scope_mappers_saml" {
   attributes = local.bceidboth_attributes
 }
 
-module "github_scope_mappers_saml" {
+module "githubpublic_scope_mappers_saml" {
   source     = "../../scope-attribute-mappers-saml"
   realm_id   = module.realm.id
-  scope_name = var.github_realm_name
-  attributes = local.github_attributes
+  scope_name = "${var.github_realm_name}public"
+  attributes = local.githubpublic_attributes
 }
 
 module "githubbcgov_scope_mappers_saml" {
