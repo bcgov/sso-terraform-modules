@@ -42,7 +42,7 @@ module "bceidboth_scope_mappers" {
 module "githubpublic_scope_mappers" {
   source     = "../../scope-attribute-mappers"
   realm_id   = module.realm.id
-  scope_name = var.github_realm_name
+  scope_name = "${var.github_realm_name}public"
   attributes = local.githubpublic_attributes
 }
 
