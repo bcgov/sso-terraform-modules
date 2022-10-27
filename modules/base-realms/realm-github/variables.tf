@@ -21,5 +21,5 @@ variable "standard_realm_name" {
 
 variable "github_org" {
   description = "The allowed github org name"
-  default     = "bcgov"
+  default     = "bcgov bcgov-c BCDevOps"
 }
