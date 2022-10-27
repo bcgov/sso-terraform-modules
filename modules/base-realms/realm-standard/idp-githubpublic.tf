@@ -31,3 +31,29 @@ resource "keycloak_custom_identity_provider_mapper" "githubpublic_username" {
     template = "$${CLAIM.preferred_username}@$${ALIAS}"
   }
 }
+
+resource "keycloak_custom_identity_provider_mapper" "githubpublic_first_name" {
+  realm                    = module.realm.id
+  name                     = "first_name"
+  identity_provider_alias  = module.githubpublic_idp.alias
+  identity_provider_mapper = "hardcoded-attribute-idp-mapper"
+
+  extra_config = {
+    syncMode = "FORCE"
+    "attribute" : "firstName"
+    "attribute.value" : ""
+  }
+}
+
+resource "keycloak_custom_identity_provider_mapper" "githubpublic_last_name" {
+  realm                    = module.realm.id
+  name                     = "last_name"
+  identity_provider_alias  = module.githubpublic_idp.alias
+  identity_provider_mapper = "hardcoded-attribute-idp-mapper"
+
+  extra_config = {
+    syncMode = "FORCE"
+    "attribute" : "lastName"
+    "attribute.value" : ""
+  }
+}

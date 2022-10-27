@@ -46,9 +46,45 @@ module "githubpublic_scope_mappers" {
   attributes = local.githubpublic_attributes
 }
 
+resource "keycloak_generic_client_protocol_mapper" "githubpublic_scope_name" {
+  realm_id        = module.realm.id
+  client_scope_id = module.githubpublic_scope_mappers.client_scope_id
+
+  name            = "name"
+  protocol        = "openid-connect"
+  protocol_mapper = "oidc-usermodel-attribute-mapper"
+  config = {
+    "user.attribute" : "display_name",
+    "claim.name" : "name",
+    "id.token.claim" : "true",
+    "access.token.claim" : "true",
+    "userinfo.token.claim" : "true",
+    "multivalued" : "",
+    "aggregate.attrs" : ""
+  }
+}
+
 module "githubbcgov_scope_mappers" {
   source     = "../../scope-attribute-mappers"
   realm_id   = module.realm.id
   scope_name = "${var.github_realm_name}bcgov"
-  attributes = local.githubpublic_attributes
+  attributes = local.githubbcgov_attributes
+}
+
+resource "keycloak_generic_client_protocol_mapper" "githubbcgov_scope_name" {
+  realm_id        = module.realm.id
+  client_scope_id = module.githubbcgov_scope_mappers.client_scope_id
+
+  name            = "name"
+  protocol        = "openid-connect"
+  protocol_mapper = "oidc-usermodel-attribute-mapper"
+  config = {
+    "user.attribute" : "display_name",
+    "claim.name" : "name",
+    "id.token.claim" : "true",
+    "access.token.claim" : "true",
+    "userinfo.token.claim" : "true",
+    "multivalued" : "",
+    "aggregate.attrs" : ""
+  }
 }

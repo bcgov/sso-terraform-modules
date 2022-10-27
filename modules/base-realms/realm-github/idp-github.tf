@@ -89,3 +89,30 @@ resource "keycloak_custom_identity_provider_mapper" "orgs" {
     "userAttribute" = "orgs"
   }
 }
+
+
+resource "keycloak_custom_identity_provider_mapper" "first_name" {
+  realm                    = module.realm.id
+  name                     = "first_name"
+  identity_provider_alias  = keycloak_oidc_identity_provider.github.alias
+  identity_provider_mapper = "hardcoded-attribute-idp-mapper"
+
+  extra_config = {
+    syncMode = "FORCE"
+    "attribute" : "firstName"
+    "attribute.value" : ""
+  }
+}
+
+resource "keycloak_custom_identity_provider_mapper" "last_name" {
+  realm                    = module.realm.id
+  name                     = "last_name"
+  identity_provider_alias  = keycloak_oidc_identity_provider.github.alias
+  identity_provider_mapper = "hardcoded-attribute-idp-mapper"
+
+  extra_config = {
+    syncMode = "FORCE"
+    "attribute" : "lastName"
+    "attribute.value" : ""
+  }
+}
