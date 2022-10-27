@@ -13,6 +13,7 @@ module "idp_client" {
 module "idp_auth_flow" {
   source   = "../otp-auth-flow"
   realm_id = data.keycloak_realm.master.id
+  suffix   = var.idp_realm_name
 }
 
 module "master_idp" {

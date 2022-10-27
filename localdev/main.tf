@@ -109,6 +109,15 @@ module "master_idir_link" {
   idp_public_attrs = ["display_name", "idir_user_guid", "idir_username"]
 }
 
+module "master_azureidir_link" {
+  source           = "../modules/master-idp-link"
+  keycloak_url     = var.keycloak_url
+  idp_realm_id     = module.azureidir.realm_id
+  idp_realm_name   = module.azureidir.realm_name
+  idp_display_name = "Azure IDIR"
+  idp_public_attrs = ["display_name", "idir_user_guid", "idir_username"]
+}
+
 module "master_viewer_role" {
   source      = "../modules/master-viewer-role"
   realm_names = ["master", "standard", "idir", "azureidir", "bceidbasic", "bceidbusiness", "bceidboth"]

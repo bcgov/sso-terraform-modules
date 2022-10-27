@@ -1,6 +1,6 @@
 resource "keycloak_authentication_flow" "this" {
   realm_id = var.realm_id
-  alias    = "browser otp"
+  alias    = "${var.suffix}-browser otp"
 }
 
 resource "keycloak_authentication_execution" "exec1" {
