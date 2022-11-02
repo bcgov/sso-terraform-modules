@@ -35,3 +35,20 @@ resource "keycloak_generic_client_protocol_mapper" "sub_mapper" {
     "userinfo.token.claim" : "true"
   }
 }
+
+resource "keycloak_generic_client_protocol_mapper" "name" {
+  realm_id        = var.realm_id
+  client_scope_id = keycloak_openid_client_scope.this.id
+  name            = "name"
+  protocol        = "openid-connect"
+  protocol_mapper = "oidc-usermodel-attribute-mapper"
+  config = {
+    "user.attribute" : "display_name",
+    "claim.name" : "name",
+    "id.token.claim" : "true",
+    "access.token.claim" : "true",
+    "userinfo.token.claim" : "true",
+    "multivalued" : "",
+    "aggregate.attrs" : ""
+  }
+}
