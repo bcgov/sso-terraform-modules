@@ -36,12 +36,13 @@ resource "keycloak_custom_identity_provider_mapper" "githubpublic_first_name" {
   realm                    = module.realm.id
   name                     = "first_name"
   identity_provider_alias  = module.githubpublic_idp.alias
-  identity_provider_mapper = "hardcoded-attribute-idp-mapper"
+  identity_provider_mapper = "oidc-user-attribute-idp-mapper"
 
   extra_config = {
     syncMode = "FORCE"
     "attribute" : "firstName"
-    "attribute.value" : ""
+    "user.attribute" : "firstName"
+    "claim" : "display_name"
   }
 }
 
@@ -49,11 +50,12 @@ resource "keycloak_custom_identity_provider_mapper" "githubpublic_last_name" {
   realm                    = module.realm.id
   name                     = "last_name"
   identity_provider_alias  = module.githubpublic_idp.alias
-  identity_provider_mapper = "hardcoded-attribute-idp-mapper"
+  identity_provider_mapper = "oidc-user-attribute-idp-mapper"
 
   extra_config = {
     syncMode = "FORCE"
     "attribute" : "lastName"
-    "attribute.value" : ""
+    "user.attribute" : "lastName"
+    "claim" : "login"
   }
 }
