@@ -28,7 +28,7 @@ resource "keycloak_generic_client_protocol_mapper" "family_name" {
   protocol        = "openid-connect"
   protocol_mapper = "oidc-usermodel-property-mapper"
   config = {
-    "user.attribute" : "firstName",
+    "user.attribute" : "lastName",
     "claim.name" : "family_name",
     "access.token.claim" : "true",
     "id.token.claim" : "true",
@@ -37,7 +37,7 @@ resource "keycloak_generic_client_protocol_mapper" "family_name" {
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "full_name_username" {
+resource "keycloak_generic_client_protocol_mapper" "full_name" {
   realm_id        = var.realm_id
   client_scope_id = keycloak_openid_client_scope.this.id
   name            = "full_name"
