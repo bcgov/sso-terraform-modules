@@ -56,6 +56,6 @@ resource "keycloak_custom_identity_provider_mapper" "githubpublic_last_name" {
     syncMode = "FORCE"
     "attribute" : "lastName"
     "user.attribute" : "lastName"
-    "claim" : "login"
+    "claim" : "github_username"
   }
 }
