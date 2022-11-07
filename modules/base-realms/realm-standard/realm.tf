@@ -20,21 +20,46 @@ module "idp_auth_flow" {
   realm_id = module.realm.id
 }
 
-module "github_org_verification_auth_flow" {
-  source          = "../../attribute-authenticator-auth-flow"
-  realm_id        = module.realm.id
-  auth_flow_alias = "github org verification"
+resource "keycloak_authentication_flow" "githubbcgov" {
+  realm_id = module.realm.id
+  alias    = "github bcgov"
 }
 
-resource "keycloak_authentication_execution_config" "github_org_verification_auth_flow_exec1_config" {
+resource "keycloak_authentication_execution" "githubbcgov_exec1" {
+  realm_id          = module.realm.id
+  parent_flow_alias = keycloak_authentication_flow.githubbcgov.alias
+  authenticator     = "user-attribute-authenticator"
+  requirement       = "REQUIRED"
+}
+
+resource "keycloak_authentication_execution_config" "githubbcgov_exec1_config" {
   realm_id     = module.realm.id
-  execution_id = module.github_org_verification_auth_flow.flow_exec1_id
-  alias        = "${module.github_org_verification_auth_flow.flow_exec1_authenticator}-config"
+  execution_id = keycloak_authentication_execution.githubbcgov_exec1.id
+  alias        = "${keycloak_authentication_execution.githubbcgov_exec1.authenticator}-config"
   config = {
     attributeKey   = "org_verified",
     attributeValue = "true",
     errorUrl       = "https://github.com/bcgov/sso-keycloak/wiki/Are-you-part-of-the-GitHub-BC-Gov-Org-%3F"
   }
+}
+
+resource "keycloak_authentication_execution" "githubbcgov_exec2" {
+  realm_id          = module.realm.id
+  parent_flow_alias = keycloak_authentication_flow.githubbcgov.alias
+  authenticator     = "client-login-role-binding"
+  requirement       = "REQUIRED"
+}
+
+resource "keycloak_authentication_flow" "idp_post_login" {
+  realm_id = module.realm.id
+  alias    = "idp post login"
+}
+
+resource "keycloak_authentication_execution" "idp_post_login_exec1" {
+  realm_id          = module.realm.id
+  parent_flow_alias = keycloak_authentication_flow.idp_post_login.alias
+  authenticator     = "client-login-role-binding"
+  requirement       = "REQUIRED"
 }
 
 resource "keycloak_openid_client" "logout_redirect_uri_delegator" {

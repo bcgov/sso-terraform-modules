@@ -10,6 +10,8 @@ module "azureidir_idp" {
   logout_url        = "${var.keycloak_url}/auth/realms/${var.azureidir_realm_name}/protocol/openid-connect/logout"
   client_id         = var.azureidir_client_id
   client_secret     = var.azureidir_client_secret
+
+  post_broker_login_flow_alias = keycloak_authentication_flow.idp_post_login.alias
 }
 
 module "azureidir_idp_mappers" {
