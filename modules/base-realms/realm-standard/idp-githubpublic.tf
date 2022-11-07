@@ -10,6 +10,8 @@ module "githubpublic_idp" {
   logout_url        = "${var.keycloak_url}/auth/realms/${var.github_realm_name}/protocol/openid-connect/logout"
   client_id         = var.github_client_id
   client_secret     = var.github_client_secret
+
+  post_broker_login_flow_alias = keycloak_authentication_flow.idp_post_login.alias
 }
 
 module "githubpublic_idp_mappers" {
