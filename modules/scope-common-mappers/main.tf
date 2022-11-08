@@ -5,10 +5,10 @@ resource "keycloak_openid_client_scope" "this" {
   include_in_token_scope = false
 }
 
-resource "keycloak_generic_client_protocol_mapper" "identity_provider_mapper" {
+resource "keycloak_generic_client_protocol_mapper" "identity_provider" {
   realm_id        = var.realm_id
   client_scope_id = keycloak_openid_client_scope.this.id
-  name            = "IDP"
+  name            = "identity_provider"
   protocol        = "openid-connect"
   protocol_mapper = "oidc-usersessionmodel-note-mapper"
   config = {
@@ -21,7 +21,7 @@ resource "keycloak_generic_client_protocol_mapper" "identity_provider_mapper" {
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "sub_mapper" {
+resource "keycloak_generic_client_protocol_mapper" "sub_username" {
   realm_id        = var.realm_id
   client_scope_id = keycloak_openid_client_scope.this.id
   name            = "sub_username"
@@ -33,5 +33,69 @@ resource "keycloak_generic_client_protocol_mapper" "sub_mapper" {
     "id.token.claim" : "true",
     "access.token.claim" : "true",
     "userinfo.token.claim" : "true"
+  }
+}
+
+resource "keycloak_generic_client_protocol_mapper" "preferred_username" {
+  realm_id        = var.realm_id
+  client_scope_id = keycloak_openid_client_scope.this.id
+  name            = "preferred_username"
+  protocol        = "openid-connect"
+  protocol_mapper = "oidc-usermodel-property-mapper"
+  config = {
+    "claim.name" : "preferred_username",
+    "user.attribute" : "username",
+    "id.token.claim" : "true",
+    "access.token.claim" : "true",
+    "userinfo.token.claim" : "true"
+  }
+}
+
+resource "keycloak_generic_client_protocol_mapper" "given_name" {
+  realm_id        = var.realm_id
+  client_scope_id = keycloak_openid_client_scope.this.id
+  name            = "given_name"
+  protocol        = "openid-connect"
+  protocol_mapper = "oidc-usermodel-property-mapper"
+  config = {
+    "user.attribute" : "firstName",
+    "claim.name" : "given_name",
+    "access.token.claim" : "true",
+    "id.token.claim" : "true",
+    "userinfo.token.claim" : "true",
+    "jsonType.label" : "String"
+  }
+}
+
+resource "keycloak_generic_client_protocol_mapper" "family_name" {
+  realm_id        = var.realm_id
+  client_scope_id = keycloak_openid_client_scope.this.id
+  name            = "family_name"
+  protocol        = "openid-connect"
+  protocol_mapper = "oidc-usermodel-property-mapper"
+  config = {
+    "user.attribute" : "lastName",
+    "claim.name" : "family_name",
+    "access.token.claim" : "true",
+    "id.token.claim" : "true",
+    "userinfo.token.claim" : "true",
+    "jsonType.label" : "String"
+  }
+}
+
+resource "keycloak_generic_client_protocol_mapper" "name" {
+  realm_id        = var.realm_id
+  client_scope_id = keycloak_openid_client_scope.this.id
+  name            = "name"
+  protocol        = "openid-connect"
+  protocol_mapper = "oidc-usermodel-attribute-mapper"
+  config = {
+    "user.attribute" : "display_name",
+    "claim.name" : "name",
+    "id.token.claim" : "true",
+    "access.token.claim" : "true",
+    "userinfo.token.claim" : "true",
+    "multivalued" : "",
+    "aggregate.attrs" : ""
   }
 }
