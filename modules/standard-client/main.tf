@@ -47,7 +47,7 @@ resource "keycloak_openid_client_default_scopes" "idp_scopes" {
   realm_id  = var.realm_id
   client_id = module.standard_oidc_client.id
 
-  default_scopes = distinct(concat(["common", "email"], var.idps))
+  default_scopes = distinct(concat(["common", "profile", "email"], var.idps))
 }
 
 resource "keycloak_openid_client_optional_scopes" "client_optional_scopes" {
