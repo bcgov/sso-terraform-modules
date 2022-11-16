@@ -3,6 +3,7 @@ module "bceidbasic_idp" {
   realm_id          = module.realm.id
   alias             = var.bceidbasic_realm_name
   display_name      = "Basic BCeID"
+  gui_order         = "3"
   authorization_url = "${var.keycloak_url}/auth/realms/${var.bceidbasic_realm_name}/protocol/openid-connect/auth"
   token_url         = "${var.keycloak_url}/auth/realms/${var.bceidbasic_realm_name}/protocol/openid-connect/token"
   user_info_url     = "${var.keycloak_url}/auth/realms/${var.bceidbasic_realm_name}/protocol/openid-connect/userinfo"

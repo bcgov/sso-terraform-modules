@@ -3,6 +3,7 @@ module "githubpublic_idp" {
   realm_id          = module.realm.id
   alias             = "${var.github_realm_name}public"
   display_name      = "GitHub"
+  gui_order         = "7"
   authorization_url = "${var.keycloak_url}/auth/realms/${var.github_realm_name}/protocol/openid-connect/auth"
   token_url         = "${var.keycloak_url}/auth/realms/${var.github_realm_name}/protocol/openid-connect/token"
   user_info_url     = "${var.keycloak_url}/auth/realms/${var.github_realm_name}/protocol/openid-connect/userinfo"
