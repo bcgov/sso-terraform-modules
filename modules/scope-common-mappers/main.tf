@@ -99,3 +99,18 @@ resource "keycloak_generic_client_protocol_mapper" "name" {
     "aggregate.attrs" : ""
   }
 }
+
+resource "keycloak_generic_client_protocol_mapper" "claim_omitter" {
+  realm_id        = var.realm_id
+  client_scope_id = keycloak_openid_client_scope.this.id
+  name            = "claim_omitter"
+  protocol        = "openid-connect"
+  protocol_mapper = "omit-claim-by-idp-mapper"
+  config = {
+    "identity_provider_aliases" : "bceidbasic bceidbusiness bceidboth githubpublic githubbcgov",
+    "token_claim_names" : "family_name",
+    "id.token.claim" : "true",
+    "access.token.claim" : "true",
+    "userinfo.token.claim" : "true"
+  }
+}
