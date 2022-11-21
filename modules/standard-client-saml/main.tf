@@ -60,6 +60,6 @@ resource "keycloak_generic_client_protocol_mapper" "additional_client_roles" {
 
 resource "keycloak_role" "realm_role" {
   realm_id    = var.realm_id
-  name        = "client-${module.standard_saml_client.name}"
-  description = "Role for client: ${module.standard_saml_client.name}"
+  name        = "client-${module.standard_saml_client.client_id}"
+  description = "Role for client: ${module.standard_saml_client.client_id}"
 }
