@@ -106,3 +106,9 @@ resource "keycloak_generic_client_protocol_mapper" "access_token_aud" {
     "access.token.claim" : "true",
   }
 }
+
+resource "keycloak_role" "realm_role" {
+  realm_id    = var.realm_id
+  name        = "client-${module.standard_oidc_client.name}"
+  description = "Role for client: ${module.standard_oidc_client.name}"
+}
