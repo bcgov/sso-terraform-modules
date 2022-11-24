@@ -7,4 +7,5 @@ module "standard_client" {
     "${var.keycloak_url}/auth/realms/${var.standard_realm_name}/broker/${var.realm_name}public/endpoint",
     "${var.keycloak_url}/auth/realms/${var.standard_realm_name}/broker/${var.realm_name}bcgov/endpoint"
   ]
+  sub_to_username = var.sub_to_username
 }

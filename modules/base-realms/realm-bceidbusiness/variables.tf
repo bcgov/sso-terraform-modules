@@ -20,3 +20,9 @@ variable "signing_certificate" {
   type      = string
   sensitive = true
 }
+
+variable "sub_to_username" {
+  description = "If true, override 'sub' to have 'username' property value in the standard client"
+  type        = bool
+  default     = false
+}
