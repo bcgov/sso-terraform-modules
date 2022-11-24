@@ -43,6 +43,7 @@ module "idir" {
   saml_entity_id             = "https://dev.loginproxy.gov.bc.ca/auth/realms/_idir/"
   single_sign_on_service_url = local.siteminder_single_sign_on_service_url
   signing_certificate        = var.siteminder_signing_certificate
+  sub_to_username            = true
 }
 
 module "azureidir" {
@@ -63,6 +64,7 @@ module "bceidbasic" {
   saml_entity_id             = "https://dev.loginproxy.gov.bc.ca/auth/realms/_bceidbasic/"
   single_sign_on_service_url = local.siteminder_single_sign_on_service_url
   signing_certificate        = var.siteminder_signing_certificate
+  sub_to_username            = true
 }
 
 
@@ -93,6 +95,7 @@ module "github" {
   standard_realm_name = local.standard_realm_name
   client_id           = var.github_client_id
   client_secret       = var.github_client_secret
+  sub_to_username     = true
 }
 
 module "standard_clients" {

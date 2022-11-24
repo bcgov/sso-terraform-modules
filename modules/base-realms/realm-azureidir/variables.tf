@@ -22,3 +22,9 @@ variable "realm_name" {
 variable "standard_realm_name" {
   default = "standard"
 }
+
+variable "sub_to_username" {
+  description = "If true, override 'sub' to have 'username' property value in the standard client"
+  type        = bool
+  default     = false
+}
