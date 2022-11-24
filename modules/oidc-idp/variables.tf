@@ -137,3 +137,8 @@ variable "client_auth_method" {
   description = "The client authentication method. Since Keycloak 8, this is a required attribute if OIDC provider is created using the Keycloak GUI. It accepts the values client_secret_post (Client secret sent as post), client_secret_basic (Client secret sent as basic auth), client_secret_jwt (Client secret as jwt) and private_key_jwt (JTW signed with private key)"
   default     = "client_secret_post"
 }
+
+variable "tooltip" {
+  description = "The tooltip to display inside the IDP login button (HTML format)"
+  default     = ""
+}
