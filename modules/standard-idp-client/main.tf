@@ -42,3 +42,20 @@ resource "keycloak_openid_client_optional_scopes" "client_optional_scopes" {
     "offline_access",
   ]
 }
+
+resource "keycloak_generic_client_protocol_mapper" "sub_username" {
+  count = var.sub_to_username ? 1 : 0
+
+  realm_id        = var.realm_id
+  client_id       = keycloak_openid_client.this.id
+  name            = "sub_username"
+  protocol        = "openid-connect"
+  protocol_mapper = "oidc-usermodel-property-mapper"
+  config = {
+    "claim.name" : "sub",
+    "user.attribute" : "username",
+    "id.token.claim" : "true",
+    "access.token.claim" : "true",
+    "userinfo.token.claim" : "true"
+  }
+}

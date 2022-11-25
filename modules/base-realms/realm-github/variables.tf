@@ -23,3 +23,9 @@ variable "github_org" {
   description = "The allowed github org name"
   default     = "bcgov bcgov-c BCDevOps"
 }
+
+variable "sub_to_username" {
+  description = "If true, override 'sub' to have 'username' property value in the standard client"
+  type        = bool
+  default     = false
+}
