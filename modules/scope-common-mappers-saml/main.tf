@@ -79,3 +79,15 @@ resource "keycloak_generic_client_protocol_mapper" "client_roles" {
     "single" : "true"
   }
 }
+
+resource "keycloak_generic_client_protocol_mapper" "statement_attribute_omitter" {
+  realm_id        = var.realm_id
+  client_scope_id = keycloak_saml_client_scope.this.id
+  name            = "statement_attribute_omitter"
+  protocol        = "saml"
+  protocol_mapper = "saml-omit-statement-attributes-by-idp-mapper"
+  config = {
+    "identity_provider_aliases" : "bceidbasic bceidbusiness bceidboth githubpublic githubbcgov",
+    "statement_attribute_names" : "family_name",
+  }
+}
