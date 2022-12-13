@@ -16,7 +16,7 @@ resource "keycloak_custom_identity_provider_mapper" "idir_firstname" {
 
   extra_config = {
     syncMode         = "INHERIT"
-    "attribute.name" = "firstname"
+    "attribute.name" = "first_name"
     "user.attribute" = "firstName"
   }
 }
@@ -29,7 +29,7 @@ resource "keycloak_custom_identity_provider_mapper" "idir_lastname" {
 
   extra_config = {
     syncMode         = "INHERIT"
-    "attribute.name" = "lastname"
+    "attribute.name" = "last_name"
     "user.attribute" = "lastName"
   }
 }
@@ -42,7 +42,7 @@ resource "keycloak_custom_identity_provider_mapper" "idir_displayname" {
 
   extra_config = {
     syncMode         = "INHERIT"
-    "attribute.name" = "displayname"
+    "attribute.name" = "display_name"
     "user.attribute" = "display_name"
   }
 }
@@ -68,7 +68,7 @@ resource "keycloak_custom_identity_provider_mapper" "idir_idir_user_guid" {
 
   extra_config = {
     syncMode         = "INHERIT"
-    "attribute.name" = "useridentifier"
+    "attribute.name" = "idir_user_guid"
     "user.attribute" = "idir_user_guid"
   }
 }
@@ -81,7 +81,7 @@ resource "keycloak_custom_identity_provider_mapper" "idir_idir_username" {
 
   extra_config = {
     syncMode         = "INHERIT"
-    "attribute.name" = "username"
+    "attribute.name" = "idir_username"
     "user.attribute" = "idir_username"
   }
 }
