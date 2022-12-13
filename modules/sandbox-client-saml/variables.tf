@@ -69,5 +69,11 @@ variable "additional_role_attribute" {
 variable "client_signature_required" {
   description = "When true, Keycloak will expect that documents originating from a client will be signed using the certificate and/or key configured via signing_certificate and signing_private_key."
   type        = bool
-  default     = false
+  default     = true
+}
+
+variable "encrypt_assertions" {
+  description = "When true, the SAML assertions will be encrypted by Keycloak using the client's public key."
+  type        = bool
+  default     = true
 }

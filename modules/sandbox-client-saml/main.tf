@@ -13,7 +13,7 @@ module "sandbox_saml_client" {
   valid_redirect_uris = var.valid_redirect_uris
   assertion_lifespan  = var.assertion_lifespan
   client_signature_required = var.client_signature_required
-
+  encrypt_assertions = var.encrypt_assertions
   override_authentication_flow = var.override_authentication_flow
   browser_authentication_flow  = var.browser_authentication_flow
 }

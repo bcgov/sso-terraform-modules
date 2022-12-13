@@ -28,3 +28,7 @@ variable "sub_to_username" {
   type        = bool
   default     = false
 }
+
+variable "sandbox_client_id" {
+  default = "sandbox-client"
+}
