@@ -61,3 +61,8 @@ variable "logout_url" {
   type    = string
   default = ""
 }
+
+variable "sandbox_keycloak_url" {
+  type    = string
+  default = ""
+}

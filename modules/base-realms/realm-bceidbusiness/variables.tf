@@ -31,3 +31,8 @@ variable "sub_to_username" {
   type        = bool
   default     = false
 }
+
+variable "sandbox_keycloak_url" {
+  type    = string
+  default = ""
+}
