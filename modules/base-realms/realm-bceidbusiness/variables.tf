@@ -1,20 +1,25 @@
 variable "keycloak_url" {
   default = "http://localhost:8080"
+  type    = string
 }
 
 variable "realm_name" {
   default = "bceidbusiness"
+  type    = string
 }
 
 variable "standard_realm_name" {
   default = "standard"
+  type    = string
 }
 
 variable "saml_entity_id" {
   type      = string
   sensitive = true
 }
-variable "single_sign_on_service_url" {}
+variable "single_sign_on_service_url" {
+  type = string
+}
 
 variable "signing_certificate" {
   type      = string

@@ -1,12 +1,15 @@
 variable "keycloak_url" {
+  type    = string
   default = "http://localhost:8080"
 }
 
 variable "realm_name" {
+  type    = string
   default = "bceidbasic"
 }
 
 variable "standard_realm_name" {
+  type    = string
   default = "standard"
 }
 
@@ -14,7 +17,9 @@ variable "saml_entity_id" {
   type      = string
   sensitive = true
 }
-variable "single_sign_on_service_url" {}
+variable "single_sign_on_service_url" {
+  type = string
+}
 
 variable "signing_certificate" {
   type      = string
