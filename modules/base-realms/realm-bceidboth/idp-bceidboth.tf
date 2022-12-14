@@ -16,7 +16,7 @@ resource "keycloak_custom_identity_provider_mapper" "bceidboth_displayname" {
 
   extra_config = {
     syncMode         = "INHERIT"
-    "attribute.name" = "displayName"
+    "attribute.name" = "display_name"
     "user.attribute" = "display_name"
   }
 }
@@ -42,7 +42,7 @@ resource "keycloak_custom_identity_provider_mapper" "bceidboth_bceid_user_guid" 
 
   extra_config = {
     syncMode         = "INHERIT"
-    "attribute.name" = "useridentifier"
+    "attribute.name" = "bceid_user_guid"
     "user.attribute" = "bceid_user_guid"
   }
 }
@@ -55,7 +55,7 @@ resource "keycloak_custom_identity_provider_mapper" "bceidboth_bceid_username" {
 
   extra_config = {
     syncMode         = "INHERIT"
-    "attribute.name" = "username"
+    "attribute.name" = "bceid_username"
     "user.attribute" = "bceid_username"
   }
 }
@@ -68,7 +68,7 @@ resource "keycloak_custom_identity_provider_mapper" "bceidboth_bceid_business_gu
 
   extra_config = {
     syncMode         = "INHERIT"
-    "attribute.name" = "SMGOV_BUSINESSGUID"
+    "attribute.name" = "bceid_business_guid"
     "user.attribute" = "bceid_business_guid"
   }
 }
@@ -81,7 +81,7 @@ resource "keycloak_custom_identity_provider_mapper" "bceidboth_bceid_business_na
 
   extra_config = {
     syncMode         = "INHERIT"
-    "attribute.name" = "SMGOV_BUSINESSLEGALNAME"
+    "attribute.name" = "bceid_business_name"
     "user.attribute" = "bceid_business_name"
   }
 }
