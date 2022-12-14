@@ -67,3 +67,9 @@ variable "encrypt_assertions" {
   type        = bool
   default     = true
 }
+
+variable "attributes" {
+  description = "User attributes to include in the mappers"
+  type        = list(string)
+  default     = []
+}

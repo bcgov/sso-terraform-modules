@@ -1,4 +1,4 @@
-module "sandbox_saml_client" {
+module "sandbox_idp_client_saml" {
   source = "../saml-client"
 
   realm_id = var.realm_id
@@ -16,4 +16,20 @@ module "sandbox_saml_client" {
   encrypt_assertions           = var.encrypt_assertions
   override_authentication_flow = var.override_authentication_flow
   browser_authentication_flow  = var.browser_authentication_flow
+}
+
+resource "keycloak_generic_protocol_mapper" "sandbox_idp_client_attribute_mappers" {
+  for_each = toset(var.attributes)
+
+  realm_id  = var.realm_id
+  client_id = var.client_id
+
+  name            = each.key
+  protocol        = "saml"
+  protocol_mapper = "saml-user-attribute-mapper"
+  config = {
+    "attribute.name"       = each.key
+    "attribute.nameformat" = "Basic"
+    "attribute.value"      = each.key
+  }
 }
