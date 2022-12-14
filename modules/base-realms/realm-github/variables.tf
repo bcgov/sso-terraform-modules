@@ -1,5 +1,6 @@
 variable "keycloak_url" {
   default = "http://localhost:8080"
+  type    = string
 }
 
 variable "client_id" {
@@ -13,15 +14,18 @@ variable "client_secret" {
 
 variable "realm_name" {
   default = "github"
+  type    = string
 }
 
 variable "standard_realm_name" {
   default = "standard"
+  type    = string
 }
 
 variable "github_org" {
   description = "The allowed github org name"
   default     = "bcgov bcgov-c BCDevOps"
+  type        = string
 }
 
 variable "sub_to_username" {
