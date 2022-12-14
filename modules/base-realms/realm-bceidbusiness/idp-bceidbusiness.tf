@@ -55,7 +55,7 @@ resource "keycloak_custom_identity_provider_mapper" "bceidbusiness_bceid_busines
 
   extra_config = {
     syncMode         = "INHERIT"
-    "attribute.name" = "bceid_business_guid"
+    "attribute.name" = "SMGOV_BUSINESSGUID"
     "user.attribute" = "bceid_business_guid"
   }
 }
@@ -68,7 +68,7 @@ resource "keycloak_custom_identity_provider_mapper" "bceidbusiness_bceid_busines
 
   extra_config = {
     syncMode         = "INHERIT"
-    "attribute.name" = "bceid_business_name"
+    "attribute.name" = "SMGOV_BUSINESSLEGALNAME"
     "user.attribute" = "bceid_business_name"
   }
 }
