@@ -14,3 +14,12 @@ output "realm_id" {
 output "realm_name" {
   value = module.realm.name
 }
+
+output "sandbox_client_id" {
+  value = module.sandbox_client.client_id
+}
+
+output "sandbox_client_secret" {
+  value     = module.sandbox_client.client_id
+  sensitive = true
+}

@@ -1,4 +1,5 @@
 variable "keycloak_url" {
+  type    = string
   default = "http://localhost:8080"
 }
 
@@ -16,10 +17,12 @@ variable "azure_client_secret" {
 }
 
 variable "realm_name" {
+  type    = string
   default = "azureidir"
 }
 
 variable "standard_realm_name" {
+  type    = string
   default = "standard"
 }
 
@@ -27,4 +30,39 @@ variable "sub_to_username" {
   description = "If true, override 'sub' to have 'username' property value in the standard client"
   type        = bool
   default     = false
+}
+
+variable "sandbox_client_id" {
+  type    = string
+  default = "sandbox-client"
+}
+
+variable "authorization_url" {
+  type    = string
+  default = ""
+}
+
+variable "token_url" {
+  type    = string
+  default = ""
+}
+
+variable "user_info_url" {
+  type    = string
+  default = ""
+}
+
+variable "jwks_url" {
+  type    = string
+  default = ""
+}
+
+variable "logout_url" {
+  type    = string
+  default = ""
+}
+
+variable "sandbox_keycloak_url" {
+  type    = string
+  default = ""
 }
