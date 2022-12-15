@@ -22,7 +22,7 @@ resource "keycloak_generic_client_protocol_mapper" "sandbox_idp_client_attribute
   for_each = toset(var.attributes)
 
   realm_id  = var.realm_id
-  client_id = var.client_id
+  client_id = module.sandbox_idp_client_saml.id
 
   name            = each.key
   protocol        = "saml"
