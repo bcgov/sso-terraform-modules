@@ -8,7 +8,7 @@ module "sandbox_client" {
 
 resource "keycloak_generic_client_protocol_mapper" "smgov_bceid_business_guid_mapper" {
   realm_id  = module.realm.id
-  client_id = module.sandbox_client.client_id
+  client_id = module.sandbox_client.id
 
   name            = "smgov_bceid_business_guid"
   protocol        = "saml"
@@ -23,7 +23,7 @@ resource "keycloak_generic_client_protocol_mapper" "smgov_bceid_business_guid_ma
 
 resource "keycloak_generic_client_protocol_mapper" "smgov_bceid_business_name_mapper" {
   realm_id  = module.realm.id
-  client_id = module.sandbox_client.client_id
+  client_id = module.sandbox_client.id
 
   name            = "smgov_bceid_business_name"
   protocol        = "saml"
