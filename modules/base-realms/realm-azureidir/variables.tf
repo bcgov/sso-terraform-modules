@@ -32,11 +32,6 @@ variable "sub_to_username" {
   default     = false
 }
 
-variable "sandbox_client_id" {
-  type    = string
-  default = "sandbox-client"
-}
-
 variable "authorization_url" {
   type    = string
   default = ""
@@ -62,7 +57,7 @@ variable "logout_url" {
   default = ""
 }
 
-variable "sandbox_keycloak_url" {
+variable "sandbox_client_redirect_uri" {
   type    = string
-  default = ""
+  default = "http://localhost:8080/*"
 }

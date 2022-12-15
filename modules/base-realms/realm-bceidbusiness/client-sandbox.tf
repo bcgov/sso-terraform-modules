@@ -1,14 +1,14 @@
 module "sandbox_client" {
   source              = "../../sandbox-idp-client-saml"
   realm_id            = module.realm.id
-  client_id           = "${var.sandbox_keycloak_url}/auth/realms/${var.realm_name}"
-  valid_redirect_uris = ["${var.sandbox_keycloak_url}/auth/realms/${var.realm_name}/broker/${var.realm_name}/endpoint"]
+  client_id           = "sandbox-client"
+  valid_redirect_uris = [var.sandbox_client_redirect_uri]
   attributes          = ["display_name", "bceid_user_guid", "bceid_business_guid", "bceid_business_name", "bceid_username"]
 }
 
 resource "keycloak_generic_client_protocol_mapper" "smgov_bceid_business_guid_mapper" {
   realm_id  = module.realm.id
-  client_id = "${var.sandbox_keycloak_url}/auth/realms/${var.realm_name}"
+  client_id = module.sandbox_client.client_id
 
   name            = "smgov_bceid_business_guid"
   protocol        = "saml"
@@ -23,7 +23,7 @@ resource "keycloak_generic_client_protocol_mapper" "smgov_bceid_business_guid_ma
 
 resource "keycloak_generic_client_protocol_mapper" "smgov_bceid_business_name_mapper" {
   realm_id  = module.realm.id
-  client_id = "${var.sandbox_keycloak_url}/auth/realms/${var.realm_name}"
+  client_id = module.sandbox_client.client_id
 
   name            = "smgov_bceid_business_name"
   protocol        = "saml"
