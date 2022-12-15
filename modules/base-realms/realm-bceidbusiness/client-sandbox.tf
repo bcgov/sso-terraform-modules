@@ -6,7 +6,7 @@ module "sandbox_client" {
   attributes          = ["display_name", "bceid_user_guid", "bceid_business_guid", "bceid_business_name", "bceid_username"]
 }
 
-resource "keycloak_generic_protocol_mapper" "smgov_bceid_business_guid_mapper" {
+resource "keycloak_generic_client_protocol_mapper" "smgov_bceid_business_guid_mapper" {
   realm_id  = module.realm.id
   client_id = "${var.sandbox_keycloak_url}/auth/realms/${var.realm_name}"
 
@@ -17,10 +17,11 @@ resource "keycloak_generic_protocol_mapper" "smgov_bceid_business_guid_mapper" {
     "attribute.name"       = "bceid_business_guid"
     "attribute.nameformat" = "Basic"
     "attribute.value"      = "SMGOV_BUSINESSGUID"
+    "friendly.name"        = "bceid_business_guid"
   }
 }
 
-resource "keycloak_generic_protocol_mapper" "smgov_bceid_business_name_mapper" {
+resource "keycloak_generic_client_protocol_mapper" "smgov_bceid_business_name_mapper" {
   realm_id  = module.realm.id
   client_id = "${var.sandbox_keycloak_url}/auth/realms/${var.realm_name}"
 
@@ -31,5 +32,6 @@ resource "keycloak_generic_protocol_mapper" "smgov_bceid_business_name_mapper" {
     "attribute.name"       = "bceid_business_name"
     "attribute.nameformat" = "Basic"
     "attribute.value"      = "SMGOV_BUSINESSLEGALNAME"
+    "friendly.name"        = "bceid_business_name"
   }
 }
