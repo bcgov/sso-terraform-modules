@@ -18,7 +18,7 @@ module "sandbox_idp_client_saml" {
   browser_authentication_flow  = var.browser_authentication_flow
 }
 
-resource "keycloak_generic_protocol_mapper" "sandbox_idp_client_attribute_mappers" {
+resource "keycloak_generic_client_protocol_mapper" "sandbox_idp_client_attribute_mappers" {
   for_each = toset(var.attributes)
 
   realm_id  = var.realm_id
@@ -31,5 +31,6 @@ resource "keycloak_generic_protocol_mapper" "sandbox_idp_client_attribute_mapper
     "attribute.name"       = each.key
     "attribute.nameformat" = "Basic"
     "attribute.value"      = each.key
+    "friendly.name"        = each.key
   }
 }
