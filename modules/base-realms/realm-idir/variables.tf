@@ -32,7 +32,7 @@ variable "sub_to_username" {
   default     = false
 }
 
-variable "sandbox_keycloak_url" {
+variable "sandbox_client_redirect_uri" {
   type    = string
-  default = ""
+  default = "http://localhost:8080/*"
 }
