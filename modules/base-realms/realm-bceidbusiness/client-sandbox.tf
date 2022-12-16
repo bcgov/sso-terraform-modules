@@ -1,9 +1,11 @@
 module "sandbox_client" {
-  source              = "../../sandbox-idp-client-saml"
-  realm_id            = module.realm.id
-  client_id           = "sandbox-client"
-  valid_redirect_uris = [var.sandbox_client_redirect_uri]
-  attributes          = ["display_name", "bceid_user_guid", "bceid_business_guid", "bceid_business_name", "bceid_username"]
+  source                    = "../../sandbox-idp-client-saml"
+  realm_id                  = module.realm.id
+  client_id                 = "sandbox-client"
+  valid_redirect_uris       = [var.sandbox_client_redirect_uri]
+  attributes                = ["display_name", "bceid_user_guid", "bceid_business_guid", "bceid_business_name", "bceid_username"]
+  client_signature_required = false
+  encrypt_assertions        = false
 }
 
 resource "keycloak_generic_client_protocol_mapper" "smgov_bceid_business_guid_mapper" {
@@ -14,10 +16,9 @@ resource "keycloak_generic_client_protocol_mapper" "smgov_bceid_business_guid_ma
   protocol        = "saml"
   protocol_mapper = "saml-user-attribute-mapper"
   config = {
-    "attribute.name"       = "bceid_business_guid"
+    "attribute.name"       = "SMGOV_BUSINESSGUID"
     "attribute.nameformat" = "Basic"
-    "attribute.value"      = "SMGOV_BUSINESSGUID"
-    "friendly.name"        = "bceid_business_guid"
+    "user.attribute"       = "bceid_business_guid"
   }
 }
 
@@ -29,9 +30,8 @@ resource "keycloak_generic_client_protocol_mapper" "smgov_bceid_business_name_ma
   protocol        = "saml"
   protocol_mapper = "saml-user-attribute-mapper"
   config = {
-    "attribute.name"       = "bceid_business_name"
+    "attribute.name"       = "SMGOV_BUSINESSLEGALNAME"
     "attribute.nameformat" = "Basic"
-    "attribute.value"      = "SMGOV_BUSINESSLEGALNAME"
-    "friendly.name"        = "bceid_business_name"
+    "user.attribute"       = "bceid_business_name"
   }
 }
