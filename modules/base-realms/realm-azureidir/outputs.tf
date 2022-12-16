@@ -16,10 +16,10 @@ output "realm_name" {
 }
 
 output "sandbox_client_id" {
-  value = module.sandbox_client.client_id
+  value = keycloak_openid_client.azureidir_sandbox_client.client_id
 }
 
 output "sandbox_client_secret" {
-  value     = module.sandbox_client.client_id
+  value     = keycloak_openid_client.azureidir_sandbox_client.client_secret
   sensitive = true
 }

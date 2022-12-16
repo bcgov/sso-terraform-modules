@@ -30,7 +30,6 @@ resource "keycloak_generic_client_protocol_mapper" "sandbox_idp_client_attribute
   config = {
     "attribute.name"       = each.key
     "attribute.nameformat" = "Basic"
-    "attribute.value"      = each.key
-    "friendly.name"        = each.key
+    "user.attribute"       = each.key
   }
 }
