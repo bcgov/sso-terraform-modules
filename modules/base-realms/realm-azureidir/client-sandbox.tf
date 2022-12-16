@@ -18,7 +18,7 @@ resource "keycloak_openid_client" "azureidir_sandbox_client" {
 
 resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_samaccountname" {
   realm_id  = module.realm.id
-  client_id = "sandbox-client"
+  client_id = keycloak_openid_client.azureidir_sandbox_client.id
 
   name            = "samaccountname"
   protocol        = "openid-connect"
@@ -35,7 +35,7 @@ resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_samacc
 
 resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_given_name" {
   realm_id  = module.realm.id
-  client_id = "sandbox-client"
+  client_id = keycloak_openid_client.azureidir_sandbox_client.id
 
   name            = "given_name"
   protocol        = "openid-connect"
@@ -52,7 +52,7 @@ resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_given_
 
 resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_family_name" {
   realm_id  = module.realm.id
-  client_id = "sandbox-client"
+  client_id = keycloak_openid_client.azureidir_sandbox_client.id
 
   name            = "family_name"
   protocol        = "openid-connect"
@@ -69,7 +69,7 @@ resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_family
 
 resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_display_name" {
   realm_id  = module.realm.id
-  client_id = "sandbox-client"
+  client_id = keycloak_openid_client.azureidir_sandbox_client.id
 
   name            = "name"
   protocol        = "openid-connect"
@@ -86,7 +86,7 @@ resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_displa
 
 resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_bcgovguid" {
   realm_id  = module.realm.id
-  client_id = "sandbox-client"
+  client_id = keycloak_openid_client.azureidir_sandbox_client.id
 
   name            = "bcgovGUID"
   protocol        = "openid-connect"
