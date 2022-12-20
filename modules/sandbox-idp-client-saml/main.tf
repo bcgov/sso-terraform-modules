@@ -33,3 +33,31 @@ resource "keycloak_generic_client_protocol_mapper" "sandbox_idp_client_attribute
     "user.attribute"       = each.key
   }
 }
+
+resource "keycloak_generic_client_protocol_mapper" "username_property_mapper" {
+
+  realm_id  = var.realm_id
+  client_id = module.sandbox_idp_client_saml.id
+
+  name            = "username"
+  protocol        = "saml"
+  protocol_mapper = "saml-user-attribute-nameid-mapper"
+  config = {
+    "mapper.nameid.format" : "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"
+    "user.attribute" : "username"
+  }
+}
+
+resource "keycloak_generic_client_protocol_mapper" "email_property_mapper" {
+
+  realm_id  = var.realm_id
+  client_id = module.sandbox_idp_client_saml.id
+
+  name            = "email"
+  protocol        = "saml"
+  protocol_mapper = "saml-user-property-mapper"
+  config = {
+    "attribute.name" = "email"
+    "user.attribute" = "email"
+  }
+}

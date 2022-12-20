@@ -36,3 +36,9 @@ variable "sandbox_client_redirect_uri" {
   type    = string
   default = "http://localhost:8080/*"
 }
+
+variable "validate_signature" {
+  type        = bool
+  description = "Enable/disable signature validation of SAML responses."
+  default     = true
+}

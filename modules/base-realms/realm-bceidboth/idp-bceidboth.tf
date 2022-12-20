@@ -6,6 +6,7 @@ module "bceidboth_idp" {
   entity_id                  = var.saml_entity_id
   single_sign_on_service_url = var.single_sign_on_service_url
   signing_certificate        = var.signing_certificate
+  validate_signature         = var.validate_signature
 }
 
 resource "keycloak_custom_identity_provider_mapper" "bceidboth_displayname" {
