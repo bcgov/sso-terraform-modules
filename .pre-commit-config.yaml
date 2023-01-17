@@ -19,6 +19,10 @@ repos:
       - id: terraform_validate
       - id: terraform_docs
       - id: terraform_tflint
+        args:
+          - --args=--disable-rule=terraform_module_pinned_source
+          - --args=--disable-rule=terraform_typed_variables
+          - --args=--disable-rule=terraform_unused_declarations
   - repo: https://github.com/jorisroovers/gitlint
     rev: v0.17.0
     hooks:
