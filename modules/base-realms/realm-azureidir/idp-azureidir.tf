@@ -9,7 +9,7 @@ module "azureidir_idp" {
   logout_url            = var.azure_tenant_id != "" ? "https://login.microsoftonline.com/${var.azure_tenant_id}/oauth2/v2.0/logout" : var.logout_url
   client_id             = var.azure_client_id
   client_secret         = var.azure_client_secret
-  backchannel_supported = trimprefix(var.keycloak_url, "https://loginproxy.gov.bc.ca") == "" ? true : false
+  backchannel_supported = false
 }
 
 resource "keycloak_custom_identity_provider_mapper" "azureidir_firstname" {
