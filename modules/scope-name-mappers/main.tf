@@ -44,8 +44,8 @@ resource "keycloak_generic_client_protocol_mapper" "full_name" {
   protocol        = "openid-connect"
   protocol_mapper = "oidc-full-name-mapper"
   config = {
-    "id.token.claim" : "true",
-    "access.token.claim" : "true",
-    "userinfo.token.claim" : "true"
+    "id.token.claim" : var.enable_full_name_mapper,
+    "access.token.claim" : var.enable_full_name_mapper,
+    "userinfo.token.claim" : var.enable_full_name_mapper
   }
 }

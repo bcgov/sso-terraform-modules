@@ -1,7 +1,8 @@
 module "name_scope_mappers" {
-  source     = "../../scope-name-mappers"
-  realm_id   = module.realm.id
-  scope_name = "name"
+  source                  = "../../scope-name-mappers"
+  realm_id                = module.realm.id
+  scope_name              = "name"
+  enable_full_name_mapper = trimprefix(var.keycloak_url, "https://loginproxy.gov.bc.ca") == "" ? "true" : "false"
 }
 
 module "common_scope_mappers" {
