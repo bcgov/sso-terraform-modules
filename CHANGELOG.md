@@ -3,6 +3,7 @@
 ## Jan 25, 2023
 
 - Backchannel logout (`backchannel_supported`) turned off for parent realm azure idp and standard realm azure idp in prod prod
+- Remove the enable full name mapper variable from the standard realm scopes.
 
 ## Jan 24, 2023
 
