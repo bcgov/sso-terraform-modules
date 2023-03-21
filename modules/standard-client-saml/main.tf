@@ -13,8 +13,9 @@ module "standard_saml_client" {
   valid_redirect_uris = var.valid_redirect_uris
   assertion_lifespan  = var.assertion_lifespan
 
-  override_authentication_flow = var.override_authentication_flow
-  browser_authentication_flow  = var.browser_authentication_flow
+  override_authentication_flow    = var.override_authentication_flow
+  browser_authentication_flow     = var.browser_authentication_flow
+  logout_service_post_binding_url = var.logout_post_binding_url
 }
 
 # see https://registry.terraform.io/providers/mrparkers/keycloak/latest/docs/resources/role
