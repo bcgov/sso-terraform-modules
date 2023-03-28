@@ -1,5 +1,9 @@
 # Change Log
 
+## Mar 28, 2023
+
+- Remove duplicate audience mapper from SAML response
+
 ## Jan 25, 2023
 
 - Backchannel logout (`backchannel_supported`) turned off for parent realm azure idp and standard realm azure idp in prod prod
