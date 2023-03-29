@@ -65,3 +65,8 @@ variable "additional_role_attribute" {
   description = "Additional role ttribute to have the client roles"
   default     = ""
 }
+
+variable "logout_post_binding_url" {
+  description = "SAML POST Binding URL for the client's single logout service"
+  default     = ""
+}
