@@ -1,5 +1,9 @@
 # Change Log
 
+## Jun 08, 2023
+
+- Disable `logout_redirect_uri_delegator` from all `base-realms`
+
 ## Mar 28, 2023
 
 - Remove duplicate audience mapper from SAML response
