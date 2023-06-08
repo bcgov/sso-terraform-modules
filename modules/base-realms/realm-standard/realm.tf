@@ -69,7 +69,7 @@ resource "keycloak_openid_client" "logout_redirect_uri_delegator" {
   name        = "logout redirect uri delegator"
   description = "this client allows all post-logout redirect URIs"
 
-  enabled                      = true
+  enabled                      = false
   standard_flow_enabled        = true
   implicit_flow_enabled        = false
   direct_access_grants_enabled = false

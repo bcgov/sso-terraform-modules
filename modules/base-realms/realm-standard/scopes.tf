@@ -1,7 +1,7 @@
 module "name_scope_mappers" {
-  source                  = "../../scope-name-mappers"
-  realm_id                = module.realm.id
-  scope_name              = "name"
+  source     = "../../scope-name-mappers"
+  realm_id   = module.realm.id
+  scope_name = "name"
 }
 
 module "common_scope_mappers" {
