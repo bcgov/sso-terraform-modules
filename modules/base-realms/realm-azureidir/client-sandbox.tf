@@ -100,3 +100,21 @@ resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_bcgovg
     "userinfo.token.claim" : "true"
   }
 }
+
+resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_userprincipalname" {
+
+  realm_id  = module.realm.id
+  client_id = keycloak_openid_client.azureidir_sandbox_client.id
+
+  name            = "user_principal_name"
+  protocol        = "openid-connect"
+  protocol_mapper = "oidc-usermodel-attribute-mapper"
+  config = {
+    "user.attribute" : "user_principal_name",
+    "claim.name" : "user_principal_name",
+    "jsonType.label" : "String",
+    "id.token.claim" : "true",
+    "access.token.claim" : "true",
+    "userinfo.token.claim" : "true"
+  }
+}
