@@ -90,6 +90,19 @@ resource "keycloak_custom_identity_provider_mapper" "azureidir_idir_user_guid" {
   }
 }
 
+resource "keycloak_custom_identity_provider_mapper" "azureidir_user_principal_name" {
+  realm                    = module.realm.id
+  name                     = "user_principal_name"
+  identity_provider_alias  = module.azureidir_idp.alias
+  identity_provider_mapper = "oidc-user-attribute-idp-mapper"
+
+  extra_config = {
+    syncMode         = "INHERIT"
+    "claim"          = "userPrincipalName"
+    "user.attribute" = "user_principal_name"
+  }
+}
+
 # see https://docs.microsoft.com/en-us/azure/active-directory/develop/id-tokens#using-claims-to-reliably-identify-a-user-subject-and-object-id
 resource "keycloak_custom_identity_provider_mapper" "azureidir_username" {
   realm                    = module.realm.id
