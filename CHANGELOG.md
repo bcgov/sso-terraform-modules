@@ -24,3 +24,7 @@
 ## June 19, 2023
 
 - Added new user_principal_name attribute for clients using Azure IDIR
+
+## June 20, 2023
+
+- Added profile and email scopes to the azureidir identity provider in the parent realm

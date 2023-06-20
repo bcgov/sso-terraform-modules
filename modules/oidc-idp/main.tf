@@ -25,6 +25,8 @@ resource "keycloak_oidc_identity_provider" "this" {
 
   validate_signature = var.validate_signature
 
+  default_scopes = var.default_scopes
+
   login_hint                              = var.login_hint
   ui_locales                              = var.ui_locales
   backchannel_supported                   = var.backchannel_supported

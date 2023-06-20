@@ -9,6 +9,7 @@ module "azureidir_idp" {
   logout_url            = var.azure_tenant_id != "" ? "https://login.microsoftonline.com/${var.azure_tenant_id}/oauth2/v2.0/logout" : var.logout_url
   client_id             = var.azure_client_id
   client_secret         = var.azure_client_secret
+  default_scopes        = "openid profile email"
   backchannel_supported = false
 }
 
@@ -97,8 +98,8 @@ resource "keycloak_custom_identity_provider_mapper" "azureidir_user_principal_na
   identity_provider_mapper = "oidc-user-attribute-idp-mapper"
 
   extra_config = {
-    syncMode         = "INHERIT"
-    "claim"          = "userPrincipalName"
+    syncMode         = "FORCE"
+    "claim"          = "upn"
     "user.attribute" = "user_principal_name"
   }
 }

@@ -111,7 +111,7 @@ resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_userpr
   protocol_mapper = "oidc-usermodel-attribute-mapper"
   config = {
     "user.attribute" : "user_principal_name",
-    "claim.name" : "user_principal_name",
+    "claim.name" : "upn",
     "jsonType.label" : "String",
     "id.token.claim" : "true",
     "access.token.claim" : "true",
