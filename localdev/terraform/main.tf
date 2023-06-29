@@ -1,0 +1,21 @@
+module "keycloak" {
+  source                      = "./keycloak"
+  client_id                   = var.client_id
+  client_secret               = var.client_secret
+  idir_client_id              = var.idir_client_id
+  idir_client_secret          = var.idir_client_secret
+  bceidbasic_client_id        = var.bceidbasic_client_id
+  bceidbasic_client_secret    = var.bceidbasic_client_secret
+  bceidbusiness_client_id     = var.bceidbusiness_client_id
+  bceidbusiness_client_secret = var.bceidbusiness_client_secret
+  bceidboth_client_id         = var.bceidboth_client_id
+  bceidboth_client_secret     = var.bceidboth_client_secret
+  keycloak_url                = var.keycloak_url
+  username                    = var.username
+  password                    = var.password
+  azureidir_tenant_id         = ""
+  azureidir_client_id         = var.azureidir_client_id
+  azureidir_client_secret     = var.azureidir_client_secret
+  github_client_id            = var.github_client_id
+  github_client_secret        = var.github_client_secret
+}

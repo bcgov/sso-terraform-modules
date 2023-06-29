@@ -10,25 +10,24 @@ locals {
 }
 
 module "standard" {
-  source       = "../modules/base-realms/realm-standard"
+  source       = "../../../modules/base-realms/realm-standard"
   keycloak_url = var.keycloak_url
 
-  standard_realm_name      = local.standard_realm_name
-  idir_realm_name          = local.idir_realm_name
-  azureidir_realm_name     = local.azureidir_realm_name
-  bceidbasic_realm_name    = local.bceidbasic_realm_name
-  bceidbusiness_realm_name = local.bceidbusiness_realm_name
-  bceidboth_realm_name     = local.bceidboth_realm_name
-  github_realm_name        = local.github_realm_name
-
-  idir_client_id              = module.idir.standard_client_id
-  idir_client_secret          = module.idir.standard_client_secret
-  azureidir_client_id         = module.azureidir.standard_client_id
-  azureidir_client_secret     = module.azureidir.standard_client_secret
+  standard_realm_name         = local.standard_realm_name
+  idir_realm_name             = local.idir_realm_name
+  azureidir_realm_name        = local.azureidir_realm_name
+  bceidbasic_realm_name       = local.bceidbasic_realm_name
+  bceidbusiness_realm_name    = local.bceidbusiness_realm_name
+  bceidboth_realm_name        = local.bceidboth_realm_name
+  github_realm_name           = local.github_realm_name
+  idir_client_id              = var.idir_client_id
+  idir_client_secret          = var.idir_client_secret
+  azureidir_client_id         = var.azureidir_client_id
+  azureidir_client_secret     = var.azureidir_client_secret
   bceidbasic_client_id        = module.bceidbasic.standard_client_id
   bceidbasic_client_secret    = module.bceidbasic.standard_client_secret
-  bceidbusiness_client_id     = module.bceidbusiness.standard_client_id
-  bceidbusiness_client_secret = module.bceidbusiness.standard_client_secret
+  bceidbusiness_client_id     = var.bceidbusiness_client_id
+  bceidbusiness_client_secret = var.bceidbusiness_client_secret
   bceidboth_client_id         = module.bceidboth.standard_client_id
   bceidboth_client_secret     = module.bceidboth.standard_client_secret
   github_client_id            = module.github.standard_client_id
@@ -36,7 +35,7 @@ module "standard" {
 }
 
 module "idir" {
-  source                     = "../modules/base-realms/realm-idir"
+  source                     = "../../../modules/base-realms/realm-idir"
   keycloak_url               = var.keycloak_url
   realm_name                 = local.idir_realm_name
   standard_realm_name        = local.standard_realm_name
@@ -47,7 +46,7 @@ module "idir" {
 }
 
 module "azureidir" {
-  source              = "../modules/base-realms/realm-azureidir"
+  source              = "../../../modules/base-realms/realm-azureidir"
   keycloak_url        = var.keycloak_url
   realm_name          = local.azureidir_realm_name
   standard_realm_name = local.standard_realm_name
@@ -57,7 +56,7 @@ module "azureidir" {
 }
 
 module "bceidbasic" {
-  source                     = "../modules/base-realms/realm-bceidbasic"
+  source                     = "../../../modules/base-realms/realm-bceidbasic"
   keycloak_url               = var.keycloak_url
   realm_name                 = local.bceidbasic_realm_name
   standard_realm_name        = local.standard_realm_name
@@ -69,7 +68,7 @@ module "bceidbasic" {
 
 
 module "bceidbusiness" {
-  source                     = "../modules/base-realms/realm-bceidbusiness"
+  source                     = "../../../modules/base-realms/realm-bceidbusiness"
   keycloak_url               = var.keycloak_url
   realm_name                 = local.bceidbusiness_realm_name
   standard_realm_name        = local.standard_realm_name
@@ -79,7 +78,7 @@ module "bceidbusiness" {
 }
 
 module "bceidboth" {
-  source                     = "../modules/base-realms/realm-bceidboth"
+  source                     = "../../../modules/base-realms/realm-bceidboth"
   keycloak_url               = var.keycloak_url
   realm_name                 = local.bceidboth_realm_name
   standard_realm_name        = local.standard_realm_name
@@ -89,7 +88,7 @@ module "bceidboth" {
 }
 
 module "github" {
-  source              = "../modules/base-realms/realm-github"
+  source              = "../../../modules/base-realms/realm-github"
   keycloak_url        = var.keycloak_url
   realm_name          = local.github_realm_name
   standard_realm_name = local.standard_realm_name
@@ -104,7 +103,7 @@ module "standard_clients" {
 }
 
 module "master_idir_link" {
-  source           = "../modules/master-idp-link"
+  source           = "../../../modules/master-idp-link"
   keycloak_url     = var.keycloak_url
   idp_realm_id     = module.idir.realm_id
   idp_realm_name   = module.idir.realm_name
@@ -113,7 +112,7 @@ module "master_idir_link" {
 }
 
 module "master_azureidir_link" {
-  source           = "../modules/master-idp-link"
+  source           = "../../../modules/master-idp-link"
   keycloak_url     = var.keycloak_url
   idp_realm_id     = module.azureidir.realm_id
   idp_realm_name   = module.azureidir.realm_name
@@ -122,7 +121,7 @@ module "master_azureidir_link" {
 }
 
 module "master_viewer_role" {
-  source      = "../modules/master-viewer-role"
+  source      = "../../../modules/master-viewer-role"
   realm_names = ["master", "standard", "idir", "azureidir", "bceidbasic", "bceidbusiness", "bceidboth"]
 
   depends_on = [
