@@ -1,12 +1,13 @@
 locals {
-  standard_realm_name                   = "standard"
-  idir_realm_name                       = "idir"
-  azureidir_realm_name                  = "azureidir"
-  bceidbasic_realm_name                 = "bceidbasic"
-  bceidbusiness_realm_name              = "bceidbusiness"
-  bceidboth_realm_name                  = "bceidboth"
-  github_realm_name                     = "github"
-  siteminder_single_sign_on_service_url = "https://sfstest7.gov.bc.ca/affwebservices/public/saml2sso"
+  standard_realm_name         = "standard"
+  idir_realm_name             = "idir"
+  azureidir_realm_name        = "azureidir"
+  bceidbasic_realm_name       = "bceidbasic"
+  bceidbusiness_realm_name    = "bceidbusiness"
+  bceidboth_realm_name        = "bceidboth"
+  github_realm_name           = "github"
+  sandbox_client_redirect_uri = "http://localhost:8080/*"
+  saml_entity_id              = "sandbox-client"
 }
 
 module "standard" {
@@ -20,14 +21,14 @@ module "standard" {
   bceidbusiness_realm_name    = local.bceidbusiness_realm_name
   bceidboth_realm_name        = local.bceidboth_realm_name
   github_realm_name           = local.github_realm_name
-  idir_client_id              = var.idir_client_id
-  idir_client_secret          = var.idir_client_secret
-  azureidir_client_id         = var.azureidir_client_id
-  azureidir_client_secret     = var.azureidir_client_secret
+  idir_client_id              = module.idir.standard_client_id
+  idir_client_secret          = module.idir.standard_client_secret
+  azureidir_client_id         = module.azureidir.standard_client_id
+  azureidir_client_secret     = module.azureidir.standard_client_secret
   bceidbasic_client_id        = module.bceidbasic.standard_client_id
   bceidbasic_client_secret    = module.bceidbasic.standard_client_secret
-  bceidbusiness_client_id     = var.bceidbusiness_client_id
-  bceidbusiness_client_secret = var.bceidbusiness_client_secret
+  bceidbusiness_client_id     = module.bceidbusiness.standard_client_id
+  bceidbusiness_client_secret = module.bceidbusiness.standard_client_secret
   bceidboth_client_id         = module.bceidboth.standard_client_id
   bceidboth_client_secret     = module.bceidboth.standard_client_secret
   github_client_id            = module.github.standard_client_id
@@ -35,56 +36,73 @@ module "standard" {
 }
 
 module "idir" {
-  source                     = "../../../modules/base-realms/realm-idir"
-  keycloak_url               = var.keycloak_url
-  realm_name                 = local.idir_realm_name
-  standard_realm_name        = local.standard_realm_name
-  saml_entity_id             = "https://dev.loginproxy.gov.bc.ca/auth/realms/_idir/"
-  single_sign_on_service_url = local.siteminder_single_sign_on_service_url
-  signing_certificate        = var.siteminder_signing_certificate
-  sub_to_username            = true
+  source                      = "../../../modules/base-realms/realm-idir"
+  keycloak_url                = var.keycloak_url
+  realm_name                  = local.idir_realm_name
+  standard_realm_name         = local.standard_realm_name
+  saml_entity_id              = local.saml_entity_id
+  single_sign_on_service_url  = "https://dev.loginproxy.gov.bc.ca/auth/realms/idir/protocol/saml"
+  signing_certificate         = var.siteminder_signing_certificate
+  sub_to_username             = true
+  sandbox_client_redirect_uri = local.sandbox_client_redirect_uri
+  validate_signature          = false
 }
 
 module "azureidir" {
-  source              = "../../../modules/base-realms/realm-azureidir"
-  keycloak_url        = var.keycloak_url
-  realm_name          = local.azureidir_realm_name
-  standard_realm_name = local.standard_realm_name
-  azure_tenant_id     = var.azureidir_tenant_id
-  azure_client_id     = var.azureidir_client_id
-  azure_client_secret = var.azureidir_client_secret
+  source                      = "../../../modules/base-realms/realm-azureidir"
+  keycloak_url                = var.keycloak_url
+  realm_name                  = local.azureidir_realm_name
+  standard_realm_name         = local.standard_realm_name
+  authorization_url           = "https://dev.loginproxy.gov.bc.ca/auth/realms/azureidir/protocol/openid-connect/auth"
+  token_url                   = "https://dev.loginproxy.gov.bc.ca/auth/realms/azureidir/protocol/openid-connect/token"
+  user_info_url               = "https://dev.loginproxy.gov.bc.ca/auth/realms/azureidir/protocol/openid-connect/userinfo"
+  jwks_url                    = "https://dev.loginproxy.gov.bc.ca/auth/realms/azureidir/protocol/openid-connect/certs"
+  logout_url                  = "https://dev.loginproxy.gov.bc.ca/auth/realms/azureidir/protocol/openid-connect/logout"
+  azure_tenant_id             = var.azureidir_tenant_id
+  azure_client_id             = var.azureidir_client_id
+  azure_client_secret         = var.azureidir_client_secret
+  sub_to_username             = true
+  sandbox_client_redirect_uri = local.sandbox_client_redirect_uri
 }
 
 module "bceidbasic" {
-  source                     = "../../../modules/base-realms/realm-bceidbasic"
-  keycloak_url               = var.keycloak_url
-  realm_name                 = local.bceidbasic_realm_name
-  standard_realm_name        = local.standard_realm_name
-  saml_entity_id             = "https://dev.loginproxy.gov.bc.ca/auth/realms/_bceidbasic/"
-  single_sign_on_service_url = local.siteminder_single_sign_on_service_url
-  signing_certificate        = var.siteminder_signing_certificate
-  sub_to_username            = true
+  source                      = "../../../modules/base-realms/realm-bceidbasic"
+  keycloak_url                = var.keycloak_url
+  realm_name                  = local.bceidbasic_realm_name
+  standard_realm_name         = local.standard_realm_name
+  saml_entity_id              = local.saml_entity_id
+  single_sign_on_service_url  = "https://dev.loginproxy.gov.bc.ca/auth/realms/bceidbasic/protocol/saml"
+  signing_certificate         = var.siteminder_signing_certificate
+  sub_to_username             = true
+  sandbox_client_redirect_uri = local.sandbox_client_redirect_uri
+  validate_signature          = false
 }
 
 
 module "bceidbusiness" {
-  source                     = "../../../modules/base-realms/realm-bceidbusiness"
-  keycloak_url               = var.keycloak_url
-  realm_name                 = local.bceidbusiness_realm_name
-  standard_realm_name        = local.standard_realm_name
-  saml_entity_id             = "https://dev.loginproxy.gov.bc.ca/auth/realms/_bceidbusiness/"
-  single_sign_on_service_url = local.siteminder_single_sign_on_service_url
-  signing_certificate        = var.siteminder_signing_certificate
+  source                      = "../../../modules/base-realms/realm-bceidbusiness"
+  keycloak_url                = var.keycloak_url
+  realm_name                  = local.bceidbusiness_realm_name
+  standard_realm_name         = local.standard_realm_name
+  saml_entity_id              = local.saml_entity_id
+  single_sign_on_service_url  = "https://dev.loginproxy.gov.bc.ca/auth/realms/bceidbusiness/protocol/saml"
+  signing_certificate         = var.siteminder_signing_certificate
+  sub_to_username             = true
+  sandbox_client_redirect_uri = local.sandbox_client_redirect_uri
+  validate_signature          = false
 }
 
 module "bceidboth" {
-  source                     = "../../../modules/base-realms/realm-bceidboth"
-  keycloak_url               = var.keycloak_url
-  realm_name                 = local.bceidboth_realm_name
-  standard_realm_name        = local.standard_realm_name
-  saml_entity_id             = "https://dev.loginproxy.gov.bc.ca/auth/realms/_bceidbasicbusiness/"
-  single_sign_on_service_url = local.siteminder_single_sign_on_service_url
-  signing_certificate        = var.siteminder_signing_certificate
+  source                      = "../../../modules/base-realms/realm-bceidboth"
+  keycloak_url                = var.keycloak_url
+  realm_name                  = local.bceidboth_realm_name
+  standard_realm_name         = local.standard_realm_name
+  saml_entity_id              = local.saml_entity_id
+  single_sign_on_service_url  = "https://dev.loginproxy.gov.bc.ca/auth/realms/bceidboth/protocol/saml"
+  signing_certificate         = var.siteminder_signing_certificate
+  sub_to_username             = true
+  sandbox_client_redirect_uri = local.sandbox_client_redirect_uri
+  validate_signature          = false
 }
 
 module "github" {
