@@ -36,5 +36,6 @@ resource "keycloak_oidc_identity_provider" "this" {
   extra_config = {
     "clientAuthMethod" = var.client_auth_method
     "tooltip"          = var.tooltip
+    "forwardParameters"= var.forwardParameters
   }
 }

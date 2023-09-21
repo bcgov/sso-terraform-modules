@@ -138,6 +138,11 @@ variable "client_auth_method" {
   default     = "client_secret_post"
 }
 
+variable "forwardParameters" {
+  description = "Non OpenID Connect/OAuth standard query parameters to be forwarded to external IDP from the initial application request to Authorization Endpoint. Multiple parameters can be entered, separated by comma (,)."
+  default     = ""
+}
+
 variable "tooltip" {
   description = "The tooltip to display inside the IDP login button (HTML format)"
   default     = ""
