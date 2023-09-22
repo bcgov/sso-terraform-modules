@@ -3,7 +3,7 @@ module "verifiablecredential_idp" {
   realm_id              = module.realm.id
   alias                 = var.verifiablecredential_realm_name
   display_name          = "Verifiable Credential"
-  gui_order             = "2"
+  gui_order             = "8"
   authorization_url     = "${var.keycloak_url}/auth/realms/${var.verifiablecredential_realm_name}/protocol/openid-connect/auth"
   token_url             = "${var.keycloak_url}/auth/realms/${var.verifiablecredential_realm_name}/protocol/openid-connect/token"
   user_info_url         = "${var.keycloak_url}/auth/realms/${var.verifiablecredential_realm_name}/protocol/openid-connect/userinfo"
