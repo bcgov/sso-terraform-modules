@@ -2,8 +2,8 @@ module "verifiablecredential_idp" {
   source                = "../../oidc-idp"
   realm_id              = module.realm.id
   alias                 = var.realm_name
-  authorization_url     = var.verifiablecredential_authorization_url
-  token_url             = var.verifiablecredential_token_url
+  authorization_url     = var.authorization_url
+  token_url             = var.token_url
   client_id             = var.verifiablecredential_client_id
   client_secret         = var.verifiablecredential_client_secret
   client_auth_method    = "client_secret_basic"
