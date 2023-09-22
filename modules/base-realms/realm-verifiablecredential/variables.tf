@@ -28,12 +28,12 @@ variable "sub_to_username" {
   default     = false
 }
 
-variable "authorization_url" {
+variable "verifiablecredential_authorization_url" {
   type    = string
   default = ""
 }
 
-variable "token_url" {
+variable "verifiablecredential_token_url" {
   type    = string
   default = ""
 }
