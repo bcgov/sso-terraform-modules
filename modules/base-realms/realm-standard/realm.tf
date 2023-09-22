@@ -1,11 +1,12 @@
 locals {
-  idir_attributes          = ["display_name", "idir_user_guid", "idir_username"]
-  azureidir_attributes     = ["display_name", "idir_user_guid", "idir_username", "user_principal_name"]
-  bceidbasic_attributes    = ["display_name", "bceid_user_guid", "bceid_username"]
-  bceidbusiness_attributes = ["display_name", "bceid_user_guid", "bceid_business_guid", "bceid_business_name", "bceid_username"]
-  bceidboth_attributes     = ["display_name", "bceid_user_guid", "bceid_business_guid", "bceid_business_name", "bceid_username"]
-  githubpublic_attributes  = ["display_name", "github_id", "github_username", "org_verified", "orgs"]
-  githubbcgov_attributes   = ["display_name", "github_id", "github_username", "org_verified", "orgs"]
+  idir_attributes                     = ["display_name", "idir_user_guid", "idir_username"]
+  azureidir_attributes                = ["display_name", "idir_user_guid", "idir_username", "user_principal_name"]
+  bceidbasic_attributes               = ["display_name", "bceid_user_guid", "bceid_username"]
+  bceidbusiness_attributes            = ["display_name", "bceid_user_guid", "bceid_business_guid", "bceid_business_name", "bceid_username"]
+  bceidboth_attributes                = ["display_name", "bceid_user_guid", "bceid_business_guid", "bceid_business_name", "bceid_username"]
+  verifiablecredential_attributes     = ["vc_presented_attributes", "pres_req_conf_id"]
+  githubpublic_attributes             = ["display_name", "github_id", "github_username", "org_verified", "orgs"]
+  githubbcgov_attributes              = ["display_name", "github_id", "github_username", "org_verified", "orgs"]
 }
 
 module "realm" {
