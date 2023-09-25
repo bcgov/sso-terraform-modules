@@ -1,11 +1,6 @@
-data "keycloak_authentication_flow" "idp_stopper" {
-  realm_id = module.standard.realm_id
-  alias    = "idp stopper"
-}
-
 module "test_client" {
-  source      = "../modules/standard-client"
-  realm_id    = module.standard.realm_id
+  source      = "../../../../modules/standard-client"
+  realm_id    = var.standard_realm_id
   client_id   = "test-client"
   client_name = "Local Dev"
   idps = [
