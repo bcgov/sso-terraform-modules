@@ -11,6 +11,7 @@ module "verifiablecredential_idp" {
   logout_url            = "${var.keycloak_url}/auth/realms/${var.verifiablecredential_realm_name}/protocol/openid-connect/logout"
   client_id             = var.verifiablecredential_client_id
   client_secret         = var.verifiablecredential_client_secret
+  forwardParameters     = "pres_req_conf_id"
   tooltip               = "<span>To learn more about using the Verifiable Credential option visit our </span><a href='https://github.com/bcgov/sso-keycloak/wiki/Our-Partners-and-Useful-Information' target='_blank' title='additional information' rel='noreferrer'>additional information.</a>"
   backchannel_supported = false
 
