@@ -7,6 +7,7 @@ module "verifiablecredential_idp" {
   client_id             = var.verifiablecredential_client_id
   client_secret         = var.verifiablecredential_client_secret
   client_auth_method    = "client_secret_basic"
+  validate_signature    = false
   forwardParameters     = "pres_req_conf_id"
   default_scopes        = "vc_authn"
   backchannel_supported = false
