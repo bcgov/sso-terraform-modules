@@ -70,3 +70,9 @@ variable "logout_post_binding_url" {
   description = "SAML POST Binding URL for the client's single logout service"
   default     = ""
 }
+
+variable "sign_assertions" {
+  description = "When true, the SAML assertions will be signed by Keycloak using the realm's private key, and embedded within the SAML XML Auth response."
+  type        = bool
+  default     = false
+}

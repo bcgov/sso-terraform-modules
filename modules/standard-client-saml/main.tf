@@ -16,6 +16,8 @@ module "standard_saml_client" {
   override_authentication_flow    = var.override_authentication_flow
   browser_authentication_flow     = var.browser_authentication_flow
   logout_service_post_binding_url = var.logout_post_binding_url
+
+  sign_assertions = var.sign_assertions
 }
 
 # see https://registry.terraform.io/providers/mrparkers/keycloak/latest/docs/resources/role
