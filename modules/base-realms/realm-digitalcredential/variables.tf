@@ -3,18 +3,18 @@ variable "keycloak_url" {
   default = "http://localhost:8080"
 }
 
-variable "verifiablecredential_client_id" {
+variable "digitalcredential_client_id" {
   type      = string
   sensitive = true
 }
-variable "verifiablecredential_client_secret" {
+variable "digitalcredential_client_secret" {
   type      = string
   sensitive = true
 }
 
 variable "realm_name" {
   type    = string
-  default = "verifiablecredential"
+  default = "digitalcredential"
 }
 
 variable "standard_realm_name" {
