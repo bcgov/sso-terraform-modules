@@ -45,11 +45,11 @@ module "bceidboth_scope_mappers" {
   attributes = local.bceidboth_attributes
 }
 
-module "verifiablecredential_scope_mappers" {
+module "digitalcredential_scope_mappers" {
   source     = "../../scope-attribute-mappers"
   realm_id   = module.realm.id
-  scope_name = var.verifiablecredential_realm_name
-  attributes = local.verifiablecredential_attributes
+  scope_name = var.digitalcredential_realm_name
+  attributes = local.digitalcredential_attributes
 }
 
 module "githubpublic_scope_mappers" {

@@ -16,10 +16,10 @@ output "realm_name" {
 }
 
 output "sandbox_client_id" {
-  value = keycloak_openid_client.verifiablecredential_sandbox_client.client_id
+  value = keycloak_openid_client.digitalcredential_sandbox_client.client_id
 }
 
 output "sandbox_client_secret" {
-  value     = keycloak_openid_client.verifiablecredential_sandbox_client.client_secret
+  value     = keycloak_openid_client.digitalcredential_sandbox_client.client_secret
   sensitive = true
 }

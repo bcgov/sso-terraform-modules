@@ -4,7 +4,7 @@ locals {
   bceidbasic_attributes               = ["display_name", "bceid_user_guid", "bceid_username"]
   bceidbusiness_attributes            = ["display_name", "bceid_user_guid", "bceid_business_guid", "bceid_business_name", "bceid_username"]
   bceidboth_attributes                = ["display_name", "bceid_user_guid", "bceid_business_guid", "bceid_business_name", "bceid_username"]
-  verifiablecredential_attributes     = ["vc_presented_attributes", "pres_req_conf_id"]
+  digitalcredential_attributes     = ["vc_presented_attributes", "pres_req_conf_id"]
   githubpublic_attributes             = ["display_name", "github_id", "github_username", "org_verified", "orgs"]
   githubbcgov_attributes              = ["display_name", "github_id", "github_username", "org_verified", "orgs"]
 }
