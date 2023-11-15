@@ -12,3 +12,8 @@ variable "keycloak_url" {
   description = "The URL of the Keycloak instance"
   default     = "http://localhost:8080"
 }
+variable "sub_to_username" {
+  description = "If true, override 'sub' to have 'username' property value"
+  type        = bool
+  default     = false
+}
