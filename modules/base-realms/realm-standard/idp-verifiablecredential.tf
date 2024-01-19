@@ -19,9 +19,9 @@ module "digitalcredential_idp" {
 }
 
 module "digitalcredential_idp_mappers" {
-  source    = "../../idp-attribute-mappers"
-  realm_id  = module.realm.id
-  idp_alias = module.digitalcredential_idp.alias
+  source     = "../../idp-attribute-mappers"
+  realm_id   = module.realm.id
+  idp_alias  = module.digitalcredential_idp.alias
   attributes = local.digitalcredential_attributes
 }
 
