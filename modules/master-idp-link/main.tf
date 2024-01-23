@@ -8,6 +8,7 @@ module "idp_client" {
   client_id           = "master-realm"
   valid_redirect_uris = ["${var.keycloak_url}/auth/realms/master/broker/${var.idp_realm_name}/endpoint"]
   public_attrs        = var.idp_public_attrs
+  sub_to_username     = var.sub_to_username
 }
 
 module "idp_auth_flow" {
