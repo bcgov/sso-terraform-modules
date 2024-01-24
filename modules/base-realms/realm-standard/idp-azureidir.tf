@@ -11,7 +11,7 @@ module "azureidir_idp" {
   logout_url            = "${var.keycloak_url}/auth/realms/${var.azureidir_realm_name}/protocol/openid-connect/logout"
   client_id             = var.azureidir_client_id
   client_secret         = var.azureidir_client_secret
-  tooltip               = "<span>To learn more about using the Azure IDIR option visit our </span><a href='https://mvp.developer.gov.bc.ca/docs/default/component/css-docs/Our-Partners-the-Identity-Providers/#azure-idir-and-idir' target='_blank' title='additional information' rel='noreferrer'>additional information.</a>"
+  tooltip               = "<span>To learn more about using the Azure IDIR option visit our </span><a href='https://mvp.developer.gov.bc.ca/docs/default/component/css-docs/Our-Partners-the-Identity-Providers/#idir-with-mfa' target='_blank' title='additional information' rel='noreferrer'>additional information.</a>"
   backchannel_supported = false
 
   post_broker_login_flow_alias = keycloak_authentication_flow.idp_post_login.alias
