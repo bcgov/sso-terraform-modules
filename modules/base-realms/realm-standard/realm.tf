@@ -14,6 +14,10 @@ module "realm" {
   realm_name   = var.standard_realm_name
   display_name = "Single Sign-On"
   login_theme  = "bcgov-idp-stopper"
+
+  client_session_idle_timeout = "30m"
+  client_session_max_lifespan = "10h"
+  sso_session_idle_timeout    = "10h"
 }
 
 module "idp_auth_flow" {
