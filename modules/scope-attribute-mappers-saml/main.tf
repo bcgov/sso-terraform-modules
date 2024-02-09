@@ -4,7 +4,7 @@ resource "keycloak_saml_client_scope" "this" {
   description = "${var.scope_name} idp client scope"
 }
 
-resource "keycloak_generic_client_protocol_mapper" "client_mappers" {
+resource "keycloak_generic_protocol_mapper" "client_mappers" {
   for_each = toset(var.attributes)
 
   realm_id        = var.realm_id

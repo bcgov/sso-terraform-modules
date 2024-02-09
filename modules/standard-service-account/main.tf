@@ -35,7 +35,7 @@ resource "keycloak_openid_client_optional_scopes" "client_optional_scopes" {
   optional_scopes = []
 }
 
-resource "keycloak_generic_client_protocol_mapper" "team_mapper" {
+resource "keycloak_generic_protocol_mapper" "team_mapper" {
   realm_id        = var.realm_id
   client_id       = module.standard_service_account.id
   name            = "team"
