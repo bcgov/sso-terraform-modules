@@ -5,7 +5,7 @@ resource "keycloak_openid_client_scope" "this" {
   include_in_token_scope = true
 }
 
-resource "keycloak_generic_client_protocol_mapper" "given_name" {
+resource "keycloak_generic_protocol_mapper" "given_name" {
   realm_id        = var.realm_id
   client_scope_id = keycloak_openid_client_scope.this.id
   name            = "given_name"
@@ -21,7 +21,7 @@ resource "keycloak_generic_client_protocol_mapper" "given_name" {
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "family_name" {
+resource "keycloak_generic_protocol_mapper" "family_name" {
   realm_id        = var.realm_id
   client_scope_id = keycloak_openid_client_scope.this.id
   name            = "family_name"
@@ -37,7 +37,7 @@ resource "keycloak_generic_client_protocol_mapper" "family_name" {
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "full_name" {
+resource "keycloak_generic_protocol_mapper" "full_name" {
   realm_id        = var.realm_id
   client_scope_id = keycloak_openid_client_scope.this.id
   name            = "full_name"

@@ -5,7 +5,7 @@ resource "keycloak_openid_client_scope" "this" {
   include_in_token_scope = true
 }
 
-resource "keycloak_generic_client_protocol_mapper" "client_mappers" {
+resource "keycloak_generic_protocol_mapper" "client_mappers" {
   for_each = toset(var.attributes)
 
   realm_id        = var.realm_id

@@ -37,7 +37,7 @@ resource "keycloak_saml_client_default_scopes" "idp_scopes" {
   default_scopes = [for v in var.idps : "${v}-saml"]
 }
 
-resource "keycloak_generic_client_protocol_mapper" "additional_client_roles" {
+resource "keycloak_generic_protocol_mapper" "additional_client_roles" {
   count           = var.additional_role_attribute != "" ? 1 : 0
   realm_id        = var.realm_id
   client_id       = module.standard_saml_client.id

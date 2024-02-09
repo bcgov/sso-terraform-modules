@@ -8,7 +8,7 @@ module "sandbox_client" {
   encrypt_assertions        = false
 }
 
-resource "keycloak_generic_client_protocol_mapper" "last_name_property_mapper" {
+resource "keycloak_generic_protocol_mapper" "last_name_property_mapper" {
 
   realm_id  = module.realm.id
   client_id = module.sandbox_client.id
@@ -22,7 +22,7 @@ resource "keycloak_generic_client_protocol_mapper" "last_name_property_mapper" {
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "first_name_property_mapper" {
+resource "keycloak_generic_protocol_mapper" "first_name_property_mapper" {
 
   realm_id  = module.realm.id
   client_id = module.sandbox_client.id

@@ -5,7 +5,7 @@ resource "keycloak_openid_client_scope" "this" {
   include_in_token_scope = false
 }
 
-resource "keycloak_generic_client_protocol_mapper" "identity_provider" {
+resource "keycloak_generic_protocol_mapper" "identity_provider" {
   realm_id        = var.realm_id
   client_scope_id = keycloak_openid_client_scope.this.id
   name            = "identity_provider"
@@ -21,7 +21,7 @@ resource "keycloak_generic_client_protocol_mapper" "identity_provider" {
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "sub_username" {
+resource "keycloak_generic_protocol_mapper" "sub_username" {
   realm_id        = var.realm_id
   client_scope_id = keycloak_openid_client_scope.this.id
   name            = "sub_username"
@@ -36,7 +36,7 @@ resource "keycloak_generic_client_protocol_mapper" "sub_username" {
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "preferred_username" {
+resource "keycloak_generic_protocol_mapper" "preferred_username" {
   realm_id        = var.realm_id
   client_scope_id = keycloak_openid_client_scope.this.id
   name            = "preferred_username"
@@ -51,7 +51,7 @@ resource "keycloak_generic_client_protocol_mapper" "preferred_username" {
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "given_name" {
+resource "keycloak_generic_protocol_mapper" "given_name" {
   realm_id        = var.realm_id
   client_scope_id = keycloak_openid_client_scope.this.id
   name            = "given_name"
@@ -67,7 +67,7 @@ resource "keycloak_generic_client_protocol_mapper" "given_name" {
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "family_name" {
+resource "keycloak_generic_protocol_mapper" "family_name" {
   realm_id        = var.realm_id
   client_scope_id = keycloak_openid_client_scope.this.id
   name            = "family_name"
@@ -83,7 +83,7 @@ resource "keycloak_generic_client_protocol_mapper" "family_name" {
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "name" {
+resource "keycloak_generic_protocol_mapper" "name" {
   realm_id        = var.realm_id
   client_scope_id = keycloak_openid_client_scope.this.id
   name            = "name"
@@ -100,7 +100,7 @@ resource "keycloak_generic_client_protocol_mapper" "name" {
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "claim_omitter" {
+resource "keycloak_generic_protocol_mapper" "claim_omitter" {
   realm_id        = var.realm_id
   client_scope_id = keycloak_openid_client_scope.this.id
   name            = "claim_omitter"

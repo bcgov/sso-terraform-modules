@@ -59,7 +59,7 @@ resource "keycloak_openid_client_optional_scopes" "client_optional_scopes" {
   ]
 }
 
-resource "keycloak_generic_client_protocol_mapper" "client_roles_mapper" {
+resource "keycloak_generic_protocol_mapper" "client_roles_mapper" {
   realm_id        = var.realm_id
   client_id       = module.standard_oidc_client.id
   name            = "client_roles"
@@ -76,7 +76,7 @@ resource "keycloak_generic_client_protocol_mapper" "client_roles_mapper" {
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "additional_client_roles_mapper" {
+resource "keycloak_generic_protocol_mapper" "additional_client_roles_mapper" {
   count           = var.additional_role_attribute != "" ? 1 : 0
   realm_id        = var.realm_id
   client_id       = module.standard_oidc_client.id
@@ -94,7 +94,7 @@ resource "keycloak_generic_client_protocol_mapper" "additional_client_roles_mapp
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "access_token_aud" {
+resource "keycloak_generic_protocol_mapper" "access_token_aud" {
   realm_id        = var.realm_id
   client_id       = module.standard_oidc_client.id
   name            = "access_token_aud"

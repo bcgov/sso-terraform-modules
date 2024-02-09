@@ -8,7 +8,7 @@ module "sandbox_client" {
   encrypt_assertions        = false
 }
 
-resource "keycloak_generic_client_protocol_mapper" "smgov_bceid_business_guid_mapper" {
+resource "keycloak_generic_protocol_mapper" "smgov_bceid_business_guid_mapper" {
   realm_id  = module.realm.id
   client_id = module.sandbox_client.id
 
@@ -22,7 +22,7 @@ resource "keycloak_generic_client_protocol_mapper" "smgov_bceid_business_guid_ma
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "smgov_bceid_business_name_mapper" {
+resource "keycloak_generic_protocol_mapper" "smgov_bceid_business_name_mapper" {
   realm_id  = module.realm.id
   client_id = module.sandbox_client.id
 

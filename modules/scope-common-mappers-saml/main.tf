@@ -4,7 +4,7 @@ resource "keycloak_saml_client_scope" "this" {
   description = "${var.scope_name} client scope"
 }
 
-resource "keycloak_generic_client_protocol_mapper" "email" {
+resource "keycloak_generic_protocol_mapper" "email" {
   realm_id        = var.realm_id
   client_scope_id = keycloak_saml_client_scope.this.id
 
@@ -17,7 +17,7 @@ resource "keycloak_generic_client_protocol_mapper" "email" {
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "given_name" {
+resource "keycloak_generic_protocol_mapper" "given_name" {
   realm_id        = var.realm_id
   client_scope_id = keycloak_saml_client_scope.this.id
 
@@ -30,7 +30,7 @@ resource "keycloak_generic_client_protocol_mapper" "given_name" {
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "family_name" {
+resource "keycloak_generic_protocol_mapper" "family_name" {
   realm_id        = var.realm_id
   client_scope_id = keycloak_saml_client_scope.this.id
 
@@ -43,7 +43,7 @@ resource "keycloak_generic_client_protocol_mapper" "family_name" {
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "identity_provider" {
+resource "keycloak_generic_protocol_mapper" "identity_provider" {
   realm_id        = var.realm_id
   client_scope_id = keycloak_saml_client_scope.this.id
 
@@ -56,7 +56,7 @@ resource "keycloak_generic_client_protocol_mapper" "identity_provider" {
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "nameid" {
+resource "keycloak_generic_protocol_mapper" "nameid" {
   realm_id        = var.realm_id
   client_scope_id = keycloak_saml_client_scope.this.id
   name            = "nameid_username"
@@ -68,7 +68,7 @@ resource "keycloak_generic_client_protocol_mapper" "nameid" {
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "client_roles" {
+resource "keycloak_generic_protocol_mapper" "client_roles" {
   realm_id        = var.realm_id
   client_scope_id = keycloak_saml_client_scope.this.id
   name            = "client_roles"
@@ -80,7 +80,7 @@ resource "keycloak_generic_client_protocol_mapper" "client_roles" {
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "statement_attribute_omitter" {
+resource "keycloak_generic_protocol_mapper" "statement_attribute_omitter" {
   realm_id        = var.realm_id
   client_scope_id = keycloak_saml_client_scope.this.id
   name            = "statement_attribute_omitter"

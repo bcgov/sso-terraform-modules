@@ -1,4 +1,4 @@
-resource "keycloak_generic_client_protocol_mapper" "this" {
+resource "keycloak_generic_protocol_mapper" "this" {
   for_each = toset(var.attributes)
 
   realm_id  = var.realm_id

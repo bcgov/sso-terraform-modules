@@ -16,7 +16,7 @@ resource "keycloak_openid_client" "azureidir_sandbox_client" {
   web_origins         = []
 }
 
-resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_samaccountname" {
+resource "keycloak_generic_protocol_mapper" "sandbox_client_mapper_samaccountname" {
   realm_id  = module.realm.id
   client_id = keycloak_openid_client.azureidir_sandbox_client.id
 
@@ -33,7 +33,7 @@ resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_samacc
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_given_name" {
+resource "keycloak_generic_protocol_mapper" "sandbox_client_mapper_given_name" {
   realm_id  = module.realm.id
   client_id = keycloak_openid_client.azureidir_sandbox_client.id
 
@@ -50,7 +50,7 @@ resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_given_
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_family_name" {
+resource "keycloak_generic_protocol_mapper" "sandbox_client_mapper_family_name" {
   realm_id  = module.realm.id
   client_id = keycloak_openid_client.azureidir_sandbox_client.id
 
@@ -67,7 +67,7 @@ resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_family
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_display_name" {
+resource "keycloak_generic_protocol_mapper" "sandbox_client_mapper_display_name" {
   realm_id  = module.realm.id
   client_id = keycloak_openid_client.azureidir_sandbox_client.id
 
@@ -84,7 +84,7 @@ resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_displa
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_bcgovguid" {
+resource "keycloak_generic_protocol_mapper" "sandbox_client_mapper_bcgovguid" {
   realm_id  = module.realm.id
   client_id = keycloak_openid_client.azureidir_sandbox_client.id
 
@@ -101,7 +101,7 @@ resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_bcgovg
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_userprincipalname" {
+resource "keycloak_generic_protocol_mapper" "sandbox_client_mapper_userprincipalname" {
 
   realm_id  = module.realm.id
   client_id = keycloak_openid_client.azureidir_sandbox_client.id
