@@ -18,7 +18,7 @@ module "sandbox_idp_client_saml" {
   browser_authentication_flow  = var.browser_authentication_flow
 }
 
-resource "keycloak_generic_client_protocol_mapper" "sandbox_idp_client_attribute_mappers" {
+resource "keycloak_generic_protocol_mapper" "sandbox_idp_client_attribute_mappers" {
   for_each = toset(var.attributes)
 
   realm_id  = var.realm_id
@@ -34,7 +34,7 @@ resource "keycloak_generic_client_protocol_mapper" "sandbox_idp_client_attribute
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "username_property_mapper" {
+resource "keycloak_generic_protocol_mapper" "username_property_mapper" {
 
   realm_id  = var.realm_id
   client_id = module.sandbox_idp_client_saml.id
@@ -48,7 +48,7 @@ resource "keycloak_generic_client_protocol_mapper" "username_property_mapper" {
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "email_property_mapper" {
+resource "keycloak_generic_protocol_mapper" "email_property_mapper" {
 
   realm_id  = var.realm_id
   client_id = module.sandbox_idp_client_saml.id

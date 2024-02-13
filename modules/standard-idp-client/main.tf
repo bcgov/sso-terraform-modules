@@ -43,7 +43,7 @@ resource "keycloak_openid_client_optional_scopes" "client_optional_scopes" {
   ]
 }
 
-resource "keycloak_generic_client_protocol_mapper" "sub_username" {
+resource "keycloak_generic_protocol_mapper" "sub_username" {
   count = var.sub_to_username ? 1 : 0
 
   realm_id        = var.realm_id

@@ -17,6 +17,8 @@ resource "keycloak_realm" "this" {
   refresh_token_max_reuse                  = var.refresh_token_max_reuse
   sso_session_idle_timeout                 = var.sso_session_idle_timeout                 # SSO Session Idle
   sso_session_max_lifespan                 = var.sso_session_max_lifespan                 # SSO Session Max
+  client_session_idle_timeout              = var.client_session_idle_timeout
+  client_session_max_lifespan              = var.client_session_max_lifespan
   offline_session_idle_timeout             = var.offline_session_idle_timeout             # Offline Session Idle
   offline_session_max_lifespan_enabled     = var.offline_session_max_lifespan_enabled     # Offline Session Max Limited
   access_token_lifespan                    = var.access_token_lifespan                    # Access Token Lifespan

@@ -16,7 +16,7 @@ resource "keycloak_openid_client" "digitalcredential_sandbox_client" {
   web_origins         = []
 }
 
-resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_pres_req_conf_id" {
+resource "keycloak_generic_protocol_mapper" "sandbox_client_mapper_pres_req_conf_id" {
   realm_id  = module.realm.id
   client_id = keycloak_openid_client.digitalcredential_sandbox_client.id
 
@@ -33,7 +33,7 @@ resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_pres_r
   }
 }
 
-resource "keycloak_generic_client_protocol_mapper" "sandbox_client_mapper_vc_presented_attributes" {
+resource "keycloak_generic_protocol_mapper" "sandbox_client_mapper_vc_presented_attributes" {
   realm_id  = module.realm.id
   client_id = keycloak_openid_client.digitalcredential_sandbox_client.id
 

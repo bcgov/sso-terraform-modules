@@ -39,6 +39,16 @@ variable "sso_session_max_lifespan" {
   default     = "10h"
 }
 
+variable "client_session_idle_timeout" {
+  description = "The default amount of time a client session in this realm can be idle before it expires. If left at 0, the sso_session_idle_timeout will be used."
+  default     = "0"
+}
+
+variable "client_session_max_lifespan" {
+  description = "The default maximum amount of time a client session in this realm will expire in regardless of activity. If left at 0, the sso_session_max_lifespan will be used."
+  default     = "0"
+}
+
 variable "offline_session_idle_timeout" {
   description = "The amount of time an offline session can be idle before it expires."
   default     = "720h"
