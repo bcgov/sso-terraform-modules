@@ -50,3 +50,13 @@ variable "digitalcredential_client_secret" {
   sensitive = true
   default   = ""
 }
+
+variable "digitalcredential_authorization_url" {
+  type    = string
+  default = ""
+}
+
+variable "digitalcredential_token_url" {
+  type    = string
+  default = ""
+}

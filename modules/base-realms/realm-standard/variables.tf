@@ -11,7 +11,6 @@ variable "azureidir_realm_name" {}
 variable "bceidbasic_realm_name" {}
 variable "bceidbusiness_realm_name" {}
 variable "bceidboth_realm_name" {}
-variable "digitalcredential_realm_name" {}
 variable "github_realm_name" {}
 
 variable "idir_client_id" {
@@ -75,4 +74,12 @@ variable "digitalcredential_client_id" {
 variable "digitalcredential_client_secret" {
   type      = string
   sensitive = true
+}
+
+variable "digitalcredential_authorization_url" {
+  type = string
+}
+
+variable "digitalcredential_token_url" {
+  type = string
 }
