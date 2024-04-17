@@ -1,6 +1,6 @@
 module "digitalcredential_idp" {
   source                       = "../../oidc-idp"
-  realm_id                     = "standard"
+  realm_id                     = module.realm.id
   alias                        = "digital-credential"
   display_name                 = "Digital Credential"
   gui_order                    = "8"
