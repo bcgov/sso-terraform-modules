@@ -77,9 +77,9 @@ variable "digitalcredential_client_secret" {
 }
 
 variable "digitalcredential_authorization_url" {
-  type    = string
+  type = string
 }
 
 variable "digitalcredential_token_url" {
-  type    = string
+  type = string
 }

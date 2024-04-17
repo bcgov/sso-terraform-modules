@@ -22,19 +22,19 @@ module "standard" {
   bceidboth_realm_name     = local.bceidboth_realm_name
   github_realm_name        = local.github_realm_name
 
-  idir_client_id                      = module.idir.standard_client_id
-  idir_client_secret                  = module.idir.standard_client_secret
-  azureidir_client_id                 = module.azureidir.standard_client_id
-  azureidir_client_secret             = module.azureidir.standard_client_secret
-  bceidbasic_client_id                = module.bceidbasic.standard_client_id
-  bceidbasic_client_secret            = module.bceidbasic.standard_client_secret
-  bceidbusiness_client_id             = module.bceidbusiness.standard_client_id
-  bceidbusiness_client_secret         = module.bceidbusiness.standard_client_secret
-  bceidboth_client_id                 = module.bceidboth.standard_client_id
-  bceidboth_client_secret             = module.bceidboth.standard_client_secret
-  github_client_id                    = module.github.standard_client_id
-  github_client_secret                = module.github.standard_client_secret
-  
+  idir_client_id              = module.idir.standard_client_id
+  idir_client_secret          = module.idir.standard_client_secret
+  azureidir_client_id         = module.azureidir.standard_client_id
+  azureidir_client_secret     = module.azureidir.standard_client_secret
+  bceidbasic_client_id        = module.bceidbasic.standard_client_id
+  bceidbasic_client_secret    = module.bceidbasic.standard_client_secret
+  bceidbusiness_client_id     = module.bceidbusiness.standard_client_id
+  bceidbusiness_client_secret = module.bceidbusiness.standard_client_secret
+  bceidboth_client_id         = module.bceidboth.standard_client_id
+  bceidboth_client_secret     = module.bceidboth.standard_client_secret
+  github_client_id            = module.github.standard_client_id
+  github_client_secret        = module.github.standard_client_secret
+
   digitalcredential_client_id         = var.digitalcredential_client_id
   digitalcredential_client_secret     = var.digitalcredential_client_secret
   digitalcredential_authorization_url = var.digitalcredential_authorization_url
