@@ -1,7 +1,7 @@
 module "digitalcredential_idp" {
   source                       = "../../oidc-idp"
   realm_id                     = module.realm.id
-  alias                        = "digital-credential"
+  alias                        = "digitalcredential"
   display_name                 = "Digital Credential"
   gui_order                    = "8"
   authorization_url            = var.digitalcredential_authorization_url
