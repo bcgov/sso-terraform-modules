@@ -34,8 +34,8 @@ resource "keycloak_oidc_identity_provider" "this" {
   accepts_prompt_none_forward_from_client = var.accepts_prompt_none_forward_from_client
 
   extra_config = {
-    "clientAuthMethod" = var.client_auth_method
-    "tooltip"          = var.tooltip
-    "forwardParameters"= var.forwardParameters
+    "clientAuthMethod"  = var.client_auth_method
+    "tooltip"           = var.tooltip
+    "forwardParameters" = var.forwardParameters
   }
 }

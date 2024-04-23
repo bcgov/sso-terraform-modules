@@ -48,7 +48,7 @@ module "bceidboth_scope_mappers" {
 module "digitalcredential_scope_mappers" {
   source     = "../../scope-attribute-mappers"
   realm_id   = module.realm.id
-  scope_name = var.digitalcredential_realm_name
+  scope_name = module.digitalcredential_idp.alias
   attributes = local.digitalcredential_attributes
 }
 
