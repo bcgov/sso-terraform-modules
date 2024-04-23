@@ -21,6 +21,7 @@ resource "keycloak_realm" "this" {
   client_session_max_lifespan              = var.client_session_max_lifespan
   offline_session_idle_timeout             = var.offline_session_idle_timeout             # Offline Session Idle
   offline_session_max_lifespan_enabled     = var.offline_session_max_lifespan_enabled     # Offline Session Max Limited
+  offline_session_max_lifespan             = var.offline_session_max_lifespan             # Offline Session Max Lifespan
   access_token_lifespan                    = var.access_token_lifespan                    # Access Token Lifespan
   access_token_lifespan_for_implicit_flow  = var.access_token_lifespan_for_implicit_flow  # Access Token Lifespan For Implicit Flow
   access_code_lifespan                     = var.access_code_lifespan                     # Client login timeout

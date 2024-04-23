@@ -1,6 +1,6 @@
 provider "keycloak" {
   client_id = "admin-cli"
-  username  = "admin"
-  password  = "admin"
-  url       = "http://localhost:8080/auth"
+  username  = var.username
+  password  = var.password
+  url       = "${var.keycloak_url}/auth"
 }
