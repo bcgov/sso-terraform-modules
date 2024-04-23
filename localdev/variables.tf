@@ -50,3 +50,15 @@ variable "digitalcredential_client_secret" {
   sensitive = true
   default   = ""
 }
+
+variable "username" {
+  type      = string
+  sensitive = true
+  default   = ""
+}
+
+variable "password" {
+  type      = string
+  sensitive = true
+  default   = ""
+}

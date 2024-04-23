@@ -7,7 +7,7 @@ locals {
   bceidboth_realm_name         = "bceidboth"
   github_realm_name            = "github"
   digitalcredential_realm_name = "digitalcredential"
-  sandbox_client_redirect_uri  = "http://localhost:8080/*"
+  sandbox_client_redirect_uri  = "${var.keycloak_url}/auth/*"
   saml_entity_id               = "sandbox-client"
 }
 
@@ -46,7 +46,7 @@ module "idir" {
   realm_name                  = local.idir_realm_name
   standard_realm_name         = local.standard_realm_name
   saml_entity_id              = local.saml_entity_id
-  single_sign_on_service_url  = "https://dev.loginproxy.gov.bc.ca/auth/realms/idir/protocol/saml"
+  single_sign_on_service_url  = "https://dev.sandbox.loginproxy.gov.bc.ca/auth/realms/idir/protocol/saml"
   signing_certificate         = var.siteminder_signing_certificate
   sub_to_username             = true
   sandbox_client_redirect_uri = local.sandbox_client_redirect_uri
@@ -58,11 +58,11 @@ module "azureidir" {
   keycloak_url                = var.keycloak_url
   realm_name                  = local.azureidir_realm_name
   standard_realm_name         = local.standard_realm_name
-  authorization_url           = "https://dev.loginproxy.gov.bc.ca/auth/realms/azureidir/protocol/openid-connect/auth"
-  token_url                   = "https://dev.loginproxy.gov.bc.ca/auth/realms/azureidir/protocol/openid-connect/token"
-  user_info_url               = "https://dev.loginproxy.gov.bc.ca/auth/realms/azureidir/protocol/openid-connect/userinfo"
-  jwks_url                    = "https://dev.loginproxy.gov.bc.ca/auth/realms/azureidir/protocol/openid-connect/certs"
-  logout_url                  = "https://dev.loginproxy.gov.bc.ca/auth/realms/azureidir/protocol/openid-connect/logout"
+  authorization_url           = "https://dev.sandbox.loginproxy.gov.bc.ca/auth/realms/azureidir/protocol/openid-connect/auth"
+  token_url                   = "https://dev.sandbox.loginproxy.gov.bc.ca/auth/realms/azureidir/protocol/openid-connect/token"
+  user_info_url               = "https://dev.sandbox.loginproxy.gov.bc.ca/auth/realms/azureidir/protocol/openid-connect/userinfo"
+  jwks_url                    = "https://dev.sandbox.loginproxy.gov.bc.ca/auth/realms/azureidir/protocol/openid-connect/certs"
+  logout_url                  = "https://dev.sandbox.loginproxy.gov.bc.ca/auth/realms/azureidir/protocol/openid-connect/logout"
   azure_tenant_id             = var.azureidir_tenant_id
   azure_client_id             = var.azureidir_client_id
   azure_client_secret         = var.azureidir_client_secret
@@ -76,7 +76,7 @@ module "bceidbasic" {
   realm_name                  = local.bceidbasic_realm_name
   standard_realm_name         = local.standard_realm_name
   saml_entity_id              = local.saml_entity_id
-  single_sign_on_service_url  = "https://dev.loginproxy.gov.bc.ca/auth/realms/bceidbasic/protocol/saml"
+  single_sign_on_service_url  = "https://dev.sandbox.loginproxy.gov.bc.ca/auth/realms/bceidbasic/protocol/saml"
   signing_certificate         = var.siteminder_signing_certificate
   sub_to_username             = true
   sandbox_client_redirect_uri = local.sandbox_client_redirect_uri
@@ -89,7 +89,7 @@ module "bceidbusiness" {
   realm_name                  = local.bceidbusiness_realm_name
   standard_realm_name         = local.standard_realm_name
   saml_entity_id              = local.saml_entity_id
-  single_sign_on_service_url  = "https://dev.loginproxy.gov.bc.ca/auth/realms/bceidbusiness/protocol/saml"
+  single_sign_on_service_url  = "https://dev.sandbox.loginproxy.gov.bc.ca/auth/realms/bceidbusiness/protocol/saml"
   signing_certificate         = var.siteminder_signing_certificate
   sandbox_client_redirect_uri = local.sandbox_client_redirect_uri
 }
@@ -100,7 +100,7 @@ module "bceidboth" {
   realm_name                  = local.bceidboth_realm_name
   standard_realm_name         = local.standard_realm_name
   saml_entity_id              = local.saml_entity_id
-  single_sign_on_service_url  = "https://dev.loginproxy.gov.bc.ca/auth/realms/bceidboth/protocol/saml"
+  single_sign_on_service_url  = "https://dev.sandbox.loginproxy.gov.bc.ca/auth/realms/bceidboth/protocol/saml"
   signing_certificate         = var.siteminder_signing_certificate
   sandbox_client_redirect_uri = local.sandbox_client_redirect_uri
 }
