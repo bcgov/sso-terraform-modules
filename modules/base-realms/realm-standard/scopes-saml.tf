@@ -52,3 +52,10 @@ module "githubbcgov_scope_mappers_saml" {
   scope_name = "${var.github_realm_name}bcgov"
   attributes = local.githubbcgov_attributes
 }
+
+module "digitalcredential_scope_mappers_saml" {
+  source     = "../../scope-attribute-mappers-saml"
+  realm_id   = module.realm.id
+  scope_name = module.digitalcredential_idp.alias
+  attributes = local.digitalcredential_attributes
+}
