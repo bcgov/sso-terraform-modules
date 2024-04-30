@@ -10,14 +10,20 @@ locals {
 }
 
 module "realm" {
-  source       = "../../realm"
-  realm_name   = var.standard_realm_name
-  display_name = "Single Sign-On"
-  login_theme  = "bcgov-idp-stopper"
+  source                               = "../../realm"
+  realm_name                           = var.standard_realm_name
+  display_name                         = "Single Sign-On"
+  login_theme                          = "bcgov-idp-stopper"
+  offline_session_max_lifespan_enabled = true
 }
 
 module "idp_auth_flow" {
   source   = "../../idp-stopper-auth-flow"
+  realm_id = module.realm.id
+}
+
+module "client_stopper_auth_flow" {
+  source   = "../../client-stopper-auth-flow"
   realm_id = module.realm.id
 }
 

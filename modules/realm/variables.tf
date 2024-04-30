@@ -59,6 +59,11 @@ variable "offline_session_max_lifespan_enabled" {
   default     = false
 }
 
+variable "offline_session_max_lifespan" {
+  description = "Max time before an offline session is expired."
+  default     = "1440h"
+}
+
 variable "access_token_lifespan" {
   description = "The amount of time an access token can be used before it expires."
   default     = "5m"
