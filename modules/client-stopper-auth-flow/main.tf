@@ -13,16 +13,24 @@ resource "keycloak_authentication_execution" "exec1" {
 resource "keycloak_authentication_execution" "exec2" {
   realm_id          = var.realm_id
   parent_flow_alias = keycloak_authentication_flow.this.alias
-  authenticator     = "identity-provider-stopper"
+  authenticator     = "cookie-stopper"
   requirement       = "ALTERNATIVE"
   depends_on        = [keycloak_authentication_execution.exec1]
 }
 
-
 resource "keycloak_authentication_execution" "exec3" {
+  realm_id          = var.realm_id
+  parent_flow_alias = keycloak_authentication_flow.this.alias
+  authenticator     = "identity-provider-stopper"
+  requirement       = "ALTERNATIVE"
+  depends_on        = [keycloak_authentication_execution.exec2]
+}
+
+
+resource "keycloak_authentication_execution" "exec4" {
   realm_id          = var.realm_id
   parent_flow_alias = keycloak_authentication_flow.this.alias
   authenticator     = "identity-provider-stop-form"
   requirement       = "ALTERNATIVE"
-  depends_on        = [keycloak_authentication_execution.exec2]
+  depends_on        = [keycloak_authentication_execution.exec3]
 }
