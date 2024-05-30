@@ -22,6 +22,11 @@ module "idp_auth_flow" {
   realm_id = module.realm.id
 }
 
+module "client_stopper_auth_flow" {
+  source   = "../../client-stopper-auth-flow"
+  realm_id = module.realm.id
+}
+
 resource "keycloak_authentication_flow" "githubbcgov" {
   realm_id = module.realm.id
   alias    = "github bcgov"
