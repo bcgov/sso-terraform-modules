@@ -46,7 +46,7 @@ resource "keycloak_authentication_execution_config" "githubbcgov_exec1_config" {
   config = {
     attributeKey   = "org_verified",
     attributeValue = "true",
-    errorUrl       = "https://github.com/bcgov/sso-keycloak/wiki/Are-you-part-of-the-GitHub-BC-Gov-Org-%3F"
+    errorUrl       = "https://mvp.developer.gov.bc.ca/docs/default/component/css-docs/Are-you-part-of-the-GitHub-BC-Gov-Org"
   }
 }
 
