@@ -13,7 +13,7 @@ module "digitalcredential_idp" {
   forwardParameters            = "pres_req_conf_id"
   default_scopes               = "vc_authn"
   backchannel_supported        = false
-  tooltip                      = "<span>To learn more about using the Digital Credential option visit our </span><a href='https://github.com/bcgov/sso-keycloak/wiki/Our-Partners-and-Useful-Information' target='_blank' title='additional information' rel='noreferrer'>additional information.</a>"
+  tooltip                      = "To learn more about using the Digital Credential visit https://github.com/bcgov/sso-keycloak/wiki/Our-Partners-and-Useful-Information"
   post_broker_login_flow_alias = keycloak_authentication_flow.idp_post_login.alias
 }
 
