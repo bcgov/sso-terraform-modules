@@ -118,10 +118,7 @@ module "github" {
 }
 
 
-module "standard_clients" {
-  source            = "./standard-clients"
-  standard_realm_id = module.standard.realm_id
-}
+
 
 module "master_idir_link" {
   source           = "../modules/master-idp-link"
@@ -164,4 +161,18 @@ resource "keycloak_realm_events" "master_events" {
   events_listeners = [
     "jboss-logging"
   ]
+}
+
+module "standard_clients" {
+  source            = "./standard-clients"
+  depends_on        = [module.standard]
+  standard_realm_id = module.standard.realm_id
+}
+
+module "bcsc_resources" {
+  source             = "./bcsc"
+  depends_on         = [module.standard_clients]
+  standard_realm_id  = module.standard.realm_id
+  bcsc_client_id     = var.bcsc_client_id
+  bcsc_client_secret = var.bcsc_client_secret
 }

@@ -72,3 +72,15 @@ variable "digitalcredential_token_url" {
   type    = string
   default = ""
 }
+
+variable "bcsc_client_id" {
+  type      = string
+  sensitive = true
+  default   = ""
+}
+
+variable "bcsc_client_secret" {
+  type      = string
+  sensitive = true
+  default   = ""
+}

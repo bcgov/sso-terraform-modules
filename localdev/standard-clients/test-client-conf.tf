@@ -1,6 +1,6 @@
 module "test_client_conf" {
-  source                              = "../modules/standard-client"
-  realm_id                            = module.standard.realm_id
+  source                              = "../../modules/standard-client"
+  realm_id                            = var.standard_realm_id
   client_id                           = "test-client-conf"
   client_name                         = "Local Dev Confidential"
   access_token_lifespan               = ""

@@ -1,8 +1,13 @@
-module "test_client1" {
-  source      = "../modules/standard-client"
-  realm_id    = module.standard.realm_id
-  client_id   = "test-client1"
-  client_name = "Local Dev1"
+data "keycloak_authentication_flow" "idp_stopper" {
+  realm_id = var.standard_realm_id
+  alias    = "idp stopper"
+}
+
+module "test_client" {
+  source      = "../../modules/standard-client"
+  realm_id    = var.standard_realm_id
+  client_id   = "test-client"
+  client_name = "Local Dev"
   idps = [
     "common",
     "idir",
@@ -19,7 +24,8 @@ module "test_client1" {
   pkce_code_challenge_method = "S256"
   valid_redirect_uris = [
     "https://bcgov.github.io/keycloak-example-apps/*",
-    "https://logon7.gov.bc.ca/clp-cgi/logoff.cgi*"
+    "https://logon7.gov.bc.ca/clp-cgi/logoff.cgi*",
+    "https://sso-playground.apps.gold.devops.gov.bc.ca/*"
   ]
   web_origins                  = ["+"]
   override_authentication_flow = true
