@@ -12,7 +12,7 @@ module "idir_idp" {
   client_id         = var.idir_client_id
   client_secret     = var.idir_client_secret
 
-  post_broker_login_flow_alias = keycloak_authentication_flow.idp_post_login.alias
+  post_broker_login_flow_alias = keycloak_authentication_flow.idir_idp_post_login.alias
 }
 
 module "idir_idp_mappers" {

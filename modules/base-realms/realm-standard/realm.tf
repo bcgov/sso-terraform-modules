@@ -88,3 +88,22 @@ resource "keycloak_openid_client" "logout_redirect_uri_delegator" {
   valid_redirect_uris = ["*"]
   web_origins         = []
 }
+
+resource "keycloak_authentication_flow" "idir_idp_post_login" {
+  realm_id = module.realm.id
+  alias    = "idir idp post login"
+}
+
+resource "keycloak_authentication_execution" "idir_idp_post_login_exec1" {
+  realm_id          = module.realm.id
+  parent_flow_alias = keycloak_authentication_flow.idir_idp_post_login.alias
+  authenticator     = "auth-otp-form"
+  requirement       = "REQUIRED"
+}
+
+resource "keycloak_authentication_execution" "idir_idp_post_login_exec2" {
+  realm_id          = module.realm.id
+  parent_flow_alias = keycloak_authentication_flow.idir_idp_post_login.alias
+  authenticator     = "client-login-role-binding"
+  requirement       = "REQUIRED"
+}
