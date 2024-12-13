@@ -12,6 +12,7 @@ module "test_client1" {
     "bceidboth",
     "githubpublic",
     "githubbcgov",
+    "digitalcredential"
   ]
   standard_flow_enabled      = true
   service_accounts_enabled   = false
