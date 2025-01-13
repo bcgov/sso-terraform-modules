@@ -1,7 +1,7 @@
 locals {
   display_name = var.display_name != "" ? var.display_name : var.realm_name
 }
-# see https://registry.terraform.io/providers/mrparkers/keycloak/latest/docs/resources/realm
+# see https://registry.terraform.io/providers/keycloak/keycloak/latest/docs/resources/realm
 resource "keycloak_realm" "this" {
   realm             = var.realm_name
   enabled           = var.enabled
@@ -31,7 +31,7 @@ resource "keycloak_realm" "this" {
   action_token_generated_by_admin_lifespan = var.action_token_generated_by_admin_lifespan # Default Admin-Initiated Action Lifespan
 }
 
-# see https://registry.terraform.io/providers/mrparkers/keycloak/latest/docs/resources/realm_events
+# see https://registry.terraform.io/providers/keycloak/keycloak/latest/docs/resources/realm_events
 resource "keycloak_realm_events" "this" {
   realm_id = keycloak_realm.this.realm
 

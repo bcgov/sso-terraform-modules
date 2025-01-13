@@ -20,7 +20,7 @@ module "standard_saml_client" {
   sign_assertions = var.sign_assertions
 }
 
-# see https://registry.terraform.io/providers/mrparkers/keycloak/latest/docs/resources/role
+# see https://registry.terraform.io/providers/keycloak/keycloak/latest/docs/resources/role
 resource "keycloak_role" "client_role" {
   for_each = { for v in var.roles : v => v }
 
