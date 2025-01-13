@@ -1,4 +1,4 @@
-# see https://registry.terraform.io/providers/mrparkers/keycloak/latest/docs/resources/saml_identity_provider
+# see https://registry.terraform.io/providers/keycloak/keycloak/latest/docs/resources/saml_identity_provider
 variable "realm_id" {
   description = "The ID of the Keycloak realm."
 }

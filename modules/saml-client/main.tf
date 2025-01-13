@@ -1,4 +1,4 @@
-# see https://registry.terraform.io/providers/mrparkers/keycloak/latest/docs/resources/saml_client
+# see https://registry.terraform.io/providers/keycloak/keycloak/latest/docs/resources/saml_client
 resource "keycloak_saml_client" "this" {
   realm_id = var.realm_id
 
