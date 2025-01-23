@@ -1,4 +1,4 @@
-# see https://registry.terraform.io/providers/mrparkers/keycloak/latest/docs/resources/saml_identity_provider
+# see https://registry.terraform.io/providers/keycloak/keycloak/latest/docs/resources/saml_identity_provider
 module "bceidboth_idp" {
   source                     = "../../saml-idp"
   realm_id                   = module.realm.id

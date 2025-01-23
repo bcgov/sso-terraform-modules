@@ -1,4 +1,4 @@
-# see https://registry.terraform.io/providers/mrparkers/keycloak/latest/docs/resources/openid_client
+# see https://registry.terraform.io/providers/keycloak/keycloak/latest/docs/resources/openid_client
 resource "keycloak_openid_client" "this" {
   realm_id = var.realm_id
 

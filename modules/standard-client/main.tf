@@ -33,7 +33,7 @@ module "standard_oidc_client" {
   direct_grant_authentication_flow = var.direct_grant_authentication_flow
 }
 
-# see https://registry.terraform.io/providers/mrparkers/keycloak/latest/docs/resources/role
+# see https://registry.terraform.io/providers/keycloak/keycloak/latest/docs/resources/role
 resource "keycloak_role" "client_role" {
   for_each = { for v in var.roles : v => v }
 

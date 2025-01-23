@@ -1,6 +1,6 @@
 # This module creates a customer-driven realm so that they have the full control of the realm with minimum constraints.
 # The custom realms created by this module will have an admin group and a viewer group by default.
-# see https://registry.terraform.io/providers/mrparkers/keycloak/3.8.1/docs/resources/realm
+# see https://registry.terraform.io/providers/keycloak/keycloak/5.0.0/docs/resources/realm
 resource "keycloak_realm" "this" {
   realm   = var.realm_name
   enabled = var.enabled
