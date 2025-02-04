@@ -114,3 +114,27 @@ resource "keycloak_generic_protocol_mapper" "claim_omitter" {
     "userinfo.token.claim" : "true"
   }
 }
+
+resource "keycloak_generic_protocol_mapper" "nonce" {
+  realm_id        = var.realm_id
+  client_scope_id = keycloak_openid_client_scope.this.id
+  name            = "nonce"
+  protocol        = "openid-connect"
+  protocol_mapper = "oidc-nonce-backwards-compatible-mapper"
+  config          = {}
+}
+
+resource "keycloak_generic_protocol_mapper" "session_state" {
+  realm_id        = var.realm_id
+  client_scope_id = keycloak_openid_client_scope.this.id
+  name            = "session_state"
+  protocol        = "openid-connect"
+  protocol_mapper = "oidc-session-state-mapper"
+  config = {
+    "access.token.claim" : "true"
+    "id.token.claim" : "true"
+    "introspection.token.claim" : "true"
+    "lightweight.claim" : "false"
+    "userinfo.token.claim" : "true"
+  }
+}
