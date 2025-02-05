@@ -116,6 +116,7 @@ resource "keycloak_generic_protocol_mapper" "claim_omitter" {
 }
 
 resource "keycloak_generic_protocol_mapper" "nonce" {
+  count           = var.add_backwards_compatible_mappers ? 1 : 0
   realm_id        = var.realm_id
   client_scope_id = keycloak_openid_client_scope.this.id
   name            = "nonce"
@@ -125,6 +126,7 @@ resource "keycloak_generic_protocol_mapper" "nonce" {
 }
 
 resource "keycloak_generic_protocol_mapper" "session_state" {
+  count           = var.add_backwards_compatible_mappers ? 1 : 0
   realm_id        = var.realm_id
   client_scope_id = keycloak_openid_client_scope.this.id
   name            = "session_state"
