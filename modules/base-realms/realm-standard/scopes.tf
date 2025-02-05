@@ -5,9 +5,10 @@ module "name_scope_mappers" {
 }
 
 module "common_scope_mappers" {
-  source     = "../../scope-common-mappers"
-  realm_id   = module.realm.id
-  scope_name = "common"
+  source                           = "../../scope-common-mappers"
+  realm_id                         = module.realm.id
+  scope_name                       = "common"
+  add_backwards_compatible_mappers = var.add_backwards_compatible_mappers
 }
 
 module "idir_scope_mappers" {
