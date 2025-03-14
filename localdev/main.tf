@@ -6,6 +6,7 @@ locals {
   bceidbusiness_realm_name    = "bceidbusiness"
   bceidboth_realm_name        = "bceidboth"
   github_realm_name           = "github"
+  google_realm_name           = "google"
   sandbox_client_redirect_uri = "${var.keycloak_url}/auth/*"
   saml_entity_id              = "sandbox-client"
 }
@@ -21,6 +22,7 @@ module "standard" {
   bceidbusiness_realm_name = local.bceidbusiness_realm_name
   bceidboth_realm_name     = local.bceidboth_realm_name
   github_realm_name        = local.github_realm_name
+  google_realm_name        = local.google_realm_name
 
   idir_client_id              = module.idir.standard_client_id
   idir_client_secret          = module.idir.standard_client_secret
@@ -34,6 +36,9 @@ module "standard" {
   bceidboth_client_secret     = module.bceidboth.standard_client_secret
   github_client_id            = module.github.standard_client_id
   github_client_secret        = module.github.standard_client_secret
+  google_client_id            = module.google.standard_client_id
+  google_client_secret        = module.google.standard_client_secret
+
 
   digitalcredential_client_id         = var.digitalcredential_client_id
   digitalcredential_client_secret     = var.digitalcredential_client_secret
@@ -117,6 +122,15 @@ module "github" {
   sub_to_username     = true
 }
 
+module "google" {
+  source              = "../modules/base-realms/realm-google"
+  keycloak_url        = var.keycloak_url
+  realm_name          = local.google_realm_name
+  standard_realm_name = local.standard_realm_name
+  client_id           = var.google_client_id
+  client_secret       = var.google_client_secret
+  sub_to_username     = true
+}
 
 module "standard_clients" {
   source            = "./standard-clients"

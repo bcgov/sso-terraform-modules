@@ -39,6 +39,18 @@ variable "github_client_secret" {
   default   = ""
 }
 
+variable "google_client_id" {
+  type      = string
+  sensitive = true
+  default   = ""
+}
+
+variable "google_client_secret" {
+  type      = string
+  sensitive = true
+  default   = ""
+}
+
 variable "digitalcredential_client_id" {
   type      = string
   sensitive = true
