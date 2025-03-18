@@ -61,7 +61,6 @@ module "idir" {
   sandbox_client_redirect_uri = local.sandbox_client_redirect_uri
   validate_signature          = false
 }
-#Jonathan This is is where those secrets are passed in
 module "azureidir" {
   source                      = "../modules/base-realms/realm-azureidir"
   keycloak_url                = var.keycloak_url
