@@ -60,6 +60,13 @@ module "google_scope_mappers_saml" {
   attributes = local.google_attributes
 }
 
+module "microsoft_scope_mappers_saml" {
+  source     = "../../scope-attribute-mappers-saml"
+  realm_id   = module.realm.id
+  scope_name = "${var.microsoft_realm_name}"
+  attributes = local.microsoft_attributes
+}
+
 module "digitalcredential_scope_mappers_saml" {
   source     = "../../scope-attribute-mappers-saml"
   realm_id   = module.realm.id
