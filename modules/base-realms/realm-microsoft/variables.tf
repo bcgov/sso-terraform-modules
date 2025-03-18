@@ -3,22 +3,22 @@ variable "keycloak_url" {
   default = "http://localhost:8080"
 }
 
-variable "azure_tenant_id" {
+variable "microsoft_tenant_id" {
   type      = string
   sensitive = true
 }
-variable "azure_client_id" {
+variable "microsoft_client_id" {
   type      = string
   sensitive = true
 }
-variable "azure_client_secret" {
+variable "microsoft_client_secret" {
   type      = string
   sensitive = true
 }
 
 variable "realm_name" {
   type    = string
-  default = "azureidir"
+  default = "microsoft"
 }
 
 variable "standard_realm_name" {
@@ -57,7 +57,7 @@ variable "logout_url" {
   default = ""
 }
 
-variable "sandbox_client_redirect_uri" {
-  type    = string
-  default = "http://localhost:8080/*"
-}
+# variable "sandbox_client_redirect_uri" {
+#   type    = string
+#   default = "http://localhost:8080/*"
+# }
