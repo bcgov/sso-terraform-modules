@@ -66,3 +66,10 @@ module "githubbcgov_scope_mappers" {
   scope_name = "${var.github_realm_name}bcgov"
   attributes = local.githubbcgov_attributes
 }
+
+module "google_scope_mappers" {
+  source     = "../../scope-attribute-mappers"
+  realm_id   = module.realm.id
+  scope_name = "${var.google_realm_name}"
+  attributes = local.google_attributes  
+}
