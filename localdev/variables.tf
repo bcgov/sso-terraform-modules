@@ -51,6 +51,23 @@ variable "google_client_secret" {
   default   = ""
 }
 
+variable "microsoft_tenant_id" {
+  type      = string
+  sensitive = true
+  default   = ""
+}
+variable "microsoft_client_id" {
+  type      = string
+  sensitive = true
+  default   = ""
+}
+
+variable "microsoft_client_secret" {
+  type      = string
+  sensitive = true
+  default   = ""
+}
+
 variable "digitalcredential_client_id" {
   type      = string
   sensitive = true

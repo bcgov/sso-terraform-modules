@@ -73,3 +73,10 @@ module "google_scope_mappers" {
   scope_name = "${var.google_realm_name}"
   attributes = local.google_attributes  
 }
+
+module "microsoft_scope_mappers" {
+  source     = "../../scope-attribute-mappers"
+  realm_id   = module.realm.id
+  scope_name = "${var.microsoft_realm_name}"
+  attributes = local.microsoft_attributes  
+}

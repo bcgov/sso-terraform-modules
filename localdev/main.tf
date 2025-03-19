@@ -7,6 +7,7 @@ locals {
   bceidboth_realm_name        = "bceidboth"
   github_realm_name           = "github"
   google_realm_name           = "google"
+  microsoft_realm_name        = "microsoft"
   sandbox_client_redirect_uri = "${var.keycloak_url}/auth/*"
   saml_entity_id              = "sandbox-client"
 }
@@ -23,6 +24,7 @@ module "standard" {
   bceidboth_realm_name     = local.bceidboth_realm_name
   github_realm_name        = local.github_realm_name
   google_realm_name        = local.google_realm_name
+  microsoft_realm_name     = local.microsoft_realm_name
 
   idir_client_id              = module.idir.standard_client_id
   idir_client_secret          = module.idir.standard_client_secret
@@ -38,8 +40,9 @@ module "standard" {
   github_client_secret        = module.github.standard_client_secret
   google_client_id            = module.google.standard_client_id
   google_client_secret        = module.google.standard_client_secret
-
-
+  microsoft_client_id         = module.microsoft.standard_client_id
+  microsoft_client_secret     = module.microsoft.standard_client_secret
+  
   digitalcredential_client_id         = var.digitalcredential_client_id
   digitalcredential_client_secret     = var.digitalcredential_client_secret
   digitalcredential_authorization_url = var.digitalcredential_authorization_url
@@ -58,7 +61,6 @@ module "idir" {
   sandbox_client_redirect_uri = local.sandbox_client_redirect_uri
   validate_signature          = false
 }
-
 module "azureidir" {
   source                      = "../modules/base-realms/realm-azureidir"
   keycloak_url                = var.keycloak_url
@@ -132,9 +134,28 @@ module "google" {
   sub_to_username     = true
 }
 
+module "microsoft" {
+  source                   = "../modules/base-realms/realm-microsoft"
+  keycloak_url             = var.keycloak_url
+  realm_name               = local.microsoft_realm_name
+  standard_realm_name      = local.standard_realm_name
+  sub_to_username          = true
+  microsoft_tenant_id      = var.microsoft_tenant_id
+  microsoft_client_id      = var.microsoft_client_id
+  microsoft_client_secret  = var.microsoft_client_secret
+}
 module "standard_clients" {
   source            = "./standard-clients"
   standard_realm_id = module.standard.realm_id
+}
+
+module "master_microsoft_link" {
+  source           = "../modules/master-idp-link"
+  keycloak_url     = var.keycloak_url
+  idp_realm_id     = module.microsoft.realm_id
+  idp_realm_name   = module.microsoft.realm_name
+  idp_display_name = "Microsoft"
+  idp_public_attrs = ["display_name"]
 }
 
 module "master_idir_link" {
