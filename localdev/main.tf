@@ -149,6 +149,15 @@ module "standard_clients" {
   standard_realm_id = module.standard.realm_id
 }
 
+module "master_microsoft_link" {
+  source           = "../modules/master-idp-link"
+  keycloak_url     = var.keycloak_url
+  idp_realm_id     = module.microsoft.realm_id
+  idp_realm_name   = module.microsoft.realm_name
+  idp_display_name = "Microsoft"
+  idp_public_attrs = ["display_name"]
+}
+
 module "master_idir_link" {
   source           = "../modules/master-idp-link"
   keycloak_url     = var.keycloak_url

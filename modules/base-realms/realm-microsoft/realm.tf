@@ -1,7 +1,7 @@
 module "realm" {
   source       = "../../realm"
   realm_name   = var.realm_name
-  display_name = "Azure IDIR"
+  display_name = "Microsoft"
 }
 
 resource "keycloak_openid_client_scope" "idp_scope" {
