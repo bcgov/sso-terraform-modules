@@ -11,6 +11,7 @@ module "google_idp" {
   logout_url        = "${var.keycloak_url}/auth/realms/${var.google_realm_name}/protocol/openid-connect/logout"
   client_id         = var.google_client_id
   client_secret     = var.google_client_secret
+  social            = true
 
   post_broker_login_flow_alias = keycloak_authentication_flow.idp_post_login.alias
 }

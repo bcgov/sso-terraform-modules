@@ -13,6 +13,7 @@ module "microsoft_idp" {
   client_secret         = var.microsoft_client_secret
   tooltip               = "Microsoft social account"
   backchannel_supported = false
+  social                = true
 
   post_broker_login_flow_alias = keycloak_authentication_flow.idp_post_login.alias
 }
