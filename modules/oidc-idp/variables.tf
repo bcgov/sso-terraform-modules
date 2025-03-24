@@ -147,3 +147,8 @@ variable "tooltip" {
   description = "The tooltip to display inside the IDP login button (HTML format)"
   default     = ""
 }
+
+variable "social" {
+  description = "Whether to format IDP as a social provider in the keycloak idp-stopper theme."
+  default     = false
+}
