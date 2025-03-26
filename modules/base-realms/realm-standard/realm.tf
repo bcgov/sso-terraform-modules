@@ -9,6 +9,7 @@ locals {
   githubbcgov_attributes       = ["display_name", "github_id", "github_username", "org_verified", "orgs"]
   google_attributes            = ["email"]
   microsoft_attributes         = ["email"]
+  apple_attributes             = []
 }
 
 module "realm" {

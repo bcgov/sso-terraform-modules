@@ -80,6 +80,18 @@ variable "digitalcredential_client_secret" {
   default   = ""
 }
 
+variable "apple_client_id" {
+  type      = string
+  sensitive = true
+  default   = ""
+}
+
+variable "apple_client_secret" {
+  type      = string
+  sensitive = true
+  default   = ""
+}
+
 variable "username" {
   type      = string
   sensitive = true
