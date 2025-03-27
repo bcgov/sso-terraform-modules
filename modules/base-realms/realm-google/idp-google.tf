@@ -1,9 +1,3 @@
-
-resource "keycloak_realm" "realm" {
-  realm   = "my-realm"
-  enabled = true
-}
-
 resource "keycloak_oidc_google_identity_provider" "google" {
   realm       = module.realm.id
   client_id     = var.client_id
