@@ -7,8 +7,8 @@ locals {
   digitalcredential_attributes = ["vc_presented_attributes", "pres_req_conf_id"]
   githubpublic_attributes      = ["display_name", "github_id", "github_username", "org_verified", "orgs"]
   githubbcgov_attributes       = ["display_name", "github_id", "github_username", "org_verified", "orgs"]
-  google_attributes            = ["email"]
-  microsoft_attributes         = ["email"]
+  google_attributes            = []
+  microsoft_attributes         = []
   apple_attributes             = []
 }
 
