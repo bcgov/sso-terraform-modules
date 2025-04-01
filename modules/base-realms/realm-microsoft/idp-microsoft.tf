@@ -15,3 +15,55 @@ module "microsoft_idp" {
   disable_user_info     = true
   backchannel_supported = false
 }
+
+resource "keycloak_custom_identity_provider_mapper" "microsoft_first_name" {
+  realm                    = module.realm.id
+  name                     = "first_name"
+  identity_provider_alias  = module.microsoft_idp.alias
+  identity_provider_mapper = "hardcoded-attribute-idp-mapper"
+
+  extra_config = {
+    syncMode = "FORCE"
+    "attribute" : "firstName"
+    "attribute.value" : ""
+  }
+}
+
+resource "keycloak_custom_identity_provider_mapper" "microsoft_last_name" {
+  realm                    = module.realm.id
+  name                     = "last_name"
+  identity_provider_alias  = module.microsoft_idp.alias
+  identity_provider_mapper = "hardcoded-attribute-idp-mapper"
+
+  extra_config = {
+    syncMode = "FORCE"
+    "attribute" : "lastName"
+    "attribute.value" : ""
+  }
+}
+
+resource "keycloak_custom_identity_provider_mapper" "microsoft_email" {
+  realm                    = module.realm.id
+  name                     = "email"
+  identity_provider_alias  = module.microsoft_idp.alias
+  identity_provider_mapper = "hardcoded-attribute-idp-mapper"
+
+  extra_config = {
+    syncMode = "FORCE"
+    "attribute" : "email"
+    "attribute.value" : ""
+  }
+}
+
+resource "keycloak_custom_identity_provider_mapper" "sub_username" {
+  realm                    = module.realm.id
+  name                     = "username"
+  identity_provider_alias  = module.microsoft_idp.alias
+  identity_provider_mapper = "oidc-user-attribute-idp-mapper"
+
+  extra_config = {
+    syncMode = "FORCE"
+    "user.attribute": "username"
+    claim = "sub"
+  }
+}
