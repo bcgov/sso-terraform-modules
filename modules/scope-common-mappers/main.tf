@@ -12,6 +12,8 @@ resource "keycloak_generic_protocol_mapper" "identity_provider" {
   protocol        = "openid-connect"
   protocol_mapper = "oidc-usersessionmodel-note-mapper"
   config = {
+    "introspection.token.claim"  = "true",
+    "userinfo.token.claim"       = "true",
     "user.session.note" : "identity_provider",
     "claim.name" : "identity_provider",
     "jsonType.label" : "String",
@@ -28,6 +30,7 @@ resource "keycloak_generic_protocol_mapper" "sub_username" {
   protocol        = "openid-connect"
   protocol_mapper = "oidc-usermodel-property-mapper"
   config = {
+    "introspection.token.claim" : "true",
     "claim.name" : "sub",
     "user.attribute" : "username",
     "id.token.claim" : "true",
@@ -43,6 +46,7 @@ resource "keycloak_generic_protocol_mapper" "preferred_username" {
   protocol        = "openid-connect"
   protocol_mapper = "oidc-usermodel-property-mapper"
   config = {
+    "introspection.token.claim" : "true",
     "claim.name" : "preferred_username",
     "user.attribute" : "username",
     "id.token.claim" : "true",
@@ -58,6 +62,7 @@ resource "keycloak_generic_protocol_mapper" "given_name" {
   protocol        = "openid-connect"
   protocol_mapper = "oidc-usermodel-property-mapper"
   config = {
+    "introspection.token.claim" : "true",
     "user.attribute" : "firstName",
     "claim.name" : "given_name",
     "access.token.claim" : "true",
@@ -74,6 +79,7 @@ resource "keycloak_generic_protocol_mapper" "family_name" {
   protocol        = "openid-connect"
   protocol_mapper = "oidc-usermodel-property-mapper"
   config = {
+    "introspection.token.claim" : "true",
     "user.attribute" : "lastName",
     "claim.name" : "family_name",
     "access.token.claim" : "true",
@@ -90,13 +96,14 @@ resource "keycloak_generic_protocol_mapper" "name" {
   protocol        = "openid-connect"
   protocol_mapper = "oidc-usermodel-attribute-mapper"
   config = {
+    "introspection.token.claim" : "true",
     "user.attribute" : "display_name",
     "claim.name" : "name",
     "id.token.claim" : "true",
     "access.token.claim" : "true",
     "userinfo.token.claim" : "true",
-    "multivalued" : "",
-    "aggregate.attrs" : ""
+    "multivalued" : null,
+    "aggregate.attrs" : null
   }
 }
 
@@ -107,6 +114,7 @@ resource "keycloak_generic_protocol_mapper" "claim_omitter" {
   protocol        = "openid-connect"
   protocol_mapper = "omit-claim-by-idp-mapper"
   config = {
+    "introspection.token.claim" : "true",
     "identity_provider_aliases" : "bceidbasic bceidbusiness bceidboth githubpublic githubbcgov",
     "token_claim_names" : "family_name",
     "id.token.claim" : "true",

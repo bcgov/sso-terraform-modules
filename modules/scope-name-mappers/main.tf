@@ -12,6 +12,7 @@ resource "keycloak_generic_protocol_mapper" "given_name" {
   protocol        = "openid-connect"
   protocol_mapper = "oidc-usermodel-property-mapper"
   config = {
+    "introspection.token.claim" : "true",
     "user.attribute" : "firstName",
     "claim.name" : "given_name",
     "access.token.claim" : "true",
@@ -28,6 +29,7 @@ resource "keycloak_generic_protocol_mapper" "family_name" {
   protocol        = "openid-connect"
   protocol_mapper = "oidc-usermodel-property-mapper"
   config = {
+    "introspection.token.claim" : "true",
     "user.attribute" : "lastName",
     "claim.name" : "family_name",
     "access.token.claim" : "true",
@@ -44,6 +46,8 @@ resource "keycloak_generic_protocol_mapper" "full_name" {
   protocol        = "openid-connect"
   protocol_mapper = "oidc-full-name-mapper"
   config = {
+    "introspection.token.claim" : "false",
+    "introspection.token.claim" : "true",
     "id.token.claim" : "false",
     "access.token.claim" : "false",
     "userinfo.token.claim" : "false"
