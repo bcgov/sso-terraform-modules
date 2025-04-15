@@ -47,7 +47,6 @@ resource "keycloak_generic_protocol_mapper" "full_name" {
   protocol_mapper = "oidc-full-name-mapper"
   config = {
     "introspection.token.claim" : "false",
-    "introspection.token.claim" : "true",
     "id.token.claim" : "false",
     "access.token.claim" : "false",
     "userinfo.token.claim" : "false"
