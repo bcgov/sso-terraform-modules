@@ -29,7 +29,8 @@ resource "keycloak_generic_protocol_mapper" "sandbox_client_mapper_samaccountnam
     "jsonType.label" : "String",
     "id.token.claim" : "true",
     "access.token.claim" : "true",
-    "userinfo.token.claim" : "true"
+    "userinfo.token.claim" : "true",
+    "introspection.token.claim" : "true"
   }
 }
 
@@ -46,7 +47,8 @@ resource "keycloak_generic_protocol_mapper" "sandbox_client_mapper_given_name" {
     "jsonType.label" : "String",
     "id.token.claim" : "true",
     "access.token.claim" : "true",
-    "userinfo.token.claim" : "true"
+    "userinfo.token.claim" : "true",
+    "introspection.token.claim" : "true"
   }
 }
 
@@ -63,7 +65,8 @@ resource "keycloak_generic_protocol_mapper" "sandbox_client_mapper_family_name" 
     "jsonType.label" : "String",
     "id.token.claim" : "true",
     "access.token.claim" : "true",
-    "userinfo.token.claim" : "true"
+    "userinfo.token.claim" : "true",
+    "introspection.token.claim" : "true"
   }
 }
 
@@ -80,7 +83,8 @@ resource "keycloak_generic_protocol_mapper" "sandbox_client_mapper_display_name"
     "jsonType.label" : "String",
     "id.token.claim" : "true",
     "access.token.claim" : "true",
-    "userinfo.token.claim" : "true"
+    "userinfo.token.claim" : "true",
+    "introspection.token.claim" : "true"
   }
 }
 
@@ -97,7 +101,8 @@ resource "keycloak_generic_protocol_mapper" "sandbox_client_mapper_bcgovguid" {
     "jsonType.label" : "String",
     "id.token.claim" : "true",
     "access.token.claim" : "true",
-    "userinfo.token.claim" : "true"
+    "userinfo.token.claim" : "true",
+    "introspection.token.claim" : "true"
   }
 }
 
@@ -115,6 +120,7 @@ resource "keycloak_generic_protocol_mapper" "sandbox_client_mapper_userprincipal
     "jsonType.label" : "String",
     "id.token.claim" : "true",
     "access.token.claim" : "true",
-    "userinfo.token.claim" : "true"
+    "userinfo.token.claim" : "true",
+    "introspection.token.claim" : "true"
   }
 }
