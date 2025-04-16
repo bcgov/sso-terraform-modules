@@ -15,6 +15,7 @@ resource "keycloak_generic_protocol_mapper" "client_mappers" {
   protocol        = "openid-connect"
   protocol_mapper = "oidc-usermodel-attribute-mapper"
   config = {
+    "introspection.token.claim" : "true",
     "user.attribute" : each.key,
     "claim.name" : each.key,
     "jsonType.label" : "String",
