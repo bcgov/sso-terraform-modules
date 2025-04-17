@@ -25,7 +25,6 @@ resource "keycloak_generic_protocol_mapper" "given_name" {
   protocol        = "saml"
   protocol_mapper = "saml-user-property-mapper"
   config = {
-    "introspection.token.claim" : "true",
     "user.attribute" : "firstName",
     "attribute.name" : "given_name"
   }
@@ -39,7 +38,6 @@ resource "keycloak_generic_protocol_mapper" "family_name" {
   protocol        = "saml"
   protocol_mapper = "saml-user-property-mapper"
   config = {
-    "introspection.token.claim" : "true",
     "user.attribute" : "lastName",
     "attribute.name" : "family_name"
   }
@@ -53,7 +51,6 @@ resource "keycloak_generic_protocol_mapper" "identity_provider" {
   protocol        = "saml"
   protocol_mapper = "saml-user-session-note-mapper"
   config = {
-    "introspection.token.claim" : "true",
     "userinfo.token.claim" : "true",
     "note" : "identity_provider",
     "attribute.name" : "identity_provider"
