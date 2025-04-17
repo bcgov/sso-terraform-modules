@@ -114,6 +114,7 @@ resource "keycloak_generic_protocol_mapper" "claim_omitter" {
   protocol        = "openid-connect"
   protocol_mapper = "omit-claim-by-idp-mapper"
   config = {
+    "introspection.token.claim" : "true",
     "identity_provider_aliases" : "bceidbasic bceidbusiness bceidboth githubpublic githubbcgov",
     "token_claim_names" : "family_name",
     "id.token.claim" : "true",
