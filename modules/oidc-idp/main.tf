@@ -35,8 +35,8 @@ resource "keycloak_oidc_identity_provider" "this" {
 
   extra_config = merge({
     "clientAuthMethod"          = var.client_auth_method
-    "tooltip"                   = var.tooltip
-    "forwardParameters"         = var.forwardParameters
+    "tooltip"                   = var.tooltip != "" ? var.tooltip : null
+    "forwardParameters"         = var.forwardParameters != "" ? var.forwardParameters : null
     "social"                    = var.social
   }, var.idp_extra_config != null ? var.idp_extra_config : {})
 }

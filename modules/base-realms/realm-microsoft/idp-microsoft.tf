@@ -25,7 +25,7 @@ resource "keycloak_custom_identity_provider_mapper" "microsoft_first_name" {
   extra_config = {
     syncMode = "FORCE"
     "attribute" : "firstName"
-    "attribute.value" : ""
+    "attribute.value" : null
   }
 }
 
@@ -38,7 +38,7 @@ resource "keycloak_custom_identity_provider_mapper" "microsoft_last_name" {
   extra_config = {
     syncMode = "FORCE"
     "attribute" : "lastName"
-    "attribute.value" : ""
+    "attribute.value" : null
   }
 }
 
@@ -51,7 +51,7 @@ resource "keycloak_custom_identity_provider_mapper" "microsoft_email" {
   extra_config = {
     syncMode = "FORCE"
     "attribute" : "email"
-    "attribute.value" : ""
+    "attribute.value" : null
   }
 }
 
