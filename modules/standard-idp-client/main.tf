@@ -52,6 +52,7 @@ resource "keycloak_generic_protocol_mapper" "sub_username" {
   protocol        = "openid-connect"
   protocol_mapper = "oidc-usermodel-property-mapper"
   config = {
+    "introspection.token.claim" : "true",
     "claim.name" : "sub",
     "user.attribute" : "username",
     "id.token.claim" : "true",

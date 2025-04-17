@@ -100,7 +100,7 @@ resource "keycloak_custom_identity_provider_mapper" "first_name" {
   extra_config = {
     syncMode = "FORCE"
     "attribute" : "firstName"
-    "attribute.value" : ""
+    "attribute.value" : null
   }
 }
 
@@ -113,6 +113,6 @@ resource "keycloak_custom_identity_provider_mapper" "last_name" {
   extra_config = {
     syncMode = "FORCE"
     "attribute" : "lastName"
-    "attribute.value" : ""
+    "attribute.value" : null
   }
 }
