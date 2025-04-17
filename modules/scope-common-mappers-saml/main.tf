@@ -51,7 +51,6 @@ resource "keycloak_generic_protocol_mapper" "identity_provider" {
   protocol        = "saml"
   protocol_mapper = "saml-user-session-note-mapper"
   config = {
-    "userinfo.token.claim" : "true",
     "note" : "identity_provider",
     "attribute.name" : "identity_provider"
   }
