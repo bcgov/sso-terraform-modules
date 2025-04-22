@@ -66,6 +66,7 @@ resource "keycloak_generic_protocol_mapper" "client_roles_mapper" {
   protocol        = "openid-connect"
   protocol_mapper = "oidc-usermodel-client-role-mapper"
   config = {
+    "introspection.token.claim" : "true",
     "claim.name" : "client_roles",
     "jsonType.label" : "String",
     "usermodel.clientRoleMapping.clientId" : var.client_id,
@@ -101,6 +102,8 @@ resource "keycloak_generic_protocol_mapper" "access_token_aud" {
   protocol        = "openid-connect"
   protocol_mapper = "oidc-audience-mapper"
   config = {
+    "introspection.token.claim" : "true",
+    "userinfo.token.claim" : "false",
     "included.client.audience" : var.client_id,
     "id.token.claim" : "false",
     "access.token.claim" : "true",
