@@ -53,20 +53,6 @@ module "githubbcgov_scope_mappers_saml" {
   attributes = local.githubbcgov_attributes
 }
 
-module "google_scope_mappers_saml" {
-  source     = "../../scope-attribute-mappers-saml"
-  realm_id   = module.realm.id
-  scope_name = "${var.google_realm_name}"
-  attributes = local.google_attributes
-}
-
-module "microsoft_scope_mappers_saml" {
-  source     = "../../scope-attribute-mappers-saml"
-  realm_id   = module.realm.id
-  scope_name = "${var.microsoft_realm_name}"
-  attributes = local.microsoft_attributes
-}
-
 module "digitalcredential_scope_mappers_saml" {
   source     = "../../scope-attribute-mappers-saml"
   realm_id   = module.realm.id

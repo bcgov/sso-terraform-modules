@@ -12,10 +12,6 @@ variable "bceidbasic_realm_name" {}
 variable "bceidbusiness_realm_name" {}
 variable "bceidboth_realm_name" {}
 variable "github_realm_name" {}
-variable "google_realm_name" {}
-variable "microsoft_realm_name" {}
-variable "apple_realm_name" {}
-
 
 variable "idir_client_id" {
   type      = string
@@ -67,33 +63,6 @@ variable "github_client_id" {
   sensitive = true
 }
 variable "github_client_secret" {
-  type      = string
-  sensitive = true
-}
-
-variable "google_client_id" {
-  type      = string
-  sensitive = true
-}
-variable "google_client_secret" {
-  type      = string
-  sensitive = true
-}
-
-variable "microsoft_client_id" {
-  type      = string
-  sensitive = true
-}
-variable "microsoft_client_secret" {
-  type      = string
-  sensitive = true
-}
-
-variable "apple_client_id" {
-  type      = string
-  sensitive = true
-}
-variable "apple_client_secret" {
   type      = string
   sensitive = true
 }

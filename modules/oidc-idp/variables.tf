@@ -148,11 +148,6 @@ variable "tooltip" {
   default     = ""
 }
 
-variable "social" {
-  description = "Whether to format IDP as a social provider in the keycloak idp-stopper theme."
-  default     = false
-}
-
 variable "idp_extra_config" {
   description = "Optional extra configuration block"
   type        = any
