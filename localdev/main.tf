@@ -116,16 +116,6 @@ module "github" {
   sub_to_username     = true
 }
 
-module "google" {
-  source              = "../modules/base-realms/realm-google"
-  keycloak_url        = var.keycloak_url
-  realm_name          = local.google_realm_name
-  standard_realm_name = local.standard_realm_name
-  client_id           = var.google_client_id
-  client_secret       = var.google_client_secret
-  sub_to_username     = true
-}
-
 module "standard_clients" {
   source            = "./standard-clients"
   standard_realm_id = module.standard.realm_id
