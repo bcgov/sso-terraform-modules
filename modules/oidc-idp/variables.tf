@@ -147,3 +147,9 @@ variable "tooltip" {
   description = "The tooltip to display inside the IDP login button (HTML format)"
   default     = ""
 }
+
+variable "idp_extra_config" {
+  description = "Optional extra configuration block"
+  type        = any
+  default     = null
+}

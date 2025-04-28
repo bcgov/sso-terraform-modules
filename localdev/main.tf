@@ -53,7 +53,6 @@ module "idir" {
   sandbox_client_redirect_uri = local.sandbox_client_redirect_uri
   validate_signature          = false
 }
-
 module "azureidir" {
   source                      = "../modules/base-realms/realm-azureidir"
   keycloak_url                = var.keycloak_url
@@ -116,7 +115,6 @@ module "github" {
   github_org          = "bcgov bcgov-c BCDevOps"
   sub_to_username     = true
 }
-
 
 module "standard_clients" {
   source            = "./standard-clients"
