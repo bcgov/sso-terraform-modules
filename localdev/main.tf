@@ -6,6 +6,7 @@ locals {
   bceidbusiness_realm_name    = "bceidbusiness"
   bceidboth_realm_name        = "bceidboth"
   github_realm_name           = "github"
+  otp_realm_name              = "otp"
   sandbox_client_redirect_uri = "${var.keycloak_url}/auth/*"
   saml_entity_id              = "sandbox-client"
 }
@@ -21,6 +22,7 @@ module "standard" {
   bceidbusiness_realm_name = local.bceidbusiness_realm_name
   bceidboth_realm_name     = local.bceidboth_realm_name
   github_realm_name        = local.github_realm_name
+  otp_realm_name           = local.otp_realm_name
 
   idir_client_id              = module.idir.standard_client_id
   idir_client_secret          = module.idir.standard_client_secret
@@ -39,6 +41,9 @@ module "standard" {
   digitalcredential_client_secret     = var.digitalcredential_client_secret
   digitalcredential_authorization_url = var.digitalcredential_authorization_url
   digitalcredential_token_url         = var.digitalcredential_token_url
+
+  otp_client_id     = module.otp.standard_client_id
+  otp_client_secret = module.otp.standard_client_secret
 }
 
 module "idir" {
@@ -113,6 +118,20 @@ module "github" {
   client_id           = var.github_client_id
   client_secret       = var.github_client_secret
   github_org          = "bcgov bcgov-c BCDevOps"
+  sub_to_username     = true
+}
+
+module "otp" {
+  source              = "../modules/base-realms/realm-otp"
+  keycloak_url        = var.keycloak_url
+  realm_name          = local.otp_realm_name
+  standard_realm_name = local.standard_realm_name
+  client_id           = var.otp_client_id
+  client_secret       = var.otp_client_secret
+  authorization_url   = "https://otp-sandbox.loginproxy.gov.bc.ca/auth"
+  token_url           = "https://otp-sandbox.loginproxy.gov.bc.ca/token"
+  jwks_url            = "https://otp-sandbox.loginproxy.gov.bc.ca/jwks"
+  logout_url          = "https://otp-sandbox.loginproxy.gov.bc.ca/session/end"
   sub_to_username     = true
 }
 
