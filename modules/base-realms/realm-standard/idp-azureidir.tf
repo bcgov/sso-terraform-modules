@@ -27,7 +27,7 @@ module "azureidir_idp_mappers" {
 
 resource "keycloak_custom_identity_provider_mapper" "azureidir_username" {
   realm                    = module.realm.id
-  name                     = "username"
+  name                     = "azureidir_username"
   identity_provider_alias  = module.azureidir_idp.alias
   identity_provider_mapper = "oidc-username-idp-mapper"
 

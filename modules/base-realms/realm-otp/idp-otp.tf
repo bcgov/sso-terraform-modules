@@ -1,7 +1,6 @@
 resource "keycloak_oidc_identity_provider" "otp" {
-  realm       = module.realm.id
-  provider_id = "otp"
-  alias       = var.realm_name
+  realm = module.realm.id
+  alias = var.realm_name
 
   enabled     = true
   store_token = false
