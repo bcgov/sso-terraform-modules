@@ -1,8 +1,8 @@
 # sso-terraform-modules
+![Lifecycle:Retired](https://img.shields.io/badge/Lifecycle-Retired-d45500)
 
-![Lifecycle:Stable](https://img.shields.io/badge/Lifecycle-Stable-97ca00)
 
-Terraform modules shared by [`SSO Terraform`](https://github.com/bcgov/sso-terraform) and [`SSO Terraform DEV`](https://github.com/bcgov/sso-terraform-dev).
+The content of this repos has been moved to the terraform-modules folder of the [`SSO Terraform`](https://github.com/bcgov/sso-terraform) repo as of June 2025.
 
 ### client-attribute-mappers
 
