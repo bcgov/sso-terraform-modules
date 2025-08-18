@@ -38,4 +38,5 @@ resource "keycloak_oidc_identity_provider" "this" {
     "tooltip"                   = var.tooltip != "" ? var.tooltip : null
     "forwardParameters"         = var.forwardParameters != "" ? var.forwardParameters : null
   }, var.idp_extra_config != null ? var.idp_extra_config : {})
+
 }
