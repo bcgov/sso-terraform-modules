@@ -12,6 +12,7 @@ variable "bceidbasic_realm_name" {}
 variable "bceidbusiness_realm_name" {}
 variable "bceidboth_realm_name" {}
 variable "github_realm_name" {}
+variable "otp_realm_name" {}
 
 variable "idir_client_id" {
   type      = string
@@ -88,4 +89,13 @@ variable "add_backwards_compatible_mappers" {
   description = "if true backwards compatible mappers are added to common scope"
   type        = bool
   default     = false
+}
+
+variable "otp_client_id" {
+  type      = string
+  sensitive = true
+}
+variable "otp_client_secret" {
+  type      = string
+  sensitive = true
 }
